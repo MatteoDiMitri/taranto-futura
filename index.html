@@ -8,13 +8,13 @@
 <meta name="theme-color" content="#04070F">
 <meta name="color-scheme" content="dark">
 
-<!-- DEPLOY STEP: patch og:url and og:image with the live absolute URL before zipping -->
+<!-- se cambi indirizzo, aggiorna og:url e og:image qui sotto: vogliono l.indirizzo assoluto -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Taranto Futura">
 <meta property="og:title" content="Taranto Futura">
 <meta property="og:description" content="A Taranto le radici non stanno sottoterra. Stanno sott'acqua.">
-<meta property="og:url" content="REPLACE_AT_DEPLOY">
-<meta property="og:image" content="REPLACE_AT_DEPLOY/assets/og.jpg">
+<meta property="og:url" content="https://matteodimitri.github.io/taranto-futura/">
+<meta property="og:image" content="https://matteodimitri.github.io/taranto-futura/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -124,7 +124,39 @@ body.paused *, body.paused *::before, body.paused *::after{animation-play-state:
   color:var(--text-secondary); text-decoration:none; transition:color .4s var(--ease);
 }
 .barra nav a:hover{color:var(--text-primary)}
-@media (max-width:820px){.barra nav{display:none}}
+
+/* il carrello vive nella barra come le altre voci, non come bottone di sistema */
+.barra-carrello{
+  display:inline-flex; align-items:center; gap:7px; cursor:pointer;
+  padding:0; background:none; border:0;
+  font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--text-secondary); transition:color .4s var(--ease);
+}
+.barra-carrello:hover{color:var(--text-primary)}
+.barra-carrello:focus-visible{outline:2px solid var(--accent); outline-offset:4px; border-radius:3px}
+
+.barra-conta{
+  display:inline-grid; place-items:center; min-width:18px; height:18px; padding:0 5px;
+  border-radius:9px; background:var(--accent-muted); color:var(--text-primary);
+  font-size:10px; letter-spacing:0; font-variant-numeric:tabular-nums;
+  transition:background-color .3s var(--ease), transform .3s var(--ease);
+}
+.barra-conta.pieno{background:var(--accent); transform:scale(1.08)}
+
+/* Su telefono la barra resta: senza, al catalogo e al carrello non ci si
+   arriva piu'. Si stringe invece di sparire. */
+@media (max-width:820px){
+  .barra{gap:12px; padding:11px var(--gut)}
+  .barra nav{gap:15px; align-items:center}
+  .barra nav a, .barra-carrello{font-size:10px; letter-spacing:.1em}
+  .barra-logo img{width:30px; height:30px}
+  .barra-logo b{font-size:13px}
+}
+@media (max-width:560px){
+  .barra-logo b{display:none}          /* resta il tondo, il nome lo dice l'apertura */
+  .barra nav{gap:13px}
+  .barra-carrello{gap:5px}
+}
 
 /* ══════════════════════════════════════════════════════
    THE HERO: pinned 1000vh, sticky stage
@@ -274,60 +306,39 @@ body.paused *, body.paused *::before, body.paused *::after{animation-play-state:
 }
 
 /* ─── the static hero (phones, reduced motion) ────────── */
-.statico{display:none; position:relative; z-index:1; min-height:100svh; overflow:hidden}
-.statico .poster-fisso{position:absolute; inset:0; background-size:cover; background-position:center; background-color:var(--deep)}
-.statico .velo-fisso{
-  position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(4,7,15,.62) 0%, rgba(4,7,15,.30) 42%, rgba(4,7,15,.96) 100%);
+.statico{display:none; position:relative; z-index:1; min-height:100svh; overflow:hidden;
+  background:var(--canvas)}
+
+/* Il filmato e' panoramico e lo schermo del telefono e' in piedi: riempirlo
+   vorrebbe dire tagliare via meta' inquadratura, e il nome esce a pezzi.
+   Gli do una cornice sua, con la scritta sotto invece che sopra. */
+.statico .film-fisso{
+  display:block; width:100%; aspect-ratio:4/3; object-fit:cover;
+  background:var(--deep); border-radius:2px;
 }
+.statico .velo-fisso{display:none}
+
 .statico .dentro{
   position:relative; z-index:2; min-height:100svh;
-  display:grid; align-content:center; justify-items:center; gap:22px;
-  padding:120px var(--gut) 90px; text-align:center; text-shadow:var(--tshadow);
+  display:grid; align-content:center; justify-items:center; gap:clamp(22px,5vh,40px);
+  padding:96px 0 56px; text-align:center; width:100%;
 }
-.statico h1{font-size:clamp(40px,12vw,68px); letter-spacing:-.02em}
+.statico .luogo, .statico .coda-fissa{padding-inline:var(--gut)}
+.statico .film-fisso{justify-self:stretch}
+.statico .coda-fissa{display:grid; justify-items:center; gap:22px}
 .statico .sotto{max-width:26ch; color:var(--argento); font-size:clamp(15px,4.2vw,18px); font-weight:400}
 
-/* the rebuilt coin, for the static hero */
-.moneta{
-  --d:min(58vw,260px); --sp:18px; position:relative;
-  width:var(--d); height:var(--d);
-  perspective:1400px; perspective-origin:50% 46%;
+/* di traverso lo schermo torna panoramico: li' il filmato puo' riempire tutto */
+@media (orientation:landscape){
+  .statico .film-fisso{position:absolute; inset:0; width:100%; height:100%; aspect-ratio:auto}
+  .statico .velo-fisso{
+    display:block; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(180deg, rgba(4,7,15,.70) 0%, rgba(4,7,15,0) 40%,
+               rgba(4,7,15,.62) 80%, rgba(4,7,15,.94) 100%);
+  }
+  .statico .dentro{align-content:space-between; text-shadow:var(--tshadow)}
 }
-.moneta-corpo{position:absolute; inset:0; transform-style:preserve-3d}
-.moneta-gira{position:absolute; inset:0; transform-style:preserve-3d}
-@media (prefers-reduced-motion:no-preference){
-  .moneta-corpo{animation:fluttua 8.5s ease-in-out infinite; animation-delay:-2.2s}
-  .moneta-gira{animation:giraMoneta 22s linear infinite}
-}
-@keyframes fluttua{0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)}}
-@keyframes giraMoneta{from{transform:rotateY(0) rotateX(6deg)} 50%{transform:rotateY(180deg) rotateX(-6deg)} to{transform:rotateY(360deg) rotateX(6deg)}}
-.faccia{
-  position:absolute; inset:0; width:100%; height:100%; border-radius:50%;
-  backface-visibility:hidden; object-fit:cover;
-  transform:translateZ(calc(var(--sp)/2));
-  box-shadow:0 20px 60px rgba(4,7,15,.75);
-}
-.faccia.retro{transform:rotateY(180deg) translateZ(calc(var(--sp)/2))}
-.bordo{position:absolute; inset:0; transform-style:preserve-3d}
-.bordo i{
-  position:absolute; left:50%; top:50%; display:block;
-  width:var(--larghezza,11px); height:var(--sp);
-  margin:calc(var(--sp)/-2) 0 0 calc(var(--larghezza,11px)/-2);
-  background:linear-gradient(180deg,#7E93C4,#3D4E7E 46%,#141C34);
-  transform:rotateZ(var(--giro,0deg)) translateY(calc(var(--d)/-2)) rotateX(90deg);
-}
-.bordo i:nth-child(even){filter:brightness(1.42)}
-.brillo{
-  position:absolute; inset:1%; border-radius:50%; pointer-events:none;
-  backface-visibility:hidden; opacity:.62;
-  background:linear-gradient(112deg, transparent 34%, rgba(201,212,232,.16) 44%,
-             rgba(238,244,255,.62) 50%, rgba(201,212,232,.16) 56%, transparent 66%);
-  background-size:280% 100%; background-repeat:no-repeat;
-  transform:translateZ(calc(var(--sp)/2 + 2px));
-}
-@media (prefers-reduced-motion:no-preference){.brillo{animation:lampo 8s ease-in-out infinite}}
-@keyframes lampo{0%,12%{background-position:-120% 0} 58%,100%{background-position:260% 0}}
+
 
 /* ══════════════════════════════════════════════════════
    RADICI
@@ -831,7 +842,6 @@ footer .credito{font-family:var(--mono); font-size:11px; letter-spacing:.04em; o
   .rete .strappo{stroke-dashoffset:0 !important}
   .fregio path,.fregio circle,.fregio line{stroke-dashoffset:0 !important}
   .scandaglio i{height:100% !important}
-  .moneta-corpo,.moneta-gira{transform:none}
 }
 
 /* la copertina sta da sola e non deve gonfiarsi a tutta la scena */
@@ -1535,7 +1545,10 @@ a:visited,
 /* il capitello da solo, come segno di sezione */
 .capitello{display:block; width:clamp(130px,14vw,190px); height:auto;
   color:var(--argento); opacity:.55; margin:0 0 22px}
-.capitello svg{width:100%; height:auto; display:block; fill:none;
+/* il capitello E' l'svg, non lo contiene: senza questo resta col nero
+   di default e in pagina si vedono due macchie */
+svg.capitello, .capitello svg{
+  width:100%; height:auto; display:block; fill:none;
   stroke:currentColor; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round;
   vector-effect:non-scaling-stroke}
 
@@ -1863,6 +1876,12 @@ a:visited,
 
 .fregio-filo.stretto{ margin:26px 0; }
 
+/* su schermo stretto il motivo si ripete troppe volte e diventa rumore:
+   lo si ingrandisce, cosi' torna a leggersi come un fregio */
+@media (max-width:820px){
+  .fregio-filo{ height:26px; background-size:auto 20px; }
+}
+
 .voluta-grande{
   display:block; width:54px; height:54px; margin:0 auto 22px; opacity:.4;
   background-image:var(--fregio-voluta);
@@ -2041,24 +2060,20 @@ a:visited,
 </section>
 
 <!-- ══ THE STATIC HERO ═════════════════════════════════ -->
+<!-- Su telefono lo scrub non si puo' fare: il seek video non tiene il passo
+     del dito. Ma il viaggio si puo' guardare lo stesso, e va da solo. -->
 <section class="statico" aria-label="Apertura">
-  <div class="poster-fisso" id="poster-fisso" aria-hidden="true"></div>
   <div class="velo-fisso" aria-hidden="true"></div>
   <div class="dentro">
     <p class="luogo">Taranto &middot; Puglia</p>
-    <div class="moneta" aria-hidden="true">
-      <div class="moneta-corpo">
-        <div class="moneta-gira" id="moneta-gira">
-          <img class="faccia" src="assets/logo.webp" alt="" width="260" height="260">
-          <img class="faccia retro" src="assets/logo.webp" alt="" width="260" height="260">
-          <span class="bordo" id="bordo"></span>
-          <span class="brillo"></span>
-        </div>
-      </div>
+    <h1 class="vh">Taranto Futura</h1>
+    <video class="film-fisso" id="film-fisso" src="assets/hero-scrub.mp4"
+           poster="assets/hero-poster.jpg" muted playsinline autoplay preload="auto"
+           aria-label="Dal Castello Aragonese giu' sott'acqua, fino al nome"></video>
+    <div class="coda-fissa">
+      <p class="sotto">A Taranto le radici non stanno sottoterra. Stanno sott'acqua.</p>
+      <p><a class="bottone" href="#radici">Scendi nelle radici</a></p>
     </div>
-    <h1>Taranto Futura</h1>
-    <p class="sotto">A Taranto le radici non stanno sottoterra. Stanno sott'acqua.</p>
-    <p><a class="bottone" href="#radici">Scendi nelle radici</a></p>
   </div>
 </section>
 
@@ -2195,31 +2210,6 @@ a:visited,
 
 
 
-</main>
-
-<footer>
-  <div class="wrap riga-f">
-    <span>&copy; Taranto Futura &middot; Taranto, Puglia</span>
-    <a href="mailto:tarantofutura3@gmail.com">tarantofutura3@gmail.com</a>
-  </div>
-</footer>
-
-<div class="book" id="book" role="dialog" aria-modal="true" aria-labelledby="book-titolo" hidden>
-  <div class="book-barra">
-    <div>
-      <p id="book-data"></p>
-      <h3 id="book-titolo"></h3>
-    </div>
-    <button class="book-chiudi" type="button" id="book-chiudi" aria-label="Chiudi il book">&#10005;</button>
-  </div>
-  <div class="book-pagine" id="book-pagine"></div>
-  <p class="book-nota" id="book-nota" hidden></p>
-  <div class="book-coda">
-    <p>Hai una foto di quella sera? Mandacela.</p>
-    <a class="contatti-mail" href="mailto:tarantofutura3@gmail.com">tarantofutura3@gmail.com</a>
-  </div>
-</div>
-
 <!-- ══ CATALOGO (dal file originale) ═══════════════ -->
 <section class="sezione" id="catalogo">
     <div class="wrap">
@@ -2337,6 +2327,32 @@ a:visited,
       </div>
     </div>
   </section>
+
+</main>
+
+<footer>
+  <div class="wrap riga-f">
+    <span>&copy; Taranto Futura &middot; Taranto, Puglia</span>
+    <a href="mailto:tarantofutura3@gmail.com">tarantofutura3@gmail.com</a>
+  </div>
+</footer>
+
+<div class="book" id="book" role="dialog" aria-modal="true" aria-labelledby="book-titolo" hidden>
+  <div class="book-barra">
+    <div>
+      <p id="book-data"></p>
+      <h3 id="book-titolo"></h3>
+    </div>
+    <button class="book-chiudi" type="button" id="book-chiudi" aria-label="Chiudi il book">&#10005;</button>
+  </div>
+  <div class="book-pagine" id="book-pagine"></div>
+  <p class="book-nota" id="book-nota" hidden></p>
+  <div class="book-coda">
+    <p>Hai una foto di quella sera? Mandacela.</p>
+    <a class="contatti-mail" href="mailto:tarantofutura3@gmail.com">tarantofutura3@gmail.com</a>
+  </div>
+</div>
+
 
 <!-- ══ I PANNELLI ═══════════════════════════════════ -->
 
@@ -2617,18 +2633,6 @@ a:visited,
     return function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
   }
 
-  /* ══ the coin's milled edge ════════════════════════ */
-  (function(){
-    var bordo = document.getElementById('bordo');
-    if (!bordo) return;
-    var n = 56, d = 260, w = (Math.PI * d) / n + 1.2;
-    var html = '';
-    for (var i = 0; i < n; i++){
-      html += '<i style="--giro:' + (360 / n * i).toFixed(2) + 'deg;--larghezza:' + w.toFixed(2) + 'px"></i>';
-    }
-    bordo.innerHTML = html;
-  })();
-
   /* ══ split text into word and character spans ══════ */
   function split(el, mode, spread){
     var text = el.getAttribute('data-testo');
@@ -2847,6 +2851,11 @@ a:visited,
         video.addEventListener('canplay', function(){
           if (video.duration) requestSeek(heroProgress() * video.duration);
           palco.classList.add('video-ready');
+          /* la discesa guidata sta in un altro modulo: gli dico solo
+             che il filmato c'e', e quanto dura */
+          document.dispatchEvent(new CustomEvent('eroe-pronto', {
+            detail: { durata: video.duration || 0 }
+          }));
         }, { once: true });
       });
     });
@@ -3538,7 +3547,7 @@ a:visited,
       if (glideRaf !== null){ cancelAnimationFrame(glideRaf); glideRaf = null; }
     }
 
-    function glideTo(targetY, lento, done){
+    function glideTo(targetY, lento, done, durata){
       cancelGlide();
       var startY = window.scrollY;
       var max = document.documentElement.scrollHeight - window.innerHeight;
@@ -3548,7 +3557,7 @@ a:visited,
 
       var v   = lento ? RATE : VELOCE;
       var cap = lento ? MAX  : MAX_VELOCE;
-      var dur = Math.min(cap, Math.max(MIN, Math.abs(dist) / v * 1000));
+      var dur = durata || Math.min(cap, Math.max(MIN, Math.abs(dist) / v * 1000));
       var t0 = performance.now();
 
       function step(now){
@@ -3559,6 +3568,32 @@ a:visited,
       }
       glideRaf = requestAnimationFrame(step);
     }
+
+    /* ── la discesa parte da sola ────────────────────────
+       Chi arriva non deve scrollare per capire che succede qualcosa: il
+       viaggio si avvia appena il filmato e' pronto e va al passo del filmato
+       stesso, cosi' l'immagine non corre ne' resta indietro. Basta un dito,
+       una rotella o un tasto per riprendere in mano la pagina. */
+    var partita = false;
+    document.addEventListener('eroe-pronto', function(e){
+      if (partita) return;
+      var eroe = document.querySelector('.eroe');
+      if (!eroe || getComputedStyle(eroe).display === 'none') return;   /* telefono: ci pensa il video */
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (location.hash && location.hash !== '#top') return;            /* e' arrivato con un link a una sezione */
+      if (window.scrollY > 4) return;                                   /* si e' gia' mosso da solo */
+      partita = true;
+
+      var fine = eroe.getBoundingClientRect().top + window.scrollY + eroe.offsetHeight - window.innerHeight;
+      var durata = (e.detail && e.detail.durata ? e.detail.durata : 9.7) * 1000;
+
+      /* un respiro sul castello prima di scendere: partire di scatto
+         sull'attimo in cui la pagina appare sembra un errore, non un invito */
+      setTimeout(function(){
+        if (window.scrollY > 4) return;
+        glideTo(fine, true, null, durata);
+      }, 900);
+    });
 
     /* any real input from the visitor wins immediately */
     ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function(ev){
