@@ -1,0 +1,4128 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Taranto Futura</title>
+<meta name="description" content="A Taranto le radici non stanno sottoterra. Stanno sott'acqua. Sette storie prese dal fondo dei due mari.">
+<meta name="theme-color" content="#04070F">
+<meta name="color-scheme" content="dark">
+
+<!-- DEPLOY STEP: patch og:url and og:image with the live absolute URL before zipping -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Taranto Futura">
+<meta property="og:title" content="Taranto Futura">
+<meta property="og:description" content="A Taranto le radici non stanno sottoterra. Stanno sott'acqua.">
+<meta property="og:url" content="REPLACE_AT_DEPLOY">
+<meta property="og:image" content="REPLACE_AT_DEPLOY/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%230A1024'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%231F5BFF'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%230A1024'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500&family=Bungee&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ══════════════════════════════════════════════════════════
+   TARANTO FUTURA, "Il nomos"
+   A Taranto le radici non stanno sottoterra. Stanno sott'acqua.
+   ══════════════════════════════════════════════════════════ */
+
+:root{
+  --canvas:#04070F;
+  --panel:#0A1024;
+  --deep:#061031;
+  --accent:#1F5BFF;
+  --accent-hover:#4478FF;
+  --accent-muted:#0E2A6B;
+  --argento:#C9D4E8;
+  --text-primary:#F2F4F9;
+  --text-secondary:#959DB4;
+  --hairline:rgba(201,212,232,.11);
+  --border-strong:rgba(201,212,232,.30);
+
+  --display:"Bungee", "Archivo Black", Impact, sans-serif;
+  --body:"Archivo", system-ui, -apple-system, sans-serif;
+  --fregio-astragalo: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2044%2044%27%20preserveAspectRatio%3D%27xMidYMid%20meet%27%3E%3Cpath%20d%3D%27M23.0%2022.0%20L22.95%2022.98%20L22.81%2023.95%20L22.57%2024.9%20L22.24%2025.83%20L21.82%2026.71%20L21.31%2027.56%20L20.73%2028.34%20L20.07%2029.07%20L19.34%2029.73%20L18.56%2030.31%20L17.71%2030.82%20L16.83%2031.24%20L15.9%2031.57%20L14.95%2031.81%20L13.98%2031.95%20L13.0%2032.0%20L12.02%2031.95%20L11.05%2031.81%20L10.1%2031.57%20L9.17%2031.24%20L8.29%2030.82%20L7.44%2030.31%20L6.66%2029.73%20L5.93%2029.07%20L5.27%2028.34%20L4.69%2027.56%20L4.18%2026.71%20L3.76%2025.83%20L3.43%2024.9%20L3.19%2023.95%20L3.05%2022.98%20L3.0%2022.0%20L3.05%2021.02%20L3.19%2020.05%20L3.43%2019.1%20L3.76%2018.17%20L4.18%2017.29%20L4.69%2016.44%20L5.27%2015.66%20L5.93%2014.93%20L6.66%2014.27%20L7.44%2013.69%20L8.29%2013.18%20L9.17%2012.76%20L10.1%2012.43%20L11.05%2012.19%20L12.02%2012.05%20L13.0%2012.0%20L13.98%2012.05%20L14.95%2012.19%20L15.9%2012.43%20L16.83%2012.76%20L17.71%2013.18%20L18.56%2013.69%20L19.34%2014.27%20L20.07%2014.93%20L20.73%2015.66%20L21.31%2016.44%20L21.82%2017.29%20L22.24%2018.17%20L22.57%2019.1%20L22.81%2020.05%20L22.95%2021.02%20L23.0%2022.0%20M30%2013%20L30%2031%20M38%2013%20L38%2031%27%20fill%3D%27none%27%20stroke%3D%27%237C8398%27%20stroke-width%3D%271.3%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%2F%3E%3C%2Fsvg%3E");
+  --mono:"DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --ease:cubic-bezier(.22,.7,.28,1);
+  --ease-soft:cubic-bezier(.16,1,.3,1);
+
+  --tshadow:0 1px 2px rgba(4,7,15,.95),0 3px 12px rgba(4,7,15,.78),0 10px 44px rgba(4,7,15,.8);
+  --gut:clamp(20px,5vw,64px);
+}
+
+*{box-sizing:border-box}
+html,body{overflow-x:hidden;overflow-x:clip}
+/* Anchor jumps are driven by JS below, not by the browser: native smooth
+   scrolling takes the same half second whether you travel 100px or 13000,
+   which makes the hero race past instead of playing. */
+html{scroll-behavior:auto}
+body{
+  margin:0; background:var(--canvas); color:var(--text-primary);
+  font-family:var(--body); font-weight:300; font-size:clamp(15px,1.05vw,17px);
+  line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%; display:block}
+h1,h2,h3{margin:0; font-family:var(--display); font-weight:400; line-height:1.14; letter-spacing:.005em}
+a{color:inherit}
+
+.skip{
+  position:absolute; left:-9999px; top:0; z-index:200;
+  background:var(--accent); color:#fff; padding:12px 20px; border-radius:0 0 8px 0;
+  font-family:var(--mono); font-size:12px; text-decoration:none;
+}
+.skip:focus{left:0}
+
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px}
+
+/* ─── the one fixed environment layer ─────────────────── */
+.ambiente{
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 120% 80% at 50% -10%, rgba(31,91,255,.10) 0%, rgba(4,7,15,0) 60%),
+    radial-gradient(ellipse 90% 60% at 50% 110%, rgba(14,42,107,.22) 0%, rgba(4,7,15,0) 65%),
+    var(--canvas);
+}
+.ambiente::after{
+  content:""; position:absolute; inset:-20%;
+  background-image:
+    radial-gradient(circle at 12% 20%, rgba(201,212,232,.55) 0 1.1px, transparent 1.6px),
+    radial-gradient(circle at 68% 74%, rgba(201,212,232,.40) 0 1px,  transparent 1.5px),
+    radial-gradient(circle at 34% 88%, rgba(31,91,255,.45)  0 1.2px, transparent 1.7px),
+    radial-gradient(circle at 86% 34%, rgba(201,212,232,.32) 0 1px,  transparent 1.5px);
+  background-size:340px 340px, 470px 470px, 610px 610px, 260px 260px;
+  opacity:.5;
+}
+@media (prefers-reduced-motion:no-preference){
+  .ambiente::after{animation:sale 84s linear infinite; animation-delay:-31s}
+}
+@keyframes sale{from{transform:translate3d(0,0,0)} to{transform:translate3d(-40px,-340px,0)}}
+
+body.paused *, body.paused *::before, body.paused *::after{animation-play-state:paused !important}
+
+/* ─── nav ─────────────────────────────────────────────── */
+.barra{
+  position:fixed; top:0; left:0; right:0; z-index:60;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:20px; padding:14px var(--gut);
+  background:linear-gradient(180deg, rgba(4,7,15,.86) 0%, rgba(4,7,15,0) 100%);
+  backdrop-filter:blur(2px);
+  transition:background .5s var(--ease);
+}
+.barra.fondo{background:rgba(4,7,15,.92); border-bottom:1px solid var(--hairline); backdrop-filter:blur(14px)}
+.barra-logo{display:flex; align-items:center; gap:11px; text-decoration:none}
+.barra-logo img{width:34px; height:34px; border-radius:50%}
+.barra-logo b{font-family:var(--display); font-weight:600; font-size:15px; letter-spacing:.01em}
+.barra nav{display:flex; gap:clamp(14px,2vw,28px)}
+.barra nav a{
+  font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--text-secondary); text-decoration:none; transition:color .4s var(--ease);
+}
+.barra nav a:hover{color:var(--text-primary)}
+@media (max-width:820px){.barra nav{display:none}}
+
+/* ══════════════════════════════════════════════════════
+   THE HERO: pinned 1000vh, sticky stage
+   ══════════════════════════════════════════════════════ */
+/* 620vh per 9,7 secondi: lo stesso passo di scorrimento di prima,
+   su un filmato piu' corto perche' il tratto morto non c'e' piu' */
+.eroe{position:relative; height:620vh; z-index:1}
+.palco{
+  position:sticky; top:0; height:100vh; overflow:hidden;
+  background:var(--canvas);
+}
+.palco video{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; opacity:0;
+  transform:translateZ(0); will-change:transform;
+  transition:opacity 1.1s var(--ease);
+}
+.palco.video-ready video{opacity:1}
+.palco.video-failed video{display:none}
+.poster{
+  position:absolute; inset:0; background-size:cover; background-position:center;
+  background-color:var(--deep);
+}
+.palco.video-ready .poster{opacity:0; transition:opacity 1.1s var(--ease)}
+
+/* No captions ride over this footage any more, so the scrim steps almost all
+   the way back: just enough vignette to seat the frame on the page ground. */
+.velo{
+  position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(ellipse 130% 100% at 50% 45%, rgba(4,7,15,0) 58%, rgba(4,7,15,.28) 100%);
+}
+
+/* the loading ring */
+.anello-carico{
+  position:absolute; left:50%; bottom:96px; translate:-50% 0;
+  width:48px; height:48px; color:var(--argento); opacity:.85;
+  transition:opacity .6s var(--ease);
+}
+.anello-carico circle{transform:rotate(-90deg); transform-origin:50% 50%; transition:stroke-dashoffset .18s linear}
+.palco.video-ready .anello-carico{opacity:0}
+.freccia-giu{
+  position:absolute; left:50%; bottom:96px; translate:-50% 0;
+  display:flex; flex-direction:column; align-items:center; gap:9px;
+}
+.freccia-giu i{display:block; width:1px; height:40px; background:linear-gradient(180deg,transparent,var(--argento))}
+.freccia-giu span{font-family:var(--mono); font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--text-secondary)}
+@media (prefers-reduced-motion:no-preference){
+  .freccia-giu{animation:respiro 3.2s ease-in-out infinite; animation-delay:-1.1s}
+}
+@keyframes respiro{0%,100%{opacity:.3} 50%{opacity:1}}
+
+/* ─── caption bands ───────────────────────────────────── */
+.banda{
+  position:absolute; inset:0; z-index:3;
+  display:grid; place-items:center; padding:0 var(--gut);
+  opacity:0; pointer-events:none; text-shadow:var(--tshadow);
+}
+/* Every band's text is centred, so the scrim is centred too. Peak alpha is tuned
+   per band against that band's WORST frame, measured, never guessed. The daylight
+   castle at the top needs far more than the dark water further down. */
+.banda::before{
+  content:""; position:absolute; inset:-4%; pointer-events:none;
+  opacity:calc(.25 + .75*var(--k,1));
+  background:radial-gradient(ellipse 88% 68% at 50% 50%,
+    rgba(4,7,15,var(--scrim,.66)) 0%,
+    rgba(4,7,15,calc(var(--scrim,.66) * .66)) 44%,
+    rgba(4,7,15,0) 78%);
+}
+.banda.b1{--scrim:.90}
+.banda.b2{--scrim:.88}
+.banda.b3{--scrim:.88}
+/* the footage is already near black down here, so the scrim steps back
+   and lets the coin read; the measured contrast has room to spare */
+.banda.b4{--scrim:.78}
+.banda.b5{--scrim:.24}
+.banda p, .banda h1{position:relative; z-index:1; margin:0}
+.banda .riga{
+  font-family:var(--display); font-weight:600;
+  font-size:clamp(30px,5.4vw,74px); line-height:1.08; text-align:center;
+  max-width:19ch;
+}
+.banda.b1 .riga{max-width:17ch}
+.banda.b3 .riga, .banda.b4 .riga{max-width:15ch}
+
+/* split text spans */
+.w{display:inline-block; white-space:pre}
+.c{display:inline-block; will-change:transform,opacity}
+.vh{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+
+/* (a) scatter */
+.ent-scatter .c{
+  --kc:clamp(0,(var(--k,0) - var(--th,0))*2.6,1);
+  opacity:var(--kc);
+  transform:translate(calc((1 - var(--kc))*var(--jx,0px)),calc((1 - var(--kc))*var(--jy,0px)))
+            rotate(calc((1 - var(--kc))*var(--jr,0deg)));
+}
+/* (c) blur-to-sharp: two stacked copies, opacity only */
+.ent-blur{position:relative; display:inline-block}
+.ent-blur .molle{position:absolute; inset:0; filter:blur(11px); opacity:calc(1 - var(--k,0))}
+.ent-blur .nitido{opacity:var(--k,0)}
+/* (f) drift-down */
+.ent-drift .w{
+  --kc:clamp(0,(var(--k,0) - var(--th,0))*2.8,1);
+  opacity:var(--kc); transform:translateY(calc((1 - var(--kc))*-26px));
+}
+/* (g) approach-from-depth */
+.ent-depth{display:inline-block; opacity:var(--k,0); transform:scale(calc(0.80 + 0.20*var(--k,0)))}
+/* (e) word-by-word rise into a staged settle */
+.ent-rise .w{
+  --kc:clamp(0,(var(--k,0) - var(--th,0))*2.7,1);
+  opacity:var(--kc); transform:translateY(calc((1 - var(--kc))*22px));
+}
+
+/* The logo animation is the payoff and it fills the middle of the frame, so the
+   settle steps aside: a quiet bar along the bottom with its own upward scrim,
+   never a headline competing with the mark. */
+.banda.b5{align-content:end; padding-bottom:clamp(30px,5.5vh,58px)}
+.banda.b5::before{
+  background:linear-gradient(0deg, rgba(4,7,15,.86) 0%, rgba(4,7,15,.52) 22%, rgba(4,7,15,0) 46%);
+}
+.sipario{display:grid; justify-items:center; gap:16px; position:relative; z-index:1}
+.sipario .sotto{
+  font-family:var(--body); font-weight:400;
+  font-size:clamp(14px,1.55vw,18px); line-height:1.4; letter-spacing:.03em;
+  color:var(--argento); text-align:center; margin:0;
+}
+.sipario .riga-cta{
+  --kb:clamp(0,(var(--k,0) - 0.78)*5,1);
+  opacity:var(--kb); transform:translateY(calc((1 - var(--kb))*14px));
+}
+.luogo{
+  font-family:var(--mono); font-size:11px; letter-spacing:.26em;
+  text-transform:uppercase; color:var(--text-secondary);
+}
+
+.bottone{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  padding:15px 30px; border-radius:999px; border:1px solid transparent;
+  background:var(--accent); color:#fff; text-decoration:none;
+  font-family:var(--mono); font-size:12px; letter-spacing:.13em; text-transform:uppercase;
+  text-shadow:none; transition:background .45s var(--ease), transform .45s var(--ease);
+}
+.bottone:hover{background:var(--accent-hover); transform:translateY(-2px)}
+.banda .bottone{text-shadow:none}
+@media (pointer:coarse){
+  .bottone{min-height:44px; display:inline-flex; align-items:center; justify-content:center}
+}
+
+/* ─── the static hero (phones, reduced motion) ────────── */
+.statico{display:none; position:relative; z-index:1; min-height:100svh; overflow:hidden}
+.statico .poster-fisso{position:absolute; inset:0; background-size:cover; background-position:center; background-color:var(--deep)}
+.statico .velo-fisso{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(4,7,15,.62) 0%, rgba(4,7,15,.30) 42%, rgba(4,7,15,.96) 100%);
+}
+.statico .dentro{
+  position:relative; z-index:2; min-height:100svh;
+  display:grid; align-content:center; justify-items:center; gap:22px;
+  padding:120px var(--gut) 90px; text-align:center; text-shadow:var(--tshadow);
+}
+.statico h1{font-size:clamp(40px,12vw,68px); letter-spacing:-.02em}
+.statico .sotto{max-width:26ch; color:var(--argento); font-size:clamp(15px,4.2vw,18px); font-weight:400}
+
+/* the rebuilt coin, for the static hero */
+.moneta{
+  --d:min(58vw,260px); --sp:18px; position:relative;
+  width:var(--d); height:var(--d);
+  perspective:1400px; perspective-origin:50% 46%;
+}
+.moneta-corpo{position:absolute; inset:0; transform-style:preserve-3d}
+.moneta-gira{position:absolute; inset:0; transform-style:preserve-3d}
+@media (prefers-reduced-motion:no-preference){
+  .moneta-corpo{animation:fluttua 8.5s ease-in-out infinite; animation-delay:-2.2s}
+  .moneta-gira{animation:giraMoneta 22s linear infinite}
+}
+@keyframes fluttua{0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)}}
+@keyframes giraMoneta{from{transform:rotateY(0) rotateX(6deg)} 50%{transform:rotateY(180deg) rotateX(-6deg)} to{transform:rotateY(360deg) rotateX(6deg)}}
+.faccia{
+  position:absolute; inset:0; width:100%; height:100%; border-radius:50%;
+  backface-visibility:hidden; object-fit:cover;
+  transform:translateZ(calc(var(--sp)/2));
+  box-shadow:0 20px 60px rgba(4,7,15,.75);
+}
+.faccia.retro{transform:rotateY(180deg) translateZ(calc(var(--sp)/2))}
+.bordo{position:absolute; inset:0; transform-style:preserve-3d}
+.bordo i{
+  position:absolute; left:50%; top:50%; display:block;
+  width:var(--larghezza,11px); height:var(--sp);
+  margin:calc(var(--sp)/-2) 0 0 calc(var(--larghezza,11px)/-2);
+  background:linear-gradient(180deg,#7E93C4,#3D4E7E 46%,#141C34);
+  transform:rotateZ(var(--giro,0deg)) translateY(calc(var(--d)/-2)) rotateX(90deg);
+}
+.bordo i:nth-child(even){filter:brightness(1.42)}
+.brillo{
+  position:absolute; inset:1%; border-radius:50%; pointer-events:none;
+  backface-visibility:hidden; opacity:.62;
+  background:linear-gradient(112deg, transparent 34%, rgba(201,212,232,.16) 44%,
+             rgba(238,244,255,.62) 50%, rgba(201,212,232,.16) 56%, transparent 66%);
+  background-size:280% 100%; background-repeat:no-repeat;
+  transform:translateZ(calc(var(--sp)/2 + 2px));
+}
+@media (prefers-reduced-motion:no-preference){.brillo{animation:lampo 8s ease-in-out infinite}}
+@keyframes lampo{0%,12%{background-position:-120% 0} 58%,100%{background-position:260% 0}}
+
+/* ══════════════════════════════════════════════════════
+   RADICI
+   ══════════════════════════════════════════════════════ */
+.sezione{position:relative; z-index:1; padding:clamp(90px,12vw,170px) 0}
+.wrap{width:min(1240px, 100% - (var(--gut) * 2)); margin-inline:auto}
+
+.etichetta{
+  display:inline-flex; align-items:center; gap:10px;
+  font-family:var(--mono); font-size:11px; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--text-secondary);
+}
+.etichetta::before{content:""; width:26px; height:1px; background:var(--border-strong)}
+
+.testata{max-width:22ch; margin:22px 0 0; font-size:clamp(34px,5.6vw,64px)}
+.premessa{
+  margin:26px 0 0; max-width:44ch;
+  font-size:clamp(16px,1.6vw,20px); color:var(--text-secondary);
+}
+.premessa b{color:var(--argento); font-weight:500}
+
+/* the sounding line */
+.scandaglio{
+  position:absolute; left:calc(var(--gut) / 2); top:0; bottom:0; width:1px;
+  background:var(--hairline); z-index:2; pointer-events:none;
+}
+.scandaglio i{
+  position:absolute; left:0; top:0; width:1px; height:0;
+  background:linear-gradient(180deg, var(--argento), var(--accent));
+  opacity:.55;
+}
+@media (max-width:900px){.scandaglio{display:none}}
+@media (max-height:560px){.scandaglio{display:none}}
+
+.profondita{
+  position:absolute; left:0; translate:-50% 0;
+  width:56px; text-align:center;
+  font-family:var(--mono); font-size:10px; letter-spacing:.08em;
+  color:var(--text-secondary);
+  background:rgba(8,12,26,.62); border:1px solid rgba(201,212,232,.16);
+  border-radius:8px; padding:4px 0; backdrop-filter:blur(8px);
+}
+
+/* the frieze dividers, self-drawing */
+.fregio{display:block; width:100%; height:44px; margin:clamp(56px,7vw,96px) 0; overflow:visible}
+.fregio path, .fregio circle, .fregio line{
+  fill:none; stroke:var(--argento); stroke-width:1.25;
+  stroke-linecap:round; stroke-linejoin:round; opacity:.42;
+  stroke-dasharray:var(--len,600); stroke-dashoffset:calc(var(--len,600) * (1 - var(--d,0)));
+}
+
+/* the stories */
+.racconto{
+  position:relative;
+  display:grid; gap:clamp(28px,4vw,64px); align-items:center;
+  grid-template-columns:1fr 1fr;
+}
+.racconto.destra .tela{order:2}
+.racconto.piena{grid-template-columns:1fr; gap:clamp(24px,3vw,40px)}
+.racconto.centro{grid-template-columns:1fr; justify-items:center; text-align:center}
+.racconto.centro .testo{max-width:52ch}
+@media (max-width:900px){
+  .racconto{grid-template-columns:1fr}
+  .racconto.destra .tela{order:0}
+}
+
+.tela{
+  position:relative; overflow:hidden; border-radius:3px;
+  background:linear-gradient(160deg, var(--panel), var(--deep));
+  border:1px solid var(--hairline);
+  aspect-ratio:4/5;
+}
+.racconto.piena .tela{aspect-ratio:21/9}
+.racconto.centro .tela{aspect-ratio:16/10; width:min(680px,100%)}
+.tela img{width:100%; height:100%; object-fit:cover; transition:opacity .8s var(--ease)}
+.tela img.mancante{opacity:0}
+/* a missing still leaves a composed panel, never a broken-image box */
+.tela.vuota{background:linear-gradient(152deg, var(--panel) 0%, var(--deep) 58%, #050A16 100%)}
+.tela.vuota::after{
+  content:""; position:absolute; left:50%; top:50%; translate:-50% -50%;
+  width:44%; aspect-ratio:1; border-radius:50%;
+  border:1px solid rgba(201,212,232,.14);
+  box-shadow:0 0 0 1px rgba(31,91,255,.10) inset, 0 0 70px rgba(31,91,255,.10);
+}
+.tela .lama{
+  position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(158deg, rgba(201,212,232,.16) 0%, rgba(201,212,232,0) 34%),
+             linear-gradient(0deg, rgba(4,7,15,.66) 0%, rgba(4,7,15,0) 52%);
+}
+.tela .grana{
+  position:absolute; inset:0; pointer-events:none; opacity:.5;
+  background:radial-gradient(circle at 30% 40%, rgba(31,91,255,.14), transparent 60%);
+}
+
+.testo .numero{
+  font-family:var(--mono); font-size:11px; letter-spacing:.24em; color:var(--accent);
+}
+.testo h3{margin:16px 0 0; font-size:clamp(28px,3.9vw,46px)}
+.testo .corpo{margin:20px 0 0; max-width:46ch; color:var(--text-secondary)}
+.testo .corpo p{margin:0 0 15px}
+.testo .corpo p:last-child{margin-bottom:0}
+.testo .corpo b{color:var(--argento); font-weight:500}
+.racconto.centro .testo .corpo{margin-inline:auto}
+
+/* entrances */
+.svela .parte{opacity:0; transform:translateY(26px); transition:opacity .95s var(--ease), transform .95s var(--ease)}
+.svela.in .parte{opacity:1; transform:none}
+.svela.in .parte:nth-child(1){transition-delay:0s}
+.svela.in .parte:nth-child(2){transition-delay:.09s}
+.svela.in .parte:nth-child(3){transition-delay:.18s}
+.svela.in .parte:nth-child(4){transition-delay:.27s}
+.svela.finito .parte,
+.svela.finito .parte:nth-child(1),
+.svela.finito .parte:nth-child(2),
+.svela.finito .parte:nth-child(3),
+.svela.finito .parte:nth-child(4){transition-delay:0s !important}
+
+.tela.svela{opacity:0; transform:translateY(34px) scale(.985); transition:opacity 1.1s var(--ease), transform 1.1s var(--ease)}
+.tela.svela.in{opacity:1; transform:none}
+
+/* one living element per section */
+@media (prefers-reduced-motion:no-preference){
+  .tela.in .grana{animation:pulsa 9s ease-in-out infinite; animation-delay:-3s}
+}
+@keyframes pulsa{0%,100%{opacity:.34} 50%{opacity:.66}}
+
+/* ─── the interactive moment: the net ─────────────────── */
+.rete-blocco{
+  margin:clamp(34px,4vw,54px) auto 0; width:min(560px,100%);
+  display:grid; justify-items:center; gap:18px;
+}
+.rete{width:100%; height:auto; touch-action:none; cursor:grab; user-select:none}
+.rete:active{cursor:grabbing}
+/* SVG only hit-tests painted geometry, and every thread here is fill:none.
+   This transparent rect is the hit area, or the press falls through the gaps. */
+.rete .presa{fill:transparent; stroke:none}
+.rete .maglia{fill:none; stroke:var(--argento); stroke-width:1.1; opacity:.30}
+.rete .strappo{
+  fill:none; stroke:var(--accent); stroke-width:1.9; stroke-linecap:round;
+  stroke-dasharray:var(--len,120);
+  stroke-dashoffset:calc(var(--len,120) * (1 - var(--cuci,0)));
+  filter:drop-shadow(0 0 6px rgba(31,91,255,.55));
+}
+.rete-etichetta{
+  font-family:var(--mono); font-size:11px; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--text-secondary);
+}
+.rete-fine{
+  margin:0; max-width:30ch; text-align:center;
+  font-family:var(--display); font-size:clamp(19px,2.5vw,28px); font-weight:600;
+  color:var(--text-primary);
+  opacity:0; transform:translateY(12px);
+  transition:opacity .9s var(--ease), transform .9s var(--ease);
+}
+.rete-blocco.cucita .rete-fine{opacity:1; transform:none}
+
+/* ─── CARTE TARANTINE: the scroll told deck ───────────── */
+.carte-sez{padding-bottom:0}
+.carte-scena{position:relative; height:560vh; margin-top:clamp(40px,6vw,80px)}
+.carte-palco{
+  position:sticky; top:0; height:100vh; overflow:hidden;
+  display:grid; place-items:center; gap:0;
+}
+.carte-palco::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(ellipse 60% 50% at 50% 44%, rgba(31,91,255,.14) 0%, rgba(4,7,15,0) 68%);
+}
+
+.mazzo{
+  position:relative; width:min(46vw,260px); aspect-ratio:120/170;
+  transform-style:preserve-3d; perspective:1400px;
+  margin-bottom:clamp(30px,7vh,70px);
+}
+.carta{
+  position:absolute; inset:0; border-radius:9px;
+  transform-style:preserve-3d; backface-visibility:hidden;
+  will-change:transform, opacity;
+  background:linear-gradient(158deg,#0C1430 0%,#070C1E 58%,#04070F 100%);
+  border:1px solid rgba(201,212,232,.20);
+  box-shadow:0 26px 60px rgba(2,4,10,.62);
+}
+.faccia-c{position:absolute; inset:0; display:grid; place-items:center; padding:11%}
+.faccia-c svg{width:100%; height:100%; overflow:visible}
+.faccia-c .linea{
+  fill:none; stroke:var(--argento); stroke-width:2.1;
+  stroke-linecap:round; stroke-linejoin:round; opacity:.80;
+}
+.carta .seme{
+  position:absolute; top:8px; left:10px;
+  font-family:var(--mono); font-size:10px; letter-spacing:.1em;
+  color:var(--accent); opacity:.85;
+}
+/* the featured card gets the accent, everything else stays quiet */
+.carta.in-luce{border-color:rgba(31,91,255,.55); box-shadow:0 30px 74px rgba(2,4,10,.7), 0 0 44px rgba(31,91,255,.28)}
+.carta.in-luce .linea{opacity:1; stroke:#EAF0FF}
+
+.carte-testo{position:relative; height:clamp(64px,11vh,104px); width:min(720px,88vw)}
+.carte-banda{
+  position:absolute; inset:0; margin:0; opacity:0;
+  display:grid; place-items:center; text-align:center;
+  font-family:var(--display); font-weight:600;
+  font-size:clamp(21px,3.4vw,42px); line-height:1.12;
+  text-shadow:var(--tshadow); pointer-events:none;
+}
+.carte-banda span{display:inline-block; transform:translateY(calc((1 - var(--ck,1)) * 14px))}
+
+.carte-coda{margin-top:clamp(40px,6vw,72px)}
+.carte-coda .premessa{max-width:38ch}
+
+@media (max-width:720px){
+  .carte-scena{height:460vh}
+  .mazzo{width:min(58vw,220px)}
+}
+@media (prefers-reduced-motion:reduce){
+  .carte-scena{height:auto}
+  .carte-palco{position:static; height:auto; padding:40px 0}
+  .carte-banda{position:static; opacity:1 !important; margin-bottom:14px}
+  .carte-testo{height:auto}
+  .carta{position:relative; transform:none !important}
+  .mazzo{width:100%; aspect-ratio:auto; display:flex; flex-wrap:wrap; gap:14px; justify-content:center}
+  .carta{width:150px; aspect-ratio:120/170; inset:auto}
+}
+
+/* ─── CHI SIAMO ───────────────────────────────────────── */
+.chi-titolo{
+  margin:22px 0 0; max-width:16ch;
+  font-size:clamp(34px,6vw,72px); line-height:1.02; letter-spacing:-.02em;
+}
+/* la fascia destra non resta pi&ugrave; vuota: ci stanno le tre porte */
+.chi-griglia{
+  margin:clamp(28px,4vw,44px) 0 0;
+  display:grid; gap:clamp(34px,5vw,80px);
+  grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  align-items:start;
+}
+@media (max-width:960px){.chi-griglia{grid-template-columns:1fr; gap:clamp(30px,5vw,44px)}}
+
+.chi-dx{position:sticky; top:96px}
+@media (max-width:960px){.chi-dx{position:static}}
+
+.porte-titolo{
+  margin:0 0 6px; padding:0 0 16px;
+  border-bottom:1px solid var(--border-strong);
+  font-family:var(--mono); font-weight:400;
+  font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--text-secondary);
+}
+
+.porta{
+  display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:18px;
+  padding:22px 4px; text-decoration:none;
+  border-bottom:1px solid var(--hairline); position:relative;
+  transition:background .4s var(--ease);
+}
+.porta:hover{background:rgba(31,91,255,.06)}
+.porta::after{
+  content:""; position:absolute; left:0; bottom:-1px; height:1px; width:0;
+  background:var(--accent); transition:width .5s var(--ease);
+}
+.porta:hover::after, .porta:focus-visible::after{width:100%}
+
+.porta-n{font-family:var(--mono); font-size:11px; letter-spacing:.16em; color:var(--accent-hover)}
+.porta-corpo{display:block; min-width:0}
+.porta-corpo b{
+  display:block; font-family:var(--display); font-weight:600;
+  font-size:clamp(19px,2.2vw,25px); line-height:1.1; color:var(--text-primary);
+}
+.porta-corpo i{
+  display:block; margin-top:5px; font-style:normal;
+  font-size:13px; line-height:1.45; color:var(--text-secondary);
+}
+.porta-freccia{color:var(--text-secondary); transition:transform .45s var(--ease), color .45s var(--ease)}
+.porta:hover .porta-freccia{transform:translateX(5px); color:var(--accent-hover)}
+
+@media (prefers-reduced-motion:reduce){
+  .porta,.porta-freccia{transition:none}
+}
+
+.chi-testo{max-width:58ch}
+.chi-testo p{margin:0 0 16px; font-size:clamp(16px,1.55vw,19px); color:var(--text-secondary)}
+.chi-testo p:last-child{margin-bottom:0}
+.chi-testo b{color:var(--argento); font-weight:500}
+
+.chi-colpo{
+  margin:clamp(34px,5vw,60px) 0 0; max-width:24ch;
+  font-family:var(--display); font-weight:600;
+  font-size:clamp(22px,3.4vw,40px); line-height:1.14; color:var(--text-primary);
+}
+.chi-colpo em{font-style:italic; color:var(--accent-hover)}
+
+/* ─── il bilancio: contatori a rullo ──────────────────── */
+.bilancio{margin:clamp(56px,8vw,110px) 0 0; padding-top:clamp(34px,4vw,52px); border-top:1px solid var(--hairline)}
+.conti{
+  margin:clamp(26px,3.4vw,44px) 0 0;
+  display:grid; gap:clamp(30px,4vw,52px);
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+}
+.conto{min-width:0; position:relative}
+
+.conto-num{
+  display:flex; align-items:flex-start; gap:.02em;
+  font-family:var(--display); font-weight:600;
+  font-size:clamp(38px,5.6vw,70px); line-height:1;
+  letter-spacing:-.02em; font-variant-numeric:tabular-nums;
+  color:var(--text-primary);
+}
+/* the window: one digit tall, softened top and bottom so the strip
+   reads as a physical wheel turning behind a slot */
+.rullo{
+  display:block; height:1em; overflow:hidden;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 13%,#000 87%,transparent 100%);
+          mask-image:linear-gradient(180deg,transparent 0%,#000 13%,#000 87%,transparent 100%);
+}
+.nastro{display:block; will-change:transform}
+/* leading zeros retire as the count shrinks, and come back if it grows */
+.rullo, .punto{transition:opacity .45s var(--ease), width .45s var(--ease)}
+.nastro b{display:block; height:1em; line-height:1em; font-weight:inherit}
+.punto{display:block; height:1em; line-height:1em; opacity:.45; padding:0 .04em}
+
+/* direction is readable three ways: which way the wheels turn,
+   the caret, and the colour */
+.conto-verso{
+  display:inline-block; margin-left:.22em; vertical-align:.28em;
+  font-size:.26em; line-height:1;
+  opacity:0; transform:translateY(6px);
+  transition:opacity .7s var(--ease), transform .7s var(--ease);
+}
+.conto.mostra .conto-verso{opacity:1; transform:none}
+.conto.su   .conto-verso{color:var(--accent-hover)}
+.conto.giu  .conto-verso{color:var(--text-secondary)}
+.conto.su   .conto-num{color:#EAF0FF}
+.conto.giu  .conto-num{color:var(--text-secondary)}
+
+.conto-filo{
+  display:block; height:1px; margin:20px 0 15px;
+  background:var(--hairline); position:relative; overflow:hidden;
+}
+.conto-filo::after{
+  content:""; position:absolute; top:0; bottom:0; left:0;
+  width:var(--riempi,0%);
+  background:linear-gradient(90deg,var(--accent-muted),var(--accent));
+}
+.conto.giu .conto-filo::after{left:auto; right:0; background:linear-gradient(270deg,rgba(201,212,232,.18),var(--argento))}
+
+.conto-voce{
+  display:block; max-width:26ch;
+  font-size:13.5px; line-height:1.5; color:var(--text-secondary);
+}
+
+@media (prefers-reduced-motion:reduce){
+  .nastro{transition:none}
+  .rullo{-webkit-mask-image:none; mask-image:none}
+  .conto-verso{opacity:1 !important; transform:none !important}
+}
+
+/* ─── il passaggio ────────────────────────────────────── */
+.svolta{margin-top:clamp(70px,10vw,140px)}
+.svolta-titolo{
+  max-width:14ch; font-size:clamp(34px,6.4vw,78px);
+  line-height:1.02; letter-spacing:-.022em;
+}
+.svolta-testo{
+  margin:24px 0 0; max-width:40ch;
+  font-size:clamp(16px,1.7vw,21px); color:var(--text-secondary);
+}
+
+/* ─── le sette cose: una scena appuntata ──────────────── */
+.mazzo-scena{position:relative; height:900vh; margin-top:clamp(48px,7vw,96px)}
+.mazzo-palco{
+  position:sticky; top:0; height:100svh; overflow:hidden;
+  display:grid; place-items:center;
+}
+.mazzo-palco::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(ellipse 70% 55% at 34% 50%, rgba(31,91,255,.13) 0%, rgba(4,7,15,0) 70%);
+}
+
+.mazzo-conta{
+  position:absolute; top:clamp(74px,11vh,104px); left:var(--gut);
+  display:flex; align-items:baseline; gap:.18em;
+  font-family:var(--mono); font-size:12px; letter-spacing:.14em;
+  color:var(--text-secondary);
+}
+.mazzo-conta b{font-weight:500; color:var(--accent-hover); font-size:15px}
+.mazzo-conta i{opacity:.4; font-style:normal}
+
+.mazzo-corpo{
+  width:min(1180px, 100% - (var(--gut) * 2));
+  display:grid; grid-template-columns:minmax(0,0.86fr) minmax(0,1fr);
+  gap:clamp(30px,5vw,80px); align-items:center;
+}
+
+/* the cards share one cell and take turns being dealt into it */
+.mazzo-carte{position:relative; aspect-ratio:3/4; width:100%; perspective:1500px}
+.cv{
+  position:absolute; inset:0; margin:0;
+  transform-style:preserve-3d; will-change:transform,opacity;
+  border-radius:14px; overflow:hidden; background:#F3EFE4;
+  box-shadow:0 34px 80px rgba(2,4,10,.66), 0 2px 0 rgba(255,255,255,.06) inset;
+}
+.cv img{width:100%; height:100%; object-fit:cover; display:block}
+
+/* the text stack sits in the other cell, one article at a time */
+.mazzo-testi{position:relative; min-height:clamp(260px,42vh,380px)}
+.mt{
+  position:absolute; inset:0; margin:0;
+  display:flex; flex-direction:column; justify-content:center;
+  will-change:transform,opacity; pointer-events:none;
+}
+.mt-n{
+  font-family:var(--mono); font-size:11px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--accent-hover);
+}
+.mt h3{margin:14px 0 0; font-size:clamp(28px,4.2vw,52px); line-height:1.04}
+.mt p{margin:18px 0 0; max-width:42ch; color:var(--text-secondary); font-size:clamp(15px,1.45vw,18px)}
+.mt p b{color:var(--argento); font-weight:500}
+
+@media (max-width:900px){
+  .mazzo-scena{height:820vh}
+  .mazzo-corpo{grid-template-columns:1fr; gap:26px; align-content:center}
+  .mazzo-carte{width:min(58vw,240px); margin-inline:auto}
+  .mazzo-testi{min-height:clamp(220px,34vh,300px); text-align:center}
+  .mt p{margin-inline:auto}
+  .mazzo-conta{left:50%; translate:-50% 0}
+}
+@media (max-height:620px){.mazzo-conta{display:none}}
+
+/* ─── e alla fine l'oggetto ───────────────────────────── */
+.oggetto{
+  margin-top:clamp(60px,9vw,120px);
+  display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(28px,5vw,72px); align-items:center;
+}
+.oggetto-foto{
+  border-radius:4px; overflow:hidden; border:1px solid var(--hairline);
+  background:var(--panel);
+}
+.oggetto-foto img{width:100%; height:auto; display:block}
+.oggetto-testo h3{margin:16px 0 0; font-size:clamp(28px,4vw,46px)}
+.oggetto-testo p{margin:16px 0 0; max-width:38ch; color:var(--text-secondary)}
+.oggetto-prezzo{
+  font-family:var(--mono); font-size:20px; color:var(--argento) !important;
+  letter-spacing:.02em;
+}
+@media (max-width:820px){.oggetto{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){
+  .mazzo-scena{height:auto}
+  .mazzo-palco{position:static; height:auto; padding:30px 0}
+  .mazzo-corpo{display:block}
+  .mazzo-carte{position:static; aspect-ratio:auto; width:min(300px,70vw); margin:0 auto 26px}
+  .cv{position:static; inset:auto; margin:0 auto 30px; opacity:1 !important; transform:none !important}
+  .mazzo-testi{position:static; min-height:0}
+  .mt{position:static; inset:auto; opacity:1 !important; transform:none !important; margin-bottom:46px}
+  .mazzo-conta{display:none}
+}
+
+/* ─── the closing call to action ──────────────────────── */
+.chiusa{
+  position:relative; z-index:1;
+  padding:clamp(80px,11vw,150px) 0;
+  border-top:1px solid var(--hairline);
+}
+.chiusa .dentro{display:grid; justify-items:center; gap:22px; text-align:center}
+.chiusa h2{font-size:clamp(30px,4.6vw,54px); max-width:20ch}
+
+/* ─── footer ──────────────────────────────────────────── */
+footer{
+  position:relative; z-index:1;
+  padding:52px 0 68px; border-top:1px solid var(--hairline);
+  font-size:13px; color:var(--text-secondary);
+}
+footer .riga-f{display:flex; flex-wrap:wrap; gap:14px 30px; align-items:baseline; justify-content:space-between}
+footer a{text-decoration:none; transition:color .4s var(--ease)}
+footer a:hover{color:var(--text-primary)}
+footer .credito{font-family:var(--mono); font-size:11px; letter-spacing:.04em; opacity:.72}
+
+/* ══════════════════════════════════════════════════════
+   THE FIVE STATIC-HERO GATES
+   These five strings must match the JS GATES array exactly.
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 720px){ .eroe{display:none} .statico{display:block} }
+@media (orientation: portrait) and (max-width: 1024px){ .eroe{display:none} .statico{display:block} }
+@media (orientation: portrait) and (pointer: coarse){ .eroe{display:none} .statico{display:block} }
+@media (orientation: landscape) and (pointer: coarse) and (max-height: 560px){ .eroe{display:none} .statico{display:block} }
+@media (prefers-reduced-motion: reduce){ .eroe{display:none} .statico{display:block} }
+
+/* short scrub-capable screens keep the scrub but lose the small overlays */
+@media (max-height:560px){.freccia-giu,.anello-carico{display:none}}
+
+/* ─── reduced motion, honoured completely ─────────────── */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation:none !important;
+    transition:none !important;
+    transition-delay:0s !important;
+    animation-delay:0s !important;
+  }
+  .svela .parte, .tela.svela{opacity:1 !important; transform:none !important}
+  .rete-blocco .rete-fine{opacity:1 !important; transform:none !important}
+  .rete .strappo{stroke-dashoffset:0 !important}
+  .fregio path,.fregio circle,.fregio line{stroke-dashoffset:0 !important}
+  .scandaglio i{height:100% !important}
+  .moneta-corpo,.moneta-gira{transform:none}
+}
+
+/* la copertina sta da sola e non deve gonfiarsi a tutta la scena */
+.sfoglio-pagine.sola{justify-content:center}
+.sfoglio-pagine.sola .sfoglio-pagina{max-width:min(46%, 62vh * 0.72)}
+@media (max-width:900px){.sfoglio-pagine.sola .sfoglio-pagina{max-width:100%}}
+
+/* ─── I PANNELLI ──────────────────────────────────────────
+   Le porte non portano piu' giu' nella pagina: aprono una finestra
+   che copre tutto e si chiude con la X. ─────────────────── */
+.pannello[hidden]{display:none}
+.pannello{
+  position:fixed; inset:0; z-index:120;
+  display:flex; flex-direction:column;
+  background:var(--canvas);
+  animation:panEntra .42s var(--ease-soft) both;
+}
+@keyframes panEntra{from{opacity:0; transform:translateY(18px)} to{opacity:1; transform:none}}
+.pannello.esce{animation:panEsce .3s var(--ease) both}
+@keyframes panEsce{from{opacity:1} to{opacity:0; transform:translateY(10px)}}
+
+.pannello-barra{
+  flex:0 0 auto; display:flex; align-items:flex-start; justify-content:space-between;
+  gap:20px; padding:clamp(20px,3vw,30px) var(--gut);
+  border-bottom:1px solid var(--hairline);
+  background:rgba(4,7,15,.94); backdrop-filter:blur(14px);
+}
+.pannello-occhiello{
+  margin:0; font-family:var(--mono); font-size:11px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--text-secondary);
+}
+.pannello-barra h2{margin:6px 0 0; font-size:clamp(24px,3.4vw,40px); line-height:1}
+.pannello-chiudi{
+  flex:0 0 auto; width:46px; height:46px; cursor:pointer;
+  display:grid; place-items:center; border-radius:50%;
+  background:transparent; border:1px solid var(--border-strong);
+  color:var(--text-primary); font-size:17px; line-height:1;
+  transition:background .4s var(--ease), border-color .4s var(--ease), transform .4s var(--ease);
+}
+.pannello-chiudi:hover{background:var(--accent); border-color:var(--accent); transform:rotate(90deg)}
+.pannello-corpo{
+  flex:1 1 auto; overflow-y:auto; overscroll-behavior:contain;
+  padding:clamp(30px,5vw,64px) 0 clamp(60px,9vw,110px);
+  -webkit-overflow-scrolling:touch;
+}
+/* dentro al pannello la sezione non ha piu' bisogno del suo respiro */
+.pannello-corpo .sezione{padding:0}
+.pannello-corpo > .wrap{width:min(1240px, 100% - (var(--gut) * 2)); margin-inline:auto}
+
+/* la porta e' un bottone, non deve sembrarlo */
+button.porta{
+  width:100%; background:none; border:0; border-bottom:1px solid var(--hairline);
+  font:inherit; color:inherit; text-align:left; cursor:pointer;
+}
+
+@media (prefers-reduced-motion:reduce){
+  .pannello,.pannello.esce{animation:none}
+  .pannello-chiudi{transition:none}
+  .pannello-chiudi:hover{transform:none}
+}
+
+/* ─── EVENTI ──────────────────────────────────────────────
+   Il CSS qui sotto arriva dal file originale, incollato com'era.
+   Perche' funzioni senza riscriverlo, i suoi nomi di colore
+   diventano alias di questa tavolozza. ─────────────────── */
+:root{
+  --notte:var(--canvas);
+  --pece:var(--panel);
+  --badge:var(--accent-muted);
+  --raggio:#0932BF;
+  --vivo:var(--accent);
+  --bianco:var(--text-primary);
+  --grigio:var(--text-secondary);
+  --tenue:var(--text-secondary);
+  --chiaro:var(--accent-hover);
+  --filo:var(--hairline);
+  --bordo:var(--gut);
+}
+
+
+/* ─── locandine ──────────────────────────────── */
+.locandine{
+  display:grid; gap:clamp(18px,2.6vw,34px);
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+@media (max-width:900px){
+ .locandine{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:560px){
+ .locandine{ grid-template-columns:1fr; }
+}
+
+
+/* ── casella della prossima data ── */
+.prossima .locandina-tela{
+  display:grid; place-items:center; gap:20px;
+  background:
+    radial-gradient(ellipse 120% 90% at 50% 40%, rgba(9,50,191,.20) 0%, rgba(3,6,15,0) 70%),
+    var(--pece);
+  border-color:rgba(255,255,255,.18);
+}
+
+.prossima .voluta{ width:62px; height:62px; opacity:.42; }
+
+.prossima-dicitura{
+  font-size:11px; font-weight:600; letter-spacing:.26em; text-transform:uppercase;
+  color:var(--tenue); text-align:center; padding-inline:18px;
+}
+
+.prossima:hover .locandina-tela,
+.prossima:focus-visible .locandina-tela{ border-color:var(--chiaro); }
+@media (prefers-reduced-motion:no-preference){
+
+  .prossima .voluta{ animation:pulsa 5.5s ease-in-out infinite; }
+}
+
+.locandina{ display:block; text-decoration:none; }
+
+.locandina-tela{
+  position:relative; aspect-ratio:9/16; overflow:hidden;
+  background:var(--pece); border:1px solid var(--filo);
+  transition:border-color .35s;
+}
+
+.locandina-tela video,
+.locandina-tela img{
+  position:absolute; inset:0;
+  width:100%; height:100%; object-fit:cover;
+}
+
+.locandina:hover .locandina-tela,
+.locandina:focus-visible .locandina-tela{ border-color:var(--raggio); }
+
+.locandina:focus-visible{ outline:0; }
+
+
+.locandina-testa{
+  display:flex; align-items:baseline; justify-content:space-between;
+  gap:14px; margin:18px 0 0; padding-bottom:11px; border-bottom:1px solid var(--filo);
+}
+
+.locandina-data{
+  font-size:11.5px; font-weight:600; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--grigio);
+}
+
+.locandina-stato{
+  font-size:10px; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--tenue); white-space:nowrap;
+}
+
+.locandina-stato.aperto{ color:var(--bianco); }
+
+.locandina h3{
+  margin:13px 0 5px; font-size:17px; font-weight:400; letter-spacing:-.005em;
+}
+
+.locandina p{ margin:0; font-size:13px; line-height:1.6; color:var(--tenue); }
+
+
+.archivio{
+  margin:clamp(48px,6vw,74px) 0 0; padding-top:34px; border-top:1px solid var(--filo);
+  display:flex; flex-wrap:wrap; gap:12px 34px;
+}
+
+.archivio span{ font-size:12.5px; color:var(--tenue); letter-spacing:.02em; }
+
+.archivio b{ color:var(--grigio); font-weight:500; }
+
+
+/* ─── book fotografico ───────────────────────── */
+.locandina{
+  display:block; width:100%; text-align:left; cursor:pointer;
+  background:none; border:0; padding:0; font:inherit; color:inherit;
+  text-decoration:none;
+}
+
+.locandina-sfoglia{
+  display:block; margin-top:11px; font-size:11px; font-weight:600;
+  letter-spacing:.19em; text-transform:uppercase; color:var(--chiaro);
+  opacity:0; transform:translateY(-3px); transition:opacity .3s, transform .3s;
+}
+
+.locandina:hover .locandina-sfoglia,
+.locandina:focus-visible .locandina-sfoglia{ opacity:1; transform:none; }
+
+.locandina:focus-visible .locandina-tela{ border-color:var(--chiaro); }
+@media (hover:none){
+ .locandina-sfoglia{ opacity:1; transform:none; }
+}
+
+
+.book[hidden]{ display:none; }
+
+.book{
+  position:fixed; inset:0; z-index:200; overflow-y:auto; overscroll-behavior:contain;
+  background:rgba(3,6,15,.97); backdrop-filter:blur(6px);
+}
+
+.book-barra{
+  position:sticky; top:0; z-index:2;
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+  padding:20px var(--bordo); background:rgba(3,6,15,.92);
+  border-bottom:1px solid var(--filo);
+}
+
+.book-barra p{ margin:0; font-size:11px; font-weight:600; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--tenue); }
+
+.book-barra h3{ margin:5px 0 0; font-size:clamp(16px,2.2vw,21px); font-weight:400; }
+
+.book-chiudi{
+  flex:none; width:44px; height:44px; cursor:pointer;
+  background:none; border:1px solid var(--filo); color:var(--bianco);
+  font-size:17px; line-height:1; transition:border-color .25s, background-color .25s;
+}
+
+.book-chiudi:hover{ background:var(--chiaro); border-color:var(--chiaro); color:#03060F; }
+
+.book-chiudi:focus-visible{ outline:2px solid var(--chiaro); outline-offset:3px; }
+
+
+.book-pagine{
+  max-width:790px; margin:0 auto;
+  padding:clamp(26px,5vw,54px) var(--bordo) clamp(60px,10vw,110px);
+  display:grid; gap:clamp(16px,3vw,28px);
+}
+
+.pagina{ position:relative; margin:0; overflow:hidden; background:var(--pece);
+  border:1px solid var(--filo); }
+
+.pagina img{ width:100%; height:auto; display:block; position:relative; z-index:1; }
+
+.pagina-vuota{
+  aspect-ratio:3/2; display:grid; place-items:center; gap:14px;
+  background:linear-gradient(160deg,#0A1234,#050914);
+}
+
+.pagina-vuota span{ font-size:11px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--tenue); }
+
+.book-coda{ text-align:center; padding:0 var(--bordo) clamp(50px,8vw,90px); }
+
+.book-coda p{ margin:0 0 18px; font-size:13px; color:var(--tenue); letter-spacing:.03em; }
+
+.book-nota{
+  margin:0; padding:30px var(--bordo) 0; text-align:center;
+  font-size:11px; font-weight:600; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--tenue);
+}
+
+.book-nota[hidden]{ display:none; }
+
+
+/* serata le cui foto non sono ancora online */
+.locandina.senza-book{ cursor:default; }
+
+.locandina.senza-book:hover{ transform:none; }
+
+.locandina.senza-book .locandina-sfoglia{ opacity:.4; }
+
+
+/* le locandine si inclinano seguendo il puntatore */
+.locandina{ perspective:900px; transition:--rx .45s ease-out, --ry .45s ease-out; }
+
+.locandina-tela{ transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)); }
+@media (prefers-reduced-motion:reduce){
+
+  .locandina-tela{ transform:none; }
+}
+
+/* ─── FANZINE (dal file originale) ─── */
+
+
+/* ═══════════════════════════════════════════════
+   IL BANCO — catalogo, carrello, ordine
+   ═══════════════════════════════════════════════ */
+#catalogo .premessa,
+#fanzine .premessa{
+  max-width:54ch; margin:24px 0 clamp(44px,5vw,66px);
+  font-size:15px; font-weight:300; line-height:1.7; color:var(--grigio);
+}
+
+
+.riquadri{
+  display:grid; gap:clamp(28px,3.4vw,44px) clamp(16px,2vw,26px);
+  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+}
+@media (min-width:1080px){
+ .riquadri{ grid-template-columns:repeat(4,1fr); }
+}
+
+
+.riquadro{
+  position:relative; display:flex; flex-direction:column; min-width:0;
+  background:rgba(255,255,255,.018);
+  border:1px solid rgba(255,255,255,.075);
+  border-radius:14px; padding:14px 14px 4px;
+  transition:transform .5s cubic-bezier(.16,1,.3,1), border-color .4s, background-color .4s, box-shadow .5s;
+}
+
+.riquadro:hover{
+  transform:translateY(-5px);
+  border-color:rgba(255,255,255,.2);
+  background:rgba(255,255,255,.035);
+  box-shadow:0 24px 46px rgba(0,0,0,.5);
+}
+@media (prefers-reduced-motion:reduce){
+ .riquadro:hover{ transform:none; }
+}
+
+
+/* la tela: la foto non viene MAI tagliata. Sta dentro, intera. */
+.riquadro-foto{
+  position:relative; width:100%; aspect-ratio:1/1; height:auto;
+  border-radius:10px; overflow:hidden; margin-bottom:18px;
+  display:grid; place-items:center; padding:14px;
+  background:
+    radial-gradient(ellipse 78% 62% at 50% 46%, rgba(9,50,191,.16) 0%, rgba(4,7,18,0) 70%),
+    linear-gradient(165deg,#0A1234,#050914);
+}
+
+.riquadro-foto img{
+  width:100%; height:100%;
+  object-fit:contain;                 /* ← niente crop: si vede tutto il prodotto */
+  object-position:center;
+  border-radius:6px;
+  filter:brightness(.98);
+  transition:transform .7s cubic-bezier(.16,1,.3,1), filter .7s;
+}
+
+.riquadro:hover .riquadro-foto img{ transform:scale(1.04); filter:brightness(1.04); }
+
+#fanzine .riquadro-foto{ aspect-ratio:3/4; padding:18px; }
+
+.fanzine-grid{ max-width:900px; }
+@media (min-width:760px){
+ .fanzine-grid{ grid-template-columns:repeat(2,1fr); }
+}
+@media (min-width:1080px){
+ .fanzine-grid{ grid-template-columns:repeat(2,1fr); }
+}
+
+
+/* etichetta d'angolo */
+.genere{
+  position:absolute; z-index:2; top:24px; left:24px;
+  padding:6px 10px; border-radius:6px;
+  background:rgba(3,6,15,.72); border:1px solid rgba(255,255,255,.12);
+  font-size:9px; font-weight:600; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--grigio);
+}
+
+/* invito a sfogliare, sulle copertine */
+.sfoglia-invito{
+  position:absolute; z-index:2; inset:auto 14px 14px; padding:11px;
+  border-radius:8px; text-align:center;
+  background:rgba(9,50,191,.9); color:#fff;
+  font-size:10px; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+  opacity:0; transform:translateY(6px); transition:opacity .35s, transform .35s;
+}
+
+.riquadro:hover .sfoglia-invito,
+.riquadro:focus-within .sfoglia-invito{ opacity:1; transform:none; }
+@media (hover:none){
+ .sfoglia-invito{ opacity:1; transform:none; }
+}
+
+
+.riquadro h3{ margin:0 0 6px; font-size:1.14rem; font-weight:500; color:#F3F4F6; letter-spacing:-.2px; }
+
+.riquadro .desc{ margin:0 0 16px; font-size:.88rem; line-height:1.55; color:#8F96A3; font-weight:300; flex:1; }
+
+
+.riquadro-piede{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:14px 0; margin-top:auto; border-top:1px solid rgba(255,255,255,.07);
+}
+
+.prezzo{ font-size:1.05rem; font-weight:500; color:#fff; letter-spacing:.3px;
+  font-variant-numeric:tabular-nums; white-space:nowrap; }
+
+.prezzo.spento{ font-size:10.5px; font-weight:600; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--tenue); }
+
+
+.bottoncino{
+  flex:none; padding:11px 16px; cursor:pointer; border-radius:8px;
+  background:transparent; color:var(--bianco); border:1px solid rgba(255,255,255,.16);
+  font-family:inherit; font-size:10px; font-weight:600;
+  letter-spacing:.16em; text-transform:uppercase; white-space:nowrap;
+  transition:background-color .25s, border-color .25s, color .25s;
+}
+
+.bottoncino:hover{ background:var(--raggio); border-color:var(--raggio); }
+
+.bottoncino:focus-visible{ outline:2px solid var(--chiaro); outline-offset:3px; }
+
+.bottoncino[disabled]{ cursor:default; color:var(--tenue); border-color:rgba(255,255,255,.08); }
+
+.bottoncino[disabled]:hover{ background:transparent; border-color:rgba(255,255,255,.08); }
+
+.bottoncino.chiaro{ background:rgba(255,255,255,.05); }
+
+/* il ricciolo del capitello nell'angolo di ogni pezzo */
+.riquadro-foto::after{
+  content:""; position:absolute; z-index:2; top:12px; right:12px;
+  width:28px; height:28px; opacity:.13; pointer-events:none;
+  background-image:var(--fregio-voluta);
+  background-repeat:no-repeat; background-position:center; background-size:contain;
+  transition:opacity .45s, transform .55s cubic-bezier(.16,1,.3,1);
+}
+
+.riquadro:hover .riquadro-foto::after{ opacity:.42; transform:translateY(-3px) rotate(-4deg); }
+
+
+/* ═══ SFOGLIATORE DELLE FANZINE ══════════════ */
+.sfoglio[hidden]{ display:none; }
+
+.sfoglio{
+  position:fixed; inset:0; z-index:230; display:flex; flex-direction:column;
+  background:#02040C;
+}
+
+.sfoglio-strumenti{ display:flex; align-items:center; gap:12px; }
+
+.sfoglio-scarica{
+  padding:11px 16px; border-radius:8px; text-decoration:none;
+  border:1px solid var(--filo); color:var(--bianco);
+  font-size:10px; font-weight:600; letter-spacing:.16em; text-transform:uppercase;
+  transition:background-color .25s, border-color .25s;
+}
+
+.sfoglio-scarica:hover{ background:var(--raggio); border-color:var(--raggio); }
+@media (max-width:620px){
+
+  .sfoglio-scarica{ padding:10px 12px; font-size:9px; letter-spacing:.1em; }
+}
+
+
+.sfoglio-scena{
+  flex:1; position:relative; display:grid; place-items:center;
+  padding:clamp(12px,2.2vw,28px); min-height:0;
+}
+
+.sfoglio-pagine{
+  position:relative;
+  display:flex; flex-wrap:nowrap; gap:clamp(4px,1vw,14px);
+  align-items:center; justify-content:center;
+  height:100%; width:100%;
+}
+
+
+/* ── il cambio pagina ─────────────────────────
+   La coppia esce da un lato, quella nuova entra
+   dall'altro. Due animazioni su un elemento solo:
+   niente strati sovrapposti, niente rotazioni,
+   non c'e' niente che si possa sfasare.
+   ──────────────────────────────────────────── */
+.sfoglio-pagine.esce-avanti  { animation:esceASinistra .17s ease-in both; }
+
+.sfoglio-pagine.esce-indietro{ animation:esceADestra   .17s ease-in both; }
+
+
+.sfoglio-pagine.entra-avanti  { animation:entraDaDestra   .32s cubic-bezier(.16,1,.3,1) both; }
+
+.sfoglio-pagine.entra-indietro{ animation:entraDaSinistra .32s cubic-bezier(.16,1,.3,1) both; }
+@media (prefers-reduced-motion:reduce){
+
+  .sfoglio-pagine[class*="esce-"],
+  .sfoglio-pagine[class*="entra-"]{ animation:none; }
+}
+
+
+.sfoglio-pagina{
+  position:relative; height:100%; aspect-ratio:1057/1500; max-width:100%;
+  display:grid; place-items:center;
+}
+
+/* quando le pagine sono affiancate, ognuna si tiene metà scena */
+.sfoglio-pagina:not(:only-child){ max-width:calc(50% - 8px); }
+
+.sfoglio-pagina img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:contain;
+  border-radius:3px; box-shadow:0 20px 60px rgba(0,0,0,.65);
+}
+
+.sfoglio-attesa{
+  position:relative; z-index:1; padding:20px; text-align:center;
+  font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--tenue);
+}
+
+.sfoglio-manca{
+  position:relative; z-index:1; max-width:34ch; padding:26px; text-align:center;
+  border:1px solid rgba(255,156,138,.4); border-radius:12px;
+  font-size:13px; line-height:1.7; color:#FF9C8A; letter-spacing:.01em;
+}
+
+.sfoglio-manca code{
+  display:block; margin-top:10px; font-size:12px; color:var(--grigio);
+  word-break:break-all;
+}
+
+.sfoglio-freccia{
+  position:absolute; top:50%; translate:0 -50%; z-index:3;
+  width:54px; height:54px; border-radius:50%; cursor:pointer;
+  background:rgba(3,6,15,.72); border:1px solid var(--filo); color:var(--bianco);
+  font-family:inherit; font-size:24px; line-height:1;
+  transition:background-color .25s, border-color .25s, opacity .25s;
+}
+
+.sfoglio-freccia:hover{ background:var(--raggio); border-color:var(--raggio); }
+
+.sfoglio-freccia:focus-visible{ outline:2px solid var(--chiaro); outline-offset:3px; }
+
+.sfoglio-freccia[disabled]{ opacity:.22; cursor:default; }
+
+.sfoglio-freccia[disabled]:hover{ background:rgba(3,6,15,.72); border-color:var(--filo); }
+
+.sfoglio-freccia.prima{ left:clamp(8px,2vw,26px); }
+
+.sfoglio-freccia.dopo{ right:clamp(8px,2vw,26px); }
+@media (max-width:620px){
+ .sfoglio-freccia{ width:44px; height:44px; font-size:20px; }
+}
+
+
+.sfoglio-piede{
+  display:flex; align-items:center; justify-content:center; gap:20px;
+  padding:16px var(--bordo) calc(16px + env(safe-area-inset-bottom));
+  border-top:1px solid var(--filo);
+}
+
+.sfoglio-lente{
+  padding:9px 13px; cursor:pointer; border-radius:7px;
+  background:transparent; border:1px solid var(--filo); color:var(--bianco);
+  font-family:inherit; font-size:9.5px; font-weight:600;
+  letter-spacing:.13em; text-transform:uppercase; white-space:nowrap;
+  transition:background-color .25s, border-color .25s;
+}
+
+.sfoglio-lente:hover{ background:var(--raggio); border-color:var(--raggio); }
+
+.sfoglio-lente:focus-visible{ outline:2px solid var(--chiaro); outline-offset:3px; }
+
+.sfoglio-lente[aria-pressed="true"]{ background:var(--raggio); border-color:var(--raggio); }
+
+
+.sfoglio-conta{ font-size:11px; font-weight:600; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--tenue); font-variant-numeric:tabular-nums; }
+
+.alleanza .riquadro-foto{ position:absolute; inset:0; margin:0; }
+
+.alleanza .genere{ top:14px; left:14px; }
+
+.riquadro.evidenzia{ animation:accendi 2.2s ease-out 2; border-color:var(--chiaro); }
+
+
+/* Rimuove qualsiasi sottolineatura da link, schede e testo interno */
+a, 
+a:hover, 
+a:focus, 
+a:visited,
+.riquadro,
+.riquadro h3,
+.riquadro p {
+  text-decoration: none !important;
+}
+
+
+/* la luce segue il puntatore sopra le schede del banco */
+.riquadro::after{
+  content:""; position:absolute; inset:0; border-radius:14px; pointer-events:none;
+  opacity:0; transition:opacity .5s;
+  background:radial-gradient(300px circle at var(--mx,50%) var(--my,0%),
+             rgba(110,147,255,.14), rgba(110,147,255,0) 62%);
+}
+
+.riquadro:hover::after{ opacity:1; }
+@keyframes esceASinistra{ to{ opacity:0; transform:translateX(-54px) scale(.96); } }
+@keyframes esceADestra  { to{ opacity:0; transform:translateX( 54px) scale(.96); } }
+@keyframes entraDaDestra  { from{ opacity:0; transform:translateX( 66px) scale(.96); } }
+@keyframes entraDaSinistra{ from{ opacity:0; transform:translateX(-66px) scale(.96); } }
+
+/* barra delle finestre modali (dal file originale) */
+
+.testa-modale{
+  position:sticky; top:0; z-index:2; display:flex; align-items:center;
+  justify-content:space-between; gap:20px; padding:22px var(--bordo);
+  background:var(--pece); border-bottom:1px solid var(--filo);
+}
+
+.testa-modale p{ margin:0; font-size:10.5px; font-weight:600; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--tenue); }
+
+.testa-modale h3{ margin:6px 0 0; font-size:19px; font-weight:400; }
+
+/* ─── INSIEME A ───────────────────────────────────────────
+   Loghi di realta' diverse su fondo scuro fanno confusione: ognuno con il
+   suo colore, la sua forma, il suo peso. Ogni marchio sta nella sua cella,
+   spento, e si accende passandoci sopra. ────────────────── */
+.insieme{margin:clamp(52px,7vw,96px) 0 0; padding-top:clamp(30px,4vw,48px); border-top:1px solid var(--hairline)}
+.insieme-riga{margin:18px 0 0; max-width:44ch; color:var(--text-secondary); font-size:clamp(15px,1.5vw,18px)}
+.loghi{
+  list-style:none; margin:clamp(26px,3.4vw,42px) 0 0; padding:0;
+  display:grid; gap:clamp(14px,2vw,22px);
+  grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+}
+/* Questi quattro marchi non vivono sullo stesso fondo: uno e' bianco, due
+   sono neri su chiaro. Su un fondo solo, meta' sparirebbero. Quindi ognuno
+   sta su una targhetta chiara, del colore esatto che i file hanno gia'
+   addosso, cosi' i bordi non si vedono e nessuno va ritagliato. */
+.loghi li{
+  display:grid; place-items:center; min-height:176px; padding:24px 28px;
+  border-radius:4px; background:#EDECF1;
+  box-shadow:0 12px 30px rgba(2,4,10,.34);
+  transition:transform .45s var(--ease), box-shadow .45s var(--ease);
+}
+.loghi li:hover{transform:translateY(-3px); box-shadow:0 20px 44px rgba(2,4,10,.46)}
+/* Marchi di forma molto diversa non si pareggiano con una regola sola: uno
+   alto e stretto e uno largo e basso, alla stessa altezza, pesano in modo
+   diverso all'occhio. Quindi ognuno ha la sua misura, decisa guardando. */
+.loghi img{
+  width:auto; max-width:100%; object-fit:contain;
+  opacity:.92; transition:opacity .5s var(--ease);
+}
+.loghi li:hover img{opacity:1}
+.loghi .alto img{max-height:128px}
+.loghi .largo img{max-height:82px}
+.loghi .medio img{max-height:104px}
+/* Dopamina e' un marchio bianco: sulla targhetta chiara va rovesciato,
+   altrimenti resta un buco */
+.loghi .rovescia img{filter:invert(1)}
+
+/* ─── CONTATTI ────────────────────────────────────────── */
+.contatti{margin:clamp(52px,7vw,96px) 0 0; padding-top:clamp(30px,4vw,48px); border-top:1px solid var(--hairline)}
+.contatti-titolo{margin:18px 0 0; font-size:clamp(28px,4.4vw,54px)}
+.contatti-riga{margin:16px 0 0; max-width:42ch; color:var(--text-secondary); font-size:clamp(15px,1.5vw,18px)}
+.contatti-vie{
+  margin:clamp(26px,3.4vw,42px) 0 0;
+  display:grid; gap:clamp(12px,1.8vw,18px);
+  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+}
+.via{
+  display:flex; align-items:center; gap:16px;
+  padding:20px 22px; text-decoration:none; border-radius:3px;
+  border:1px solid var(--hairline); position:relative; overflow:hidden;
+  transition:border-color .45s var(--ease), background .45s var(--ease), transform .45s var(--ease);
+}
+.via:hover{border-color:var(--accent); background:rgba(31,91,255,.07); transform:translateY(-2px)}
+.via svg{
+  flex:0 0 auto; width:26px; height:26px; fill:none;
+  stroke:var(--accent-hover); stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round;
+}
+.via svg .pieno{fill:var(--accent-hover); stroke:none}
+.via span{display:block; min-width:0}
+.via b{
+  display:block; font-family:var(--mono); font-size:11px; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--text-secondary); font-weight:400;
+}
+.via i{
+  display:block; margin-top:5px; font-style:normal;
+  font-size:clamp(15px,1.5vw,17px); color:var(--text-primary);
+  overflow-wrap:anywhere;
+}
+
+@media (prefers-reduced-motion:reduce){
+  .loghi li,.loghi img,.via{transition:none}
+  .via:hover{transform:none}
+}
+
+/* ─── DECORAZIONI IONICHE ─────────────────────────────────
+   Taranto e' l'unica colonia di Sparta: il repertorio greco e' di casa.
+   Colonne e fregi stanno sul fondo a filo sottile, mai riempiti, e non
+   toccano mai il testo: spariscono quando lo spazio si stringe. ───── */
+.ionico-defs{position:absolute; width:0; height:0; overflow:hidden}
+
+.colonna{
+  position:absolute; top:0; bottom:0; width:clamp(90px,9vw,150px);
+  pointer-events:none; z-index:0;
+  display:flex; flex-direction:column; align-items:stretch;
+  opacity:.085; color:var(--argento);
+}
+.colonna svg{width:100%; display:block; fill:none; stroke:currentColor;
+  stroke-width:1.15; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke}
+.colonna .cap{flex:0 0 auto}
+.colonna .fusto{flex:1 1 auto; min-height:0}
+.colonna.sx{left:calc(var(--gut) * -0.35)}
+.colonna.dx{right:calc(var(--gut) * -0.35); transform:scaleX(-1)}
+/* niente colonne dove non c'e' spazio: una decorazione che invade e' un difetto */
+@media (max-width:1180px){.colonna{display:none}}
+@media (max-height:620px){.colonna{display:none}}
+
+.fregio-ionico{
+  display:block; width:100%; height:22px; margin:clamp(26px,3.4vw,44px) 0;
+  color:var(--argento); opacity:.30;
+}
+.fregio-ionico svg{width:100%; height:100%; display:block; fill:none;
+  stroke:currentColor; stroke-width:1.2; stroke-linecap:round; stroke-linejoin:round}
+
+/* il capitello da solo, come segno di sezione */
+.capitello{display:block; width:clamp(130px,14vw,190px); height:auto;
+  color:var(--argento); opacity:.55; margin:0 0 22px}
+.capitello svg{width:100%; height:auto; display:block; fill:none;
+  stroke:currentColor; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round;
+  vector-effect:non-scaling-stroke}
+
+@media (prefers-reduced-motion:reduce){.colonna{opacity:.06}}
+
+/* ─── CATALOGO E CARRELLO (dal file originale) ─── */
+
+.nascosto{ position:absolute; left:-9999px; }
+
+.menu .volutina{ opacity:.35; }
+
+
+/* voluta: il ricciolo del capitello, come richiamo a scorrere */
+.voluta{
+  width:44px; height:44px; opacity:.55;
+  background-image:var(--fregio-voluta);
+  background-repeat:no-repeat; background-position:center;
+  background-size:contain;
+}
+
+.prossima .voluta{ width:62px; height:62px; opacity:.42; }
+@media (prefers-reduced-motion:no-preference){
+
+  .prossima .voluta{ animation:pulsa 5.5s ease-in-out infinite; }
+}
+
+
+/* ═══════════════════════════════════════════════
+   IL BANCO — catalogo, carrello, ordine
+   ═══════════════════════════════════════════════ */
+#catalogo .premessa,
+#fanzine .premessa{
+  max-width:54ch; margin:24px 0 clamp(44px,5vw,66px);
+  font-size:15px; font-weight:300; line-height:1.7; color:var(--grigio);
+}
+
+
+.riquadri{
+  display:grid; gap:clamp(28px,3.4vw,44px) clamp(16px,2vw,26px);
+  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+}
+@media (min-width:1080px){
+ .riquadri{ grid-template-columns:repeat(4,1fr); }
+}
+
+
+.riquadro{
+  position:relative; display:flex; flex-direction:column; min-width:0;
+  background:rgba(255,255,255,.018);
+  border:1px solid rgba(255,255,255,.075);
+  border-radius:14px; padding:14px 14px 4px;
+  transition:transform .5s cubic-bezier(.16,1,.3,1), border-color .4s, background-color .4s, box-shadow .5s;
+}
+
+.riquadro:hover{
+  transform:translateY(-5px);
+  border-color:rgba(255,255,255,.2);
+  background:rgba(255,255,255,.035);
+  box-shadow:0 24px 46px rgba(0,0,0,.5);
+}
+@media (prefers-reduced-motion:reduce){
+ .riquadro:hover{ transform:none; }
+}
+
+
+/* la tela: la foto non viene MAI tagliata. Sta dentro, intera. */
+.riquadro-foto{
+  position:relative; width:100%; aspect-ratio:1/1; height:auto;
+  border-radius:10px; overflow:hidden; margin-bottom:18px;
+  display:grid; place-items:center; padding:14px;
+  background:
+    radial-gradient(ellipse 78% 62% at 50% 46%, rgba(9,50,191,.16) 0%, rgba(4,7,18,0) 70%),
+    linear-gradient(165deg,#0A1234,#050914);
+}
+
+.riquadro-foto img{
+  width:100%; height:100%;
+  object-fit:contain;                 /* ← niente crop: si vede tutto il prodotto */
+  object-position:center;
+  border-radius:6px;
+  filter:brightness(.98);
+  transition:transform .7s cubic-bezier(.16,1,.3,1), filter .7s;
+}
+
+.riquadro:hover .riquadro-foto img{ transform:scale(1.04); filter:brightness(1.04); }
+
+#fanzine .riquadro-foto{ aspect-ratio:3/4; padding:18px; }
+
+
+/* etichetta d'angolo */
+.genere{
+  position:absolute; z-index:2; top:24px; left:24px;
+  padding:6px 10px; border-radius:6px;
+  background:rgba(3,6,15,.72); border:1px solid rgba(255,255,255,.12);
+  font-size:9px; font-weight:600; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--grigio);
+}
+
+.riquadro:hover .sfoglia-invito,
+.riquadro:focus-within .sfoglia-invito{ opacity:1; transform:none; }
+
+
+.riquadro h3{ margin:0 0 6px; font-size:1.14rem; font-weight:500; color:#F3F4F6; letter-spacing:-.2px; }
+
+.riquadro .desc{ margin:0 0 16px; font-size:.88rem; line-height:1.55; color:#8F96A3; font-weight:300; flex:1; }
+
+
+.riquadro-piede{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:14px 0; margin-top:auto; border-top:1px solid rgba(255,255,255,.07);
+}
+
+.prezzo{ font-size:1.05rem; font-weight:500; color:#fff; letter-spacing:.3px;
+  font-variant-numeric:tabular-nums; white-space:nowrap; }
+
+.prezzo.spento{ font-size:10.5px; font-weight:600; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--tenue); }
+
+
+.bottoncino{
+  flex:none; padding:11px 16px; cursor:pointer; border-radius:8px;
+  background:transparent; color:var(--bianco); border:1px solid rgba(255,255,255,.16);
+  font-family:inherit; font-size:10px; font-weight:600;
+  letter-spacing:.16em; text-transform:uppercase; white-space:nowrap;
+  transition:background-color .25s, border-color .25s, color .25s;
+}
+
+.bottoncino:hover{ background:var(--raggio); border-color:var(--raggio); }
+
+.bottoncino:focus-visible{ outline:2px solid var(--chiaro); outline-offset:3px; }
+
+.bottoncino[disabled]{ cursor:default; color:var(--tenue); border-color:rgba(255,255,255,.08); }
+
+.bottoncino[disabled]:hover{ background:transparent; border-color:rgba(255,255,255,.08); }
+
+.bottoncino.chiaro{ background:rgba(255,255,255,.05); }
+
+
+/* il bottone diventa un contatore quando il pezzo è nel carrello */
+.passo{ display:flex; align-items:center; gap:0; border:1px solid var(--raggio);
+  border-radius:8px; overflow:hidden; }
+
+.passo button{
+  width:34px; height:36px; cursor:pointer; background:transparent; border:0;
+  color:var(--bianco); font-family:inherit; font-size:15px; line-height:1;
+  transition:background-color .2s;
+}
+
+.passo button:hover{ background:var(--raggio); }
+
+.passo button:focus-visible{ outline:2px solid var(--chiaro); outline-offset:-2px; }
+
+.passo b{ min-width:30px; text-align:center; font-weight:500; font-size:14px;
+  font-variant-numeric:tabular-nums; }
+
+
+/* ─── cassetto e finestra d'ordine ───────────── */
+.cassetto[hidden], .finestra[hidden]{ display:none; }
+
+.cassetto{ position:fixed; inset:0; z-index:210; }
+
+.cassetto-velo{ position:absolute; inset:0; background:rgba(3,6,15,.86); backdrop-filter:blur(6px); }
+
+.cassetto-corpo{
+  position:absolute; inset:0 0 0 auto; width:min(470px,100%);
+  display:flex; flex-direction:column; overflow-y:auto; overscroll-behavior:contain;
+  background:var(--pece); border-left:1px solid var(--filo);
+}
+@media (prefers-reduced-motion:no-preference){
+
+  .cassetto-corpo{ animation:entra .4s cubic-bezier(.22,.7,.28,1) both; }
+}
+
+
+/* il respiro laterale: allinea le righe alla testata del cassetto */
+.cassetto .dentro{ padding:0 var(--bordo) 44px; }
+
+/* nella finestra la testata e' appiccicosa: senza stacco il riepilogo
+   ci finisce sotto e sembra tagliato */
+.finestra .dentro{ padding:26px var(--bordo) 40px; }
+
+.vuoto{ padding:70px 0; text-align:center; }
+
+.vuoto span{ font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--tenue); }
+
+.voce{
+  display:grid; grid-template-columns:56px minmax(0,1fr) auto;
+  gap:16px; align-items:center; padding:20px 0; border-bottom:1px solid var(--filo);
+}
+
+.voce-tela{ aspect-ratio:1/1; border-radius:8px; overflow:hidden; padding:5px;
+  background:linear-gradient(165deg,#0A1234,#050914); border:1px solid var(--filo); }
+
+.voce-tela img{ width:100%; height:100%; object-fit:contain; }
+
+.voce-nome{ display:block; font-size:13.5px; line-height:1.4; }
+
+.voce-unita{ display:block; margin-top:4px; font-size:11px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--tenue); font-variant-numeric:tabular-nums; }
+
+
+.somma{ display:flex; align-items:baseline; justify-content:space-between;
+  gap:16px; padding:26px 0 4px; }
+
+.somma span{ font-size:10.5px; font-weight:600; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--tenue); }
+
+.somma b{ font-size:27px; font-weight:300; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
+
+.chiosa{ margin:0 0 26px; font-size:12.5px; line-height:1.65; color:var(--tenue); }
+
+.chiosa a{ color:var(--chiaro); }
+
+
+.invia.pieno{ background:var(--raggio); border-color:var(--raggio); width:100%; }
+
+.invia.pieno:hover{ background:var(--vivo); border-color:var(--vivo); }
+
+
+/* finestra d'ordine, centrata */
+.finestra{ position:fixed; inset:0; z-index:220; overflow-y:auto; overscroll-behavior:contain;
+  background:rgba(3,6,15,.92); backdrop-filter:blur(7px); }
+
+.finestra-corpo{
+  max-width:640px; margin:clamp(20px,5vh,70px) auto; background:var(--pece);
+  border:1px solid var(--filo); border-radius:16px; overflow:hidden;
+}
+@media (prefers-reduced-motion:no-preference){
+
+  .finestra-corpo{ animation:sale .45s cubic-bezier(.22,.7,.28,1) both; }
+}
+
+.riepilogo{ margin:0 0 28px; border:1px solid var(--filo); border-radius:12px; overflow:hidden; }
+
+.riepilogo-riga{ display:flex; justify-content:space-between; gap:16px;
+  padding:13px 18px; font-size:13.5px; border-bottom:1px solid var(--filo); }
+
+.riepilogo-riga:last-child{ border-bottom:0; background:rgba(255,255,255,.03); font-size:15px; }
+
+.riepilogo-riga span{ color:var(--grigio); }
+
+.riepilogo-riga b{ font-weight:500; font-variant-numeric:tabular-nums; white-space:nowrap; }
+
+
+.modi{ display:grid; gap:12px; margin:0 0 6px; }
+
+.modo{
+  display:block; width:100%; text-align:left; cursor:pointer;
+  padding:20px 22px; border-radius:12px; font-family:inherit;
+  background:rgba(255,255,255,.02); border:1px solid var(--filo); color:var(--bianco);
+  transition:border-color .25s, background-color .25s, transform .3s cubic-bezier(.16,1,.3,1);
+}
+
+.modo:hover{ border-color:var(--raggio); background:rgba(9,50,191,.14); transform:translateY(-2px); }
+
+.modo:focus-visible{ outline:2px solid var(--chiaro); outline-offset:3px; }
+
+.modo b{ display:block; margin-bottom:7px; font-size:16px; font-weight:500; }
+
+.modo span{ display:block; font-size:13px; line-height:1.6; color:var(--tenue); }
+@media (prefers-reduced-motion:reduce){
+ .modo:hover{ transform:none; }
+}
+
+
+.indietro{
+  display:inline-flex; align-items:center; gap:8px; margin:0 0 22px;
+  padding:9px 14px 9px 12px; cursor:pointer; border-radius:8px;
+  background:transparent; border:1px solid var(--filo); color:var(--tenue);
+  font-family:inherit; font-size:10px; font-weight:600;
+  letter-spacing:.16em; text-transform:uppercase;
+  transition:color .25s, border-color .25s;
+}
+
+.indietro:hover{ color:var(--bianco); border-color:var(--raggio); }
+
+.indietro:focus-visible{ outline:2px solid var(--chiaro); outline-offset:3px; }
+
+
+.scelto{
+  margin:0 0 26px; padding:15px 18px; border-radius:10px;
+  background:rgba(9,50,191,.14); border:1px solid var(--raggio);
+  font-size:13.5px; line-height:1.6;
+}
+
+.scelto b{ font-weight:500; }
+
+
+.esito{ margin:18px 0 0; font-size:13px; line-height:1.6; color:var(--chiaro); }
+
+.esito.male{ color:#FF9C8A; }
+
+
+.fatto{ text-align:center; padding:34px 0 10px; }
+
+.fatto h4{ margin:0 0 14px; font-size:22px; font-weight:400; }
+
+.fatto p{ margin:0 auto 26px; max-width:42ch; font-size:14px; line-height:1.7; color:var(--grigio); }
+
+.dm{
+  display:inline-block; padding:15px 30px; border-radius:9px; text-decoration:none;
+  background:var(--raggio); color:#fff; font-size:11px; font-weight:600;
+  letter-spacing:.18em; text-transform:uppercase; transition:background-color .25s;
+}
+
+.dm:hover{ background:var(--vivo); }
+
+
+/* ═══ FREGI IONICI, IN GIRO PER LA PAGINA ════
+   Stesso repertorio delle sezioni: filo sottile,
+   mai riempito, sempre sotto il testo.
+   ═══════════════════════════════════════════ */
+.volutina{
+  display:inline-block; width:24px; height:24px; vertical-align:-7px;
+  margin-right:11px; opacity:.5;
+  background-image:var(--fregio-voluta);
+  background-repeat:no-repeat; background-position:center; background-size:contain;
+}
+
+.fregio-filo{
+  height:22px; margin:0 0 clamp(38px,4.4vw,58px); opacity:.26; pointer-events:none;
+  background-image:var(--fregio-astragalo);
+  background-repeat:repeat-x; background-position:center; background-size:auto 15px;
+}
+
+.fregio-filo.stretto{ margin:26px 0; }
+
+.voluta-grande{
+  display:block; width:54px; height:54px; margin:0 auto 22px; opacity:.4;
+  background-image:var(--fregio-voluta);
+  background-repeat:no-repeat; background-position:center; background-size:contain;
+}
+
+/* il ricciolo del capitello nell'angolo di ogni pezzo */
+.riquadro-foto::after{
+  content:""; position:absolute; z-index:2; top:12px; right:12px;
+  width:28px; height:28px; opacity:.13; pointer-events:none;
+  background-image:var(--fregio-voluta);
+  background-repeat:no-repeat; background-position:center; background-size:contain;
+  transition:opacity .45s, transform .55s cubic-bezier(.16,1,.3,1);
+}
+
+.riquadro:hover .riquadro-foto::after{ opacity:.42; transform:translateY(-3px) rotate(-4deg); }
+
+.alleanza .riquadro-foto{ position:absolute; inset:0; margin:0; }
+
+.alleanza .genere{ top:14px; left:14px; }
+
+.riquadro.evidenzia{ animation:accendi 2.2s ease-out 2; border-color:var(--chiaro); }
+
+
+.campi{ display:grid; gap:0; }
+
+.campo{ position:relative; border-bottom:1px solid var(--filo); }
+
+.campo input,.campo textarea{
+  width:100%; background:transparent; border:0; color:var(--bianco);
+  font-family:inherit; font-size:15px; padding:20px 0 14px; resize:vertical;
+}
+
+.campo input::placeholder,.campo textarea::placeholder{ color:var(--tenue); }
+
+.campo input:focus,.campo textarea:focus{ outline:0; }
+
+.campo:focus-within{ border-bottom-color:var(--raggio); }
+
+.consenso{ display:flex; gap:12px; align-items:flex-start; margin:26px 0 0;
+  font-size:12.5px; line-height:1.6; color:var(--tenue); }
+
+.consenso input{ margin-top:3px; accent-color:var(--raggio); flex:none; }
+
+.invia{
+  margin-top:30px; padding:16px 40px; cursor:pointer;
+  background:transparent; color:var(--bianco); border:1px solid var(--filo);
+  font-family:inherit; font-size:11.5px; font-weight:600;
+  letter-spacing:.2em; text-transform:uppercase;
+  transition:background-color .3s, border-color .3s;
+}
+
+.invia:hover{ background:var(--raggio); border-color:var(--raggio); }
+
+.invia:focus-visible{ outline:2px solid var(--vivo); outline-offset:3px; }
+
+
+/* Rimuove qualsiasi sottolineatura da link, schede e testo interno */
+a, 
+a:hover, 
+a:focus, 
+a:visited,
+.riquadro,
+.riquadro h3,
+.riquadro p {
+  text-decoration: none !important;
+}
+
+
+/* la luce segue il puntatore sopra le schede del banco */
+.riquadro::after{
+  content:""; position:absolute; inset:0; border-radius:14px; pointer-events:none;
+  opacity:0; transition:opacity .5s;
+  background:radial-gradient(300px circle at var(--mx,50%) var(--my,0%),
+             rgba(110,147,255,.14), rgba(110,147,255,0) 62%);
+}
+
+.riquadro:hover::after{ opacity:1; }
+@keyframes entra{ from{ transform:translateX(100%); } to{ transform:none; } }
+@keyframes sale{ from{ opacity:0; transform:translateY(22px); } to{ opacity:1; transform:none; } }
+@keyframes riceve{
+  0%,100%{ transform:none; }
+  40%    { transform:scale(1.13); }
+  70%    { transform:scale(.97); }
+}
+@keyframes apriDaSinistra{
+      from{ opacity:0; transform:translate3d(-70px,44px,-260px) rotateY(26deg) rotateX(9deg); }
+      to  { opacity:1; transform:none; }
+    }
+@keyframes apriDaDestra{
+      from{ opacity:0; transform:translate3d(70px,44px,-260px) rotateY(-26deg) rotateX(9deg); }
+      to  { opacity:1; transform:none; }
+    }
+@keyframes pannelloSx{
+      from{ opacity:0; transform:translate3d(0,50px,-340px) rotateY(38deg); }
+      to  { opacity:1; transform:none; }
+    }
+@keyframes pannelloCentro{
+      from{ opacity:0; transform:translate3d(0,70px,-420px) rotateX(18deg); }
+      to  { opacity:1; transform:none; }
+    }
+@keyframes pannelloDx{
+      from{ opacity:0; transform:translate3d(0,50px,-340px) rotateY(-38deg); }
+      to  { opacity:1; transform:none; }
+    }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Salta al contenuto</a>
+<svg class="ionico-defs" aria-hidden="true" focusable="false">
+  <symbol id="cap-ionico" viewBox="4 6 192 88">
+<path d="M6 12 H194" />
+  <path d="M10 20 H190" />
+  <path d="M52.00 20.00 Q55.49 20.51 58.85 21.47 Q62.01 22.87 64.92 24.66 Q67.54 26.81 69.81 29.27 Q71.71 31.99 73.21 34.91 Q74.29 37.98 74.93 41.13 Q75.14 44.30 74.92 47.44 Q74.28 50.49 73.24 53.40 Q71.83 56.11 70.09 58.57 Q68.05 60.76 65.75 62.63 Q63.25 64.15 60.60 65.31 Q57.84 66.09 55.02 66.48 Q52.21 66.49 49.46 66.12 Q46.81 65.38 44.30 64.31 Q41.99 62.92 39.92 61.25 Q38.10 59.33 36.58 57.20 Q35.38 54.91 34.51 52.51 Q33.97 50.03 33.78 47.53 Q33.93 45.05 34.41 42.64 Q35.20 40.35 36.29 38.20 Q37.64 36.24 39.23 34.50 Q41.02 33.01 42.98 31.79 Q45.07 30.86 47.24 30.22 Q49.45 29.89 51.66 29.86 Q53.84 30.13 55.93 30.68 Q57.91 31.51 59.75 32.58 Q61.40 33.89 62.84 35.38 Q64.06 37.05 65.02 38.84 Q65.73 40.73 66.17 42.68 Q66.34 44.64 66.25 46.60 Q65.89 48.50 65.28 50.32 Q64.44 52.02 63.39 53.57 Q62.16 54.95 60.76 56.14 Q59.22 57.12 57.59 57.88 Q55.88 58.40 54.14 58.68 Q52.40 58.72 50.68 58.52 Q49.03 58.10 47.46 57.47 Q46.01 56.63 44.70 55.62 Q43.55 54.45 42.57 53.15 Q41.80 51.75 41.22 50.27 Q40.86 48.74 40.71 47.19 Q40.77 45.65 41.04 44.15 Q41.50 42.71 42.14 41.36 Q42.96 40.13 43.92 39.03 Q45.02 38.08 46.22 37.30 Q47.50 36.69 48.84 36.26 Q50.21 36.03 51.58 35.98 Q52.93 36.12 54.24 36.44 Q55.48 36.93 56.63 37.57 Q57.68 38.36 58.59 39.27 Q59.37 40.28 59.99 41.39 Q60.46 42.55 60.76 43.75 Q60.89 44.97 60.85 46.19 Q60.66 47.37 60.30 48.51 Q59.80 49.57 59.17 50.55 Q58.42 51.43 57.57 52.18 Q56.63 52.81 55.62 53.30 Q54.57 53.65 53.50 53.84 Q52.41 53.89 51.35 53.79 Q50.31 53.55 49.33 53.18" />
+  <path d="M148.00 20.00 Q144.51 20.51 141.15 21.47 Q137.99 22.87 135.08 24.66 Q132.46 26.81 130.19 29.27 Q128.29 31.99 126.79 34.91 Q125.71 37.98 125.07 41.13 Q124.86 44.30 125.08 47.44 Q125.72 50.49 126.76 53.40 Q128.17 56.11 129.91 58.57 Q131.95 60.76 134.25 62.63 Q136.75 64.15 139.40 65.31 Q142.16 66.09 144.98 66.48 Q147.79 66.49 150.54 66.12 Q153.19 65.38 155.70 64.31 Q158.01 62.92 160.08 61.25 Q161.90 59.33 163.42 57.20 Q164.62 54.91 165.49 52.51 Q166.03 50.03 166.22 47.53 Q166.07 45.05 165.59 42.64 Q164.80 40.35 163.71 38.20 Q162.36 36.24 160.77 34.50 Q158.98 33.01 157.02 31.79 Q154.93 30.86 152.76 30.22 Q150.55 29.89 148.34 29.86 Q146.16 30.13 144.07 30.68 Q142.09 31.51 140.25 32.58 Q138.60 33.89 137.16 35.38 Q135.94 37.05 134.98 38.84 Q134.27 40.73 133.83 42.68 Q133.66 44.64 133.75 46.60 Q134.11 48.50 134.72 50.32 Q135.56 52.02 136.61 53.57 Q137.84 54.95 139.24 56.14 Q140.78 57.12 142.41 57.88 Q144.12 58.40 145.86 58.68 Q147.60 58.72 149.32 58.52 Q150.97 58.10 152.54 57.47 Q153.99 56.63 155.30 55.62 Q156.45 54.45 157.43 53.15 Q158.20 51.75 158.78 50.27 Q159.14 48.74 159.29 47.19 Q159.23 45.65 158.96 44.15 Q158.50 42.71 157.86 41.36 Q157.04 40.13 156.08 39.03 Q154.98 38.08 153.78 37.30 Q152.50 36.69 151.16 36.26 Q149.79 36.03 148.42 35.98 Q147.07 36.12 145.76 36.44 Q144.52 36.93 143.37 37.57 Q142.32 38.36 141.41 39.27 Q140.63 40.28 140.01 41.39 Q139.54 42.55 139.24 43.75 Q139.11 44.97 139.15 46.19 Q139.34 47.37 139.70 48.51 Q140.20 49.57 140.83 50.55 Q141.58 51.43 142.43 52.18 Q143.37 52.81 144.38 53.30 Q145.43 53.65 146.50 53.84 Q147.59 53.89 148.65 53.79 Q149.69 53.55 150.67 53.18" />
+  <path d="M74 30 Q100 22 126 30" />
+  <path d="M74 44 Q100 60 126 44" />
+  <path d="M62 78 H138" />
+  <path d="M68 86 H132" />
+  </symbol>
+  <symbol id="fusto-ionico" viewBox="0 0 200 600" preserveAspectRatio="none">
+<path d="M62 0 L58 600" />
+  <path d="M138 0 L142 600" />
+  <path d="M72.9 8 L70.1 592" />
+  <path d="M83.7 8 L82.1 592" />
+  <path d="M94.6 8 L94.0 592" />
+  <path d="M105.4 8 L106.0 592" />
+  <path d="M116.3 8 L117.9 592" />
+  <path d="M127.1 8 L129.9 592" />
+  </symbol>
+  <symbol id="fregio-onda" viewBox="0 0 240 24">
+    <path d="M0 12 q15 -11 30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0"/>
+  </symbol>
+  <symbol id="fregio-astragalo" viewBox="0 0 240 24">
+    <path d="M0 12 H240"/>
+    <circle cx="26" cy="12" r="5"/><path d="M44 5 V19"/><path d="M52 5 V19"/>
+    <circle cx="78" cy="12" r="5"/><path d="M96 5 V19"/><path d="M104 5 V19"/>
+    <circle cx="130" cy="12" r="5"/><path d="M148 5 V19"/><path d="M156 5 V19"/>
+    <circle cx="182" cy="12" r="5"/><path d="M200 5 V19"/><path d="M208 5 V19"/>
+  </symbol>
+</svg>
+<div class="ambiente" aria-hidden="true"></div>
+
+<header class="barra" id="barra">
+  <a class="barra-logo" href="#top">
+    <img src="assets/logo.webp" alt="" width="34" height="34" aria-hidden="true">
+    <b>Taranto Futura</b>
+  </a>
+  <nav aria-label="Principale">
+    <a href="#radici">Radici</a>
+    <a href="#catalogo">Catalogo</a>
+    <button class="barra-carrello" type="button" id="apri-carrello" aria-label="Apri il carrello">
+      Carrello <span class="barra-conta" id="barra-conta">0</span>
+    </button>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+
+<!-- ══ THE SCRUB HERO ══════════════════════════════════ -->
+<section class="eroe" id="top" aria-label="Apertura">
+  <div class="palco" id="palco">
+    <div class="poster" id="poster" aria-hidden="true"></div>
+    <video id="eroe-video" preload="none" muted playsinline aria-hidden="true" tabindex="-1"></video>
+    <div class="velo" aria-hidden="true"></div>
+
+    <h1 class="vh">Taranto Futura</h1>
+
+
+    <svg class="anello-carico" id="anello" viewBox="0 0 48 48" aria-hidden="true">
+      <circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="3"
+              stroke-dasharray="126" style="stroke-dashoffset:var(--ld,126)"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ══ THE STATIC HERO ═════════════════════════════════ -->
+<section class="statico" aria-label="Apertura">
+  <div class="poster-fisso" id="poster-fisso" aria-hidden="true"></div>
+  <div class="velo-fisso" aria-hidden="true"></div>
+  <div class="dentro">
+    <p class="luogo">Taranto &middot; Puglia</p>
+    <div class="moneta" aria-hidden="true">
+      <div class="moneta-corpo">
+        <div class="moneta-gira" id="moneta-gira">
+          <img class="faccia" src="assets/logo.webp" alt="" width="260" height="260">
+          <img class="faccia retro" src="assets/logo.webp" alt="" width="260" height="260">
+          <span class="bordo" id="bordo"></span>
+          <span class="brillo"></span>
+        </div>
+      </div>
+    </div>
+    <h1>Taranto Futura</h1>
+    <p class="sotto">A Taranto le radici non stanno sottoterra. Stanno sott'acqua.</p>
+    <p><a class="bottone" href="#radici">Scendi nelle radici</a></p>
+  </div>
+</section>
+
+<!-- ══ CHI SIAMO ═══════════════════════════════════════ -->
+<section class="sezione radici-sez" id="radici" aria-labelledby="radici-tit">
+  <div class="colonna sx" aria-hidden="true"><svg class="cap" viewBox="4 6 192 88"><use href="#cap-ionico"/></svg><svg class="fusto" viewBox="0 0 200 600" preserveAspectRatio="none"><use href="#fusto-ionico"/></svg></div>
+  <div class="colonna dx" aria-hidden="true"><svg class="cap" viewBox="4 6 192 88"><use href="#cap-ionico"/></svg><svg class="fusto" viewBox="0 0 200 600" preserveAspectRatio="none"><use href="#fusto-ionico"/></svg></div>
+  <div class="wrap">
+    <svg class="capitello" viewBox="0 0 200 110" aria-hidden="true"><use href="#cap-ionico"/></svg>
+    <span class="etichetta">Radici</span>
+    <h2 class="chi-titolo" id="radici-tit">Taranto Futura non &egrave; un nome.<br>&Egrave; una domanda.</h2>
+
+    <div class="chi-griglia">
+      <div class="chi-sx">
+        <div class="chi-testo">
+          <p>Per anni di Taranto abbiamo sentito raccontare sempre le stesse cose: quello che non funziona, le occasioni perse, i giovani che vanno via.</p>
+          <p>&Egrave; una citt&agrave; complicata, certo. Sarebbe inutile fingere il contrario.</p>
+          <p>Ma non abbiamo la presunzione di salvarla, e non crediamo nelle formule magiche. Crediamo che a un certo punto devi <b>smettere di aspettare e iniziare a muoverti</b>.</p>
+        </div>
+
+        <p class="chi-colpo">Tutto &egrave; partito da uno che ha detto:<br><em>ma perch&eacute; questa cosa non la facciamo noi?</em></p>
+      </div>
+
+      <!-- ── le tre porte ─────────────────────────── -->
+      <aside class="chi-dx">
+        <h3 class="porte-titolo">Cosa facciamo per la citt&agrave;</h3>
+
+        <div class="porte" id="porte">
+          <button class="porta" type="button" data-pannello="pan-eventi">
+            <span class="porta-n">01</span>
+            <span class="porta-corpo">
+              <b>Eventi</b>
+              <i>Notti curate, dal tramonto a fine.</i>
+            </span>
+            <span class="porta-freccia" aria-hidden="true">&rarr;</span>
+          </button>
+          <a class="porta" href="#radici">
+            <span class="porta-n">02</span>
+            <span class="porta-corpo">
+              <b>Prodotti</b>
+              <i>Oggetti che nascono da una cosa di qua.</i>
+            </span>
+            <span class="porta-freccia" aria-hidden="true">&rarr;</span>
+          </a>
+          <button class="porta" type="button" data-pannello="pan-fanzine">
+            <span class="porta-n">03</span>
+            <span class="porta-corpo">
+              <b>Fanzine</b>
+              <i>NZACC, esce quando abbiamo qualcosa da dire.</i>
+            </span>
+            <span class="porta-freccia" aria-hidden="true">&rarr;</span>
+          </button>
+        </div>
+      </aside>
+    </div>
+
+    <span class="fregio-ionico" aria-hidden="true"><svg viewBox="0 0 240 24" preserveAspectRatio="none"><use href="#fregio-astragalo"/></svg></span>
+    <!-- ── il bilancio ──────────────────────────────── -->
+    <div class="bilancio" id="bilancio">
+      <span class="etichetta">Il bilancio, pi&ugrave; o meno</span>
+
+      <div class="conti">
+        <div class="conto su" data-da="0" data-meta="2500" data-passo="1" data-ogni="5400">
+          <div class="conto-num" aria-hidden="true"></div>
+          <span class="vh">2.500 gente divertita</span>
+          <i class="conto-filo" aria-hidden="true"></i>
+          <span class="conto-voce">Gente divertita</span>
+        </div>
+
+        <div class="conto giu" data-da="1000" data-meta="800" data-passo="-1" data-ogni="9200">
+          <div class="conto-num" aria-hidden="true"></div>
+          <span class="vh">800 persone convinte di restare solo mezz'ora</span>
+          <i class="conto-filo" aria-hidden="true"></i>
+          <span class="conto-voce">Persone convinte di restare solo mezz'ora</span>
+        </div>
+
+        <div class="conto su" data-da="500" data-meta="1500" data-passo="1" data-ogni="6800">
+          <div class="conto-num" aria-hidden="true"></div>
+          <span class="vh">1.500 persone che ci hanno chiesto quando &egrave; la prossima</span>
+          <i class="conto-filo" aria-hidden="true"></i>
+          <span class="conto-voce">Persone che ci hanno chiesto quando &egrave; la prossima</span>
+        </div>
+
+        <div class="conto giu" data-da="10000" data-meta="7500" data-passo="-1" data-ogni="8600">
+          <div class="conto-num" aria-hidden="true"></div>
+          <span class="vh">7.500 persone che hanno detto che a Taranto non succede mai niente</span>
+          <i class="conto-filo" aria-hidden="true"></i>
+          <span class="conto-voce">Persone che hanno detto che a Taranto non succede mai niente</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── con chi lo abbiamo fatto ──────────────────── -->
+    <div class="insieme">
+      <span class="etichetta">Insieme a</span>
+      <p class="insieme-riga">Ogni cosa nasce con qualcuno che sta qui e fa le cose sul serio.</p>
+      <ul class="loghi">
+        <li class="medio"><img src="assets/loghi/kat.jpg" alt="KAT" loading="lazy" decoding="async"></li>
+        <li class="alto rovescia"><img src="assets/loghi/dopamina.png" alt="Dopamina" loading="lazy" decoding="async"></li>
+        <li class="largo"><img src="assets/loghi/mediterraneo-cmf.png" alt="Mediterraneo Chamber Music Festival" loading="lazy" decoding="async"></li>
+        <li class="medio"><img src="assets/loghi/caffe-letterario.jpg" alt="Caff&egrave; Letterario" loading="lazy" decoding="async"></li>
+      </ul>
+    </div>
+
+    <!-- ── contatti ─────────────────────────────────── -->
+    <div class="contatti" id="contatti">
+      <span class="etichetta">Contatti</span>
+      <h3 class="contatti-titolo">Scrivici.</h3>
+      <p class="contatti-riga">Per entrare in lista, proporre una collaborazione o chiedere di un pezzo del banco.</p>
+      <div class="contatti-vie">
+        <a class="via" href="https://www.instagram.com/tarantofutura/" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5"/>
+            <circle cx="12" cy="12" r="4.2"/>
+            <circle cx="17.4" cy="6.6" r="1.15" class="pieno"/>
+          </svg>
+          <span><b>Instagram</b><i>@tarantofutura</i></span>
+        </a>
+        <a class="via" href="mailto:tarantofutura3@gmail.com">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="2.5" y="5" width="19" height="14" rx="2.5"/>
+            <path d="M3 7.5 L12 13.5 L21 7.5"/>
+          </svg>
+          <span><b>Email</b><i>tarantofutura3@gmail.com</i></span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+
+
+
+
+</main>
+
+<footer>
+  <div class="wrap riga-f">
+    <span>&copy; Taranto Futura &middot; Taranto, Puglia</span>
+    <a href="mailto:tarantofutura3@gmail.com">tarantofutura3@gmail.com</a>
+  </div>
+</footer>
+
+<div class="book" id="book" role="dialog" aria-modal="true" aria-labelledby="book-titolo" hidden>
+  <div class="book-barra">
+    <div>
+      <p id="book-data"></p>
+      <h3 id="book-titolo"></h3>
+    </div>
+    <button class="book-chiudi" type="button" id="book-chiudi" aria-label="Chiudi il book">&#10005;</button>
+  </div>
+  <div class="book-pagine" id="book-pagine"></div>
+  <p class="book-nota" id="book-nota" hidden></p>
+  <div class="book-coda">
+    <p>Hai una foto di quella sera? Mandacela.</p>
+    <a class="contatti-mail" href="mailto:tarantofutura3@gmail.com">tarantofutura3@gmail.com</a>
+  </div>
+</div>
+
+<!-- ══ CATALOGO (dal file originale) ═══════════════ -->
+<section class="sezione" id="catalogo">
+    <div class="wrap">
+      <span class="etichetta"><i class="volutina" aria-hidden="true"></i>Merchandising</span>
+      <h2 class="testata">Catalogo</h2>
+      <p class="premessa">Ogni pezzo esce in <b>tiratura limitata</b>. Aggiungi al carrello, mandaci la richiesta: ti rispondiamo con disponibilità e modo di consegna, e chiudiamo tutto in DM su Instagram o via email. <b>Nessun pagamento passa da questo sito.</b></p>
+      <div class="fregio-filo" aria-hidden="true"></div>
+
+      <div class="riquadri">
+
+        <article class="riquadro" data-pezzo="carte" data-nome="Carte Tarantine" data-prezzo="15">
+          <div class="riquadro-foto">
+            <span class="genere">Gioco</span>
+            <img src="assets/prodotti/carte-tarantine.webp" alt="Carte Tarantine" loading="lazy" decoding="async">
+          </div>
+          <h3>Carte Tarantine</h3>
+          <p class="desc">Mazzo da 40 carte da gioco tradizionali rivisitate con estetica e simbolismi futuristi.</p>
+          <div class="riquadro-piede">
+            <span class="prezzo">15,00&nbsp;€</span>
+            <button class="bottoncino" type="button" data-aggiungi>+ Aggiungi</button>
+          </div>
+        </article>
+
+        <article class="riquadro" data-pezzo="sciarpa" data-nome="Sciarpa Taranto Futura" data-prezzo="25">
+          <div class="riquadro-foto">
+            <span class="genere">Accessorio</span>
+            <img src="assets/prodotti/sciarpa.webp" alt="Sciarpa Taranto Futura" loading="lazy" decoding="async">
+          </div>
+          <h3>Sciarpa Taranto Futura</h3>
+          <p class="desc">Sciarpa jacquard in maglia acrilica con pattern grafico e motivo a fregio ionico.</p>
+          <div class="riquadro-piede">
+            <span class="prezzo">25,00&nbsp;€</span>
+            <button class="bottoncino" type="button" data-aggiungi>+ Aggiungi</button>
+          </div>
+        </article>
+
+        <article class="riquadro" data-pezzo="sticker" data-nome="Sticker Pack" data-prezzo="5">
+          <div class="riquadro-foto">
+            <span class="genere">Stampa</span>
+            <img src="assets/prodotti/sticker-pack.webp" alt="Sticker Pack" loading="lazy" decoding="async">
+          </div>
+          <h3>Sticker Pack</h3>
+          <p class="desc">Set di adesivi sagomati in vinile impermeabile con illustrazioni e fregi classici.</p>
+          <div class="riquadro-piede">
+            <span class="prezzo">5,00&nbsp;€</span>
+            <button class="bottoncino" type="button" data-aggiungi>+ Aggiungi</button>
+          </div>
+        </article>
+
+        <article class="riquadro" data-pezzo="poster-sirena" data-nome="Poster Sirena" data-prezzo="10">
+          <div class="riquadro-foto">
+            <span class="genere">Stampa</span>
+            <img src="assets/prodotti/poster-sirena.webp" alt="Poster Sirena" loading="lazy" decoding="async">
+          </div>
+          <h3>Poster Sirena</h3>
+          <p class="desc">Stampa grafica in formato A3 su carta opaca ad alta grammatura 250g.</p>
+          <div class="riquadro-piede">
+            <span class="prezzo">10,00&nbsp;€</span>
+            <button class="bottoncino" type="button" data-aggiungi>+ Aggiungi</button>
+          </div>
+        </article>
+
+        <article class="riquadro" data-pezzo="poster-erasmo" data-nome="Poster Sant'Erasmo" data-prezzo="10">
+          <div class="riquadro-foto">
+            <span class="genere">Stampa</span>
+            <img src="assets/prodotti/poster-santerasmo.webp" alt="Poster Sant'Erasmo" loading="lazy" decoding="async">
+          </div>
+          <h3>Poster Sant'Erasmo</h3>
+          <p class="desc">Locandina artistica celebrativa in edizione limitata per la notte di Sant'Erasmo.</p>
+          <div class="riquadro-piede">
+            <span class="prezzo">10,00&nbsp;€</span>
+            <button class="bottoncino" type="button" data-aggiungi>+ Aggiungi</button>
+          </div>
+        </article>
+
+        <article class="riquadro" data-pezzo="poster-venti" data-nome="Poster Rosa dei Venti" data-prezzo="10">
+          <div class="riquadro-foto">
+            <span class="genere">Stampa</span>
+            <img src="assets/prodotti/poster-rosa-dei-venti.webp" alt="Poster Rosa dei Venti" loading="lazy" decoding="async">
+          </div>
+          <h3>Poster Rosa dei Venti</h3>
+          <p class="desc">Grafica vettoriale minimale e dettagli d'archivio ispirati ai venti del Jonio.</p>
+          <div class="riquadro-piede">
+            <span class="prezzo">10,00&nbsp;€</span>
+            <button class="bottoncino" type="button" data-aggiungi>+ Aggiungi</button>
+          </div>
+        </article>
+
+        <article class="riquadro" data-pezzo="bandiera" data-nome="Bandiera Taranto Futura" data-prezzo="35">
+          <div class="riquadro-foto">
+            <span class="genere">Edizione limitata</span>
+            <img src="assets/prodotti/bandiera.webp" alt="Bandiera Taranto Futura" loading="lazy" decoding="async">
+          </div>
+          <h3>Bandiera Taranto Futura</h3>
+          <p class="desc">Bandiera in tessuto ad alta resistenza con logo e simboli ufficiali del collettivo.</p>
+          <div class="riquadro-piede">
+            <span class="prezzo">35,00&nbsp;€</span>
+            <button class="bottoncino" type="button" data-aggiungi>+ Aggiungi</button>
+          </div>
+        </article>
+
+        <article class="riquadro" data-pezzo="tote" data-nome="Tote Bag" data-prezzo="15">
+          <div class="riquadro-foto">
+            <span class="genere">Accessorio</span>
+            <img src="assets/prodotti/tote-bag.webp" alt="Tote Bag" loading="lazy" decoding="async">
+          </div>
+          <h3>Tote Bag</h3>
+          <p class="desc">Borsa in cotone naturale 100% con stampa serigrafica ad alta definizione.</p>
+          <div class="riquadro-piede">
+            <span class="prezzo">15,00&nbsp;€</span>
+            <button class="bottoncino" type="button" data-aggiungi>+ Aggiungi</button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+<!-- ══ I PANNELLI ═══════════════════════════════════ -->
+
+<div class="pannello" id="pan-eventi" role="dialog" aria-modal="true" aria-labelledby="pan-eventi-tit" hidden>
+  <header class="pannello-barra">
+    <div>
+      <p class="pannello-occhiello">Cosa facciamo per la citt&agrave;</p>
+      <h2 id="pan-eventi-tit">Eventi</h2>
+    </div>
+    <button class="pannello-chiudi" type="button" aria-label="Chiudi Eventi">&#10005;</button>
+  </header>
+  <div class="pannello-corpo">
+<div class="wrap">
+      
+      <div class="locandine">
+        <a class="locandina prossima" href="#contatti">
+          <div class="locandina-tela">
+            <span class="voluta" aria-hidden="true"></span>
+            <span class="prossima-dicitura">Coming soon</span>
+          </div>
+          <div class="locandina-testa">
+            <span class="locandina-data">In annuncio</span>
+            <span class="locandina-stato aperto">Lista d'attesa</span>
+          </div>
+          <h3>La prossima</h3>
+          <p>Data e luogo ancora chiusi in cassaforte.<br>Lasciaci la mail e la sai prima degli altri.</p>
+          <span class="locandina-sfoglia">Entra in lista &rarr;</span>
+        </a>
+        <button class="locandina" type="button" data-book="kat2708">
+          <div class="locandina-tela">
+            <video src="assets/video/kat2708.mp4" poster="assets/video/kat2708.jpg"
+                   muted loop playsinline preload="none"
+                   aria-label="Locandina animata: Taranto Futura al KAT"></video>
+          </div>
+          <div class="locandina-testa">
+            <span class="locandina-data">27 · 08</span>
+            <span class="locandina-stato">Concluso</span>
+          </div>
+          <h3>Taranto Futura al KAT</h3>
+          <p>O! Michello! · Sexy Pummarola<br>KAT, Saturo — 22:00 / 01:00, free gadget</p>
+          <span class="locandina-sfoglia">Sfoglia il book &rarr;</span>
+        </button>
+        <button class="locandina" type="button" data-book="boat">
+          <div class="locandina-tela">
+            <video src="assets/video/boat.mp4" poster="assets/video/boat.jpg"
+                   muted loop playsinline preload="none"
+                   aria-label="Locandina animata: Boat Club — Nave Cala Junco"></video>
+          </div>
+          <div class="locandina-testa">
+            <span class="locandina-data">19 · 08</span>
+            <span class="locandina-stato">Esaurito</span>
+          </div>
+          <h3>Boat Club — Nave Cala Junco</h3>
+          <p>O! Michello! · Marta Paradise<br>Mar Grande, 21:00 / 01:00 — con secret after party</p>
+          <span class="locandina-sfoglia">Sfoglia il book &rarr;</span>
+        </button>
+        <button class="locandina" type="button" data-book="kat0608">
+          <div class="locandina-tela">
+            <video src="assets/video/kat0608.mp4" poster="assets/video/kat0608.jpg"
+                   muted loop playsinline preload="none"
+                   aria-label="Locandina animata: Dopamina al KAT"></video>
+          </div>
+          <div class="locandina-testa">
+            <span class="locandina-data">06 · 08</span>
+            <span class="locandina-stato">Concluso</span>
+          </div>
+          <h3>Dopamina al KAT</h3>
+          <p>Riccardo Mensitieri · O! Michello!<br>KAT, Saturo — 22:00 / 01:00, free gadget</p>
+          <span class="locandina-sfoglia">Sfoglia il book &rarr;</span>
+        </button>
+        <button class="locandina" type="button" data-book="kat3007">
+          <div class="locandina-tela">
+            <video src="assets/video/kat3007.mp4" poster="assets/video/kat3007.jpg"
+                   muted loop playsinline preload="none"
+                   aria-label="Locandina animata: Taranto Futura al KAT"></video>
+          </div>
+          <div class="locandina-testa">
+            <span class="locandina-data">30 · 07</span>
+            <span class="locandina-stato">Concluso</span>
+          </div>
+          <h3>Taranto Futura al KAT</h3>
+          <p>Camera Quartet · Les Yos b2b Ewöp b2b Paolo Hz<br>KAT, Saturo — 22:00 / 01:00, free gadget</p>
+          <span class="locandina-sfoglia">Sfoglia il book &rarr;</span>
+        </button>
+        <button class="locandina" type="button" data-book="festival">
+          <div class="locandina-tela">
+            <video src="assets/video/festival.mp4" poster="assets/video/festival.jpg"
+                   muted loop playsinline preload="none"
+                   aria-label="Locandina animata: Mediterraneo CMF — Closing Party"></video>
+          </div>
+          <div class="locandina-testa">
+            <span class="locandina-data">30 · 06</span>
+            <span class="locandina-stato">Concluso</span>
+          </div>
+          <h3>Mediterraneo CMF — Closing Party</h3>
+          <p>Erika C. · Vivarobbo<br>Baia dei Mori, Pulsano — 21:00 till end</p>
+          <span class="locandina-sfoglia">Sfoglia il book &rarr;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pannello" id="pan-fanzine" role="dialog" aria-modal="true" aria-labelledby="pan-fanzine-tit" hidden>
+  <header class="pannello-barra">
+    <div>
+      <p class="pannello-occhiello">Cosa facciamo per la citt&agrave;</p>
+      <h2 id="pan-fanzine-tit">Fanzine</h2>
+    </div>
+    <button class="pannello-chiudi" type="button" aria-label="Chiudi Fanzine">&#10005;</button>
+  </header>
+  <div class="pannello-corpo">
+<div class="wrap">
+      
+      <h2>Esce quando abbiamo qualcosa da dire.</h2>
+      <p class="premessa">NZACC è il nostro magazine: interviste, foto, illustrazioni e un pezzo di città per volta. <b>Si sfoglia qui, intero e gratis.</b> La copia stampata non si vende: gira alle serate, finché ce n'è.</p>
+      <div class="fregio-filo" aria-hidden="true"></div>
+
+      <div class="riquadri fanzine-grid">
+
+        <article class="riquadro">
+          <button class="riquadro-foto" type="button" data-sfoglia="01" aria-label="Sfoglia NZACC 01">
+            <span class="genere">n. 01</span>
+            <img src="assets/fanzine/nzacc-01.jpg" alt="Copertina di NZACC 01" loading="lazy" decoding="async">
+            <span class="sfoglia-invito">Sfoglia il numero</span>
+          </button>
+          <h3>NZACC 01</h3>
+          <p class="desc">Fido Guido, la storia della musica in tarantino, Com'è profondo il mare, enigmistica futura.</p>
+          <div class="riquadro-piede">
+            <span class="prezzo spento">52 pagine</span>
+            <button class="bottoncino chiaro" type="button" data-sfoglia="01">Sfoglia</button>
+          </div>
+        </article>
+
+        <article class="riquadro">
+          <button class="riquadro-foto" type="button" data-sfoglia="00" aria-label="Sfoglia NZACC 00">
+            <span class="genere">n. 00</span>
+            <img src="assets/fanzine/nzacc-00.jpg" alt="Copertina di NZACC 00" loading="lazy" decoding="async">
+            <span class="sfoglia-invito">Sfoglia il numero</span>
+          </button>
+          <h3>NZACC 00</h3>
+          <p class="desc">Il primo numero, quello da cui è partito tutto. La carta è finita da un pezzo, il numero resta qui.</p>
+          <div class="riquadro-piede">
+            <span class="prezzo spento">36 pagine</span>
+            <button class="bottoncino chiaro" type="button" data-sfoglia="00">Sfoglia</button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sfoglio" id="sfoglio" role="dialog" aria-modal="true" aria-labelledby="sfoglio-titolo" hidden>
+  <div class="testa-modale">
+    <div>
+      <p>Fanzine</p>
+      <h3 id="sfoglio-titolo">NZACC</h3>
+    </div>
+    <div class="sfoglio-strumenti">
+      <a class="sfoglio-scarica" id="sfoglio-pdf" href="#" download>Scarica il PDF</a>
+      <button class="book-chiudi" type="button" id="sfoglio-chiudi" aria-label="Chiudi lo sfogliatore">&#10005;</button>
+    </div>
+  </div>
+
+  <div class="sfoglio-scena">
+    <button class="sfoglio-freccia prima" type="button" id="sfoglio-prec" aria-label="Pagina precedente">&#8249;</button>
+    <div class="sfoglio-pagine" id="sfoglio-pagine"></div>
+    <button class="sfoglio-freccia dopo" type="button" id="sfoglio-succ" aria-label="Pagina successiva">&#8250;</button>
+  </div>
+
+  <div class="sfoglio-piede">
+    <span class="fregio-onda" aria-hidden="true"></span>
+    <span class="sfoglio-conta" id="sfoglio-conta">1 / 1</span>
+    <button class="sfoglio-lente" type="button" id="sfoglio-lente"
+            aria-pressed="false">Una pagina</button>
+    <span class="fregio-onda" aria-hidden="true"></span>
+  </div>
+</div>
+
+<div class="cassetto" id="cassetto" role="dialog" aria-modal="true" aria-labelledby="cassetto-titolo" hidden>
+  <div class="cassetto-velo" data-serra></div>
+  <div class="cassetto-corpo">
+    <div class="testa-modale">
+      <div>
+        <p>Il banco</p>
+        <h3 id="cassetto-titolo">Carrello</h3>
+      </div>
+      <button class="book-chiudi" type="button" data-serra aria-label="Chiudi il carrello">&#10005;</button>
+    </div>
+    <div class="dentro">
+      <div id="cassetto-voci" aria-live="polite"></div>
+      <div id="cassetto-coda" hidden>
+        <div class="fregio-filo stretto" aria-hidden="true"></div>
+        <div class="somma"><span>Totale</span><b id="cassetto-totale">0,00 €</b></div>
+        <p class="chiosa">Il totale è indicativo: l'eventuale spedizione la concordiamo insieme dopo la richiesta.</p>
+        <button class="invia pieno" type="button" id="vai-ordine">Procedi con la richiesta</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="finestra" id="finestra" role="dialog" aria-modal="true" aria-labelledby="finestra-titolo" hidden>
+  <div class="finestra-corpo">
+    <div class="testa-modale">
+      <div>
+        <p id="finestra-passo">Passo 1 di 2</p>
+        <h3 id="finestra-titolo">Come lo vuoi</h3>
+      </div>
+      <button class="book-chiudi" type="button" id="finestra-chiudi" aria-label="Chiudi">&#10005;</button>
+    </div>
+
+    <!-- ── passo 1: ritiro o spedizione ── -->
+    <div class="dentro" id="passo-modo">
+      <div class="riepilogo" id="riepilogo"></div>
+      <div class="fregio-filo stretto" aria-hidden="true"></div>
+
+      <div class="modi">
+        <button class="modo" type="button" data-modo="Ritiro di persona">
+          <b>Ritiro di persona</b>
+          <span>Ci mettiamo d&rsquo;accordo su dove e quando, per email o in DM su Instagram.</span>
+        </button>
+        <button class="modo" type="button" data-modo="Spedizione con Vinted">
+          <b>Spedizione</b>
+          <span>Spediamo tramite Vinted: ti mandiamo il link del nostro profilo per email e chiudi l&rsquo;acquisto da l&igrave;.</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── passo 2: i tuoi dati ── -->
+    <div class="dentro" id="passo-dati" hidden>
+      <button class="indietro" type="button" id="torna-modo">&larr; Cambia</button>
+      <div class="scelto" id="scelto"></div>
+
+      <div class="campi">
+        <label class="nascosto" for="d-nome">Nome</label>
+        <div class="campo"><input id="d-nome" type="text" placeholder="Nome" autocomplete="given-name"></div>
+        <label class="nascosto" for="d-cognome">Cognome</label>
+        <div class="campo"><input id="d-cognome" type="text" placeholder="Cognome" autocomplete="family-name"></div>
+        <label class="nascosto" for="d-mail">Email</label>
+        <div class="campo"><input id="d-mail" type="email" placeholder="Email" autocomplete="email"></div>
+        <label class="nascosto" for="d-ig">Instagram</label>
+        <div class="campo"><input id="d-ig" type="text" placeholder="@instagram (facoltativo)"></div>
+        <label class="nascosto" for="d-tel">Telefono</label>
+        <div class="campo"><input id="d-tel" type="tel" placeholder="Telefono (facoltativo)" autocomplete="tel"></div>
+
+        <label class="consenso">
+          <input type="checkbox" id="d-ok">
+          <span>Acconsento al trattamento dei dati per la gestione della richiesta (vedi Privacy &amp; Cookie Policy).</span>
+        </label>
+        <div><button class="invia pieno" type="button" id="d-invia">Manda la richiesta</button></div>
+        <p class="esito" id="d-esito" hidden></p>
+      </div>
+    </div>
+
+    <!-- ── fatto ── -->
+    <div class="dentro fatto" id="finestra-fatto" hidden>
+      <span class="voluta-grande" aria-hidden="true"></span>
+      <h4>Richiesta partita.</h4>
+      <p id="fatto-testo"></p>
+      <a class="dm" href="https://www.instagram.com/tarantofutura" target="_blank" rel="noopener">Scrivici su Instagram</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ══ tiny helpers ══════════════════════════════════ */
+  var clamp = function(v, lo, hi){ return Math.min(hi, Math.max(lo, v)); };
+  var smoothstep = function(p, e0, e1){
+    var t = clamp((p - e0) / (e1 - e0), 0, 1);
+    return t * t * (3 - 2 * t);
+  };
+  function rng(seed){
+    var s = seed >>> 0;
+    return function(){ s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+  }
+
+  /* ══ the coin's milled edge ════════════════════════ */
+  (function(){
+    var bordo = document.getElementById('bordo');
+    if (!bordo) return;
+    var n = 56, d = 260, w = (Math.PI * d) / n + 1.2;
+    var html = '';
+    for (var i = 0; i < n; i++){
+      html += '<i style="--giro:' + (360 / n * i).toFixed(2) + 'deg;--larghezza:' + w.toFixed(2) + 'px"></i>';
+    }
+    bordo.innerHTML = html;
+  })();
+
+  /* ══ split text into word and character spans ══════ */
+  function split(el, mode, spread){
+    var text = el.getAttribute('data-testo');
+    if (!text) return;
+    var r = rng(20260910);
+    var vh = document.createElement('span');
+    vh.className = 'vh';
+    vh.textContent = text;
+
+    var vis = document.createElement('span');
+    vis.setAttribute('aria-hidden', 'true');
+
+    var words = text.split(' ');
+    var total = text.replace(/ /g, '').length;
+    var idx = 0;
+
+    words.forEach(function(word, wi){
+      var w = document.createElement('span');
+      w.className = 'w';
+      if (mode === 'drift' || mode === 'rise'){
+        w.style.setProperty('--th', (wi / Math.max(1, words.length - 1) * 0.5).toFixed(3));
+      }
+      for (var i = 0; i < word.length; i++){
+        var c = document.createElement('span');
+        c.className = 'c';
+        c.textContent = word[i];
+        if (mode === 'scatter'){
+          c.style.setProperty('--th', ((idx / total) * (spread || 0.4) + r() * 0.06).toFixed(3));
+          c.style.setProperty('--jx', ((r() - 0.5) * 90).toFixed(1) + 'px');
+          c.style.setProperty('--jy', ((r() - 0.5) * 70).toFixed(1) + 'px');
+          c.style.setProperty('--jr', ((r() - 0.5) * 40).toFixed(1) + 'deg');
+        }
+        idx++;
+        w.appendChild(c);
+      }
+      vis.appendChild(w);
+      if (wi < words.length - 1) vis.appendChild(document.createTextNode(' '));
+    });
+
+    el.textContent = '';
+    el.appendChild(vh);
+    el.appendChild(vis);
+  }
+
+  document.querySelectorAll('[data-testo]').forEach(function(el){
+    var band = el.closest('.banda');
+    var mode = band ? band.getAttribute('data-ent') : 'drift';
+    var spread = band && band.getAttribute('data-spread') ? parseFloat(band.getAttribute('data-spread')) : 0.4;
+    split(el, mode, spread);
+  });
+
+  /* ══ a still that never arrives leaves a composed panel ══ */
+  document.querySelectorAll('.tela img').forEach(function(img){
+    function miss(){
+      img.classList.add('mancante');
+      var t = img.closest('.tela');
+      if (t) t.classList.add('vuota');
+    }
+    if (img.complete && img.naturalWidth === 0) miss();
+    img.addEventListener('error', miss);
+  });
+
+  /* ══ the caption bands ═════════════════════════════ */
+  var bandEls = [].slice.call(document.querySelectorAll('.banda'));
+  var bands = bandEls.map(function(el, i){
+    return {
+      el: el,
+      a: parseFloat(el.getAttribute('data-a')),
+      b: parseFloat(el.getAttribute('data-b')),
+      ramp: el.getAttribute('data-ramp') ? parseFloat(el.getAttribute('data-ramp')) : 0,
+      first: i === 0,
+      last: i === bandEls.length - 1,
+      op: -1,
+      k: -1
+    };
+  });
+
+  var loadK = 0, loadStart = 0;
+
+  function updateCaptions(p){
+    for (var i = 0; i < bands.length; i++){
+      var bd = bands[i];
+      var f = Math.min(0.02, (bd.b - bd.a) / 3);
+      var inEase  = bd.first ? 1 : smoothstep(p, bd.a, bd.a + f);
+      var outEase = bd.last  ? 1 : (1 - smoothstep(p, bd.b - f, bd.b));
+      var op = inEase * outEase;
+
+      var ramp = bd.ramp || Math.min(0.025, (bd.b - bd.a) * 0.35);
+      var k = clamp((p - bd.a) / ramp, 0, 1);
+      if (bd.first) k = Math.max(k, loadK);
+
+      if (Math.abs(op - bd.op) > 0.004){
+        bd.op = op;
+        bd.el.style.opacity = op.toFixed(3);
+      }
+      if (Math.abs(k - bd.k) > 0.008){
+        bd.k = k;
+        bd.el.style.setProperty('--k', k.toFixed(3));
+      }
+    }
+  }
+
+  /* ══ the scrub engine ══════════════════════════════ */
+  var VIDEO_URL   = 'assets/hero-scrub.mp4';
+  var VIDEO_BYTES = 10324926;
+  var POSTER_URL  = 'assets/hero-poster.jpg';
+
+  var eroe   = document.querySelector('.eroe');
+  var palco  = document.getElementById('palco');
+  var video  = document.getElementById('eroe-video');
+  var poster = document.getElementById('poster');
+  var anello = document.getElementById('anello');
+  var posterFisso = document.getElementById('poster-fisso');
+
+  /* phones get the first frame, the real castle, not the near black ending */
+  if (posterFisso) posterFisso.style.backgroundImage = "url('assets/hero-poster.jpg')";
+
+  var target = 0, shown = 0, rafId = null, lastTick = 0;
+  var seekBusy = false, pendingTime = null;
+  var heroOnScreen = true;
+  var scrubOn = false;
+  var heroInit = false;
+
+  function heroProgress(){
+    if (!eroe) return 0;
+    var rect = eroe.getBoundingClientRect();
+    var range = eroe.offsetHeight - window.innerHeight;
+    if (range <= 0) return 0;
+    return clamp(-rect.top / range, 0, 1);
+  }
+
+  function requestSeek(t){
+    if (!video.duration) return;
+    if (seekBusy){ pendingTime = t; return; }
+    seekBusy = true;
+    try { video.currentTime = t; } catch(e){ seekBusy = false; }
+  }
+  video.addEventListener('seeked', function(){
+    seekBusy = false;
+    if (pendingTime !== null){
+      var t = pendingTime; pendingTime = null; requestSeek(t);
+    }
+  });
+  video.addEventListener('error', function(){
+    seekBusy = false; pendingTime = null; failVideo();
+  });
+
+  function tick(now){
+    var dt = Math.min(100, now - (lastTick || now));
+    lastTick = now;
+    var k = 0.16;
+    shown += (target - shown) * (1 - Math.pow(1 - k, dt / 16.667));
+
+    if (loadK < 1 && loadStart){
+      loadK = clamp((now - loadStart) / 900, 0, 1);
+    }
+
+    var settled = Math.abs(target - shown) < 0.0005 && loadK >= 1;
+    if (settled){
+      shown = target; rafId = null; lastTick = 0;
+    } else {
+      rafId = requestAnimationFrame(tick);
+    }
+    if (video.duration) requestSeek(shown * video.duration);
+    updateCaptions(shown);
+  }
+
+  function kick(){
+    if (rafId === null && heroOnScreen && scrubOn) rafId = requestAnimationFrame(tick);
+  }
+  function onScroll(){ target = heroProgress(); kick(); }
+
+  function failVideo(){
+    if (palco) palco.classList.add('video-failed');
+    if (anello && anello.parentNode && !document.querySelector('.freccia-giu')){
+      var cue = document.createElement('div');
+      cue.className = 'freccia-giu';
+      cue.setAttribute('aria-hidden', 'true');
+      cue.innerHTML = '<i></i><span>Scorri</span>';
+      anello.parentNode.replaceChild(cue, anello);
+    }
+  }
+
+  function loadHeroBlob(){
+    var ctrl = new AbortController();
+    var watchdog = setTimeout(function(){ ctrl.abort(); }, 20000);
+
+    return fetch(VIDEO_URL, { signal: ctrl.signal }).then(function(res){
+      if (!res.ok || !res.body) throw new Error('no body');
+      var total = Number(res.headers.get('Content-Length')) || VIDEO_BYTES;
+      var reader = res.body.getReader();
+      var chunks = [], got = 0, lastRing = 0;
+
+      function pump(){
+        return reader.read().then(function(r){
+          if (r.done) return;
+          clearTimeout(watchdog);
+          watchdog = setTimeout(function(){ ctrl.abort(); }, 20000);
+          chunks.push(r.value);
+          got += r.value.length;
+          var frac = Math.min(1, got / total);
+          var now = performance.now();
+          if (now - lastRing > 100 || frac === 1){
+            lastRing = now;
+            anello.style.setProperty('--ld', Math.round(126 * (1 - frac)));
+          }
+          return pump();
+        });
+      }
+
+      return pump().then(function(){
+        clearTimeout(watchdog);
+        anello.style.setProperty('--ld', 0);
+        video.src = URL.createObjectURL(new Blob(chunks, { type: 'video/mp4' }));
+        video.load();
+        video.addEventListener('canplay', function(){
+          if (video.duration) requestSeek(heroProgress() * video.duration);
+          palco.classList.add('video-ready');
+        }, { once: true });
+      });
+    });
+  }
+
+  function initHeroOnce(){
+    if (heroInit) return;
+    heroInit = true;
+
+    poster.style.backgroundImage = "url('" + POSTER_URL + "')";
+    var started = false;
+    function startBlobFetch(){
+      if (started) return;
+      started = true;
+      loadHeroBlob().catch(failVideo);
+    }
+    var img = new Image();
+    img.onload = startBlobFetch;
+    img.onerror = startBlobFetch;
+    img.src = POSTER_URL;
+    setTimeout(startBlobFetch, 4000);
+
+    loadStart = performance.now();
+
+    if ('IntersectionObserver' in window && eroe){
+      new IntersectionObserver(function(entries){
+        heroOnScreen = entries[0].isIntersecting;
+        if (heroOnScreen) kick();
+      }, { rootMargin: '10% 0px' }).observe(eroe);
+    }
+  }
+
+  /* ══ the five gates, live in both directions ═══════ */
+  var GATES = [
+    '(max-width: 720px)',
+    '(orientation: portrait) and (max-width: 1024px)',
+    '(orientation: portrait) and (pointer: coarse)',
+    '(orientation: landscape) and (pointer: coarse) and (max-height: 560px)',
+    '(prefers-reduced-motion: reduce)'
+  ];
+
+  function enableScrub(){
+    if (scrubOn) return;
+    scrubOn = true;
+    initHeroOnce();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    bands.forEach(function(b){ b.op = -1; b.k = -1; });
+    unpinFinalStates();
+    updateCaptions(heroProgress());
+    onScroll();
+  }
+  function disableScrub(){
+    if (!scrubOn) return;
+    scrubOn = false;
+    window.removeEventListener('scroll', onScroll);
+    if (rafId !== null){ cancelAnimationFrame(rafId); rafId = null; }
+  }
+  function applyHeroMode(){
+    var hit = GATES.some(function(q){ return matchMedia(q).matches; });
+    if (hit) disableScrub(); else enableScrub();
+  }
+  var MQLS = GATES.map(function(q){ return matchMedia(q); });
+  MQLS.forEach(function(m){
+    if (m.addEventListener) m.addEventListener('change', applyHeroMode);
+    else if (m.addListener) m.addListener(applyHeroMode);
+  });
+
+  /* ══ RADICI: entrances, the sounding line, friezes ══ */
+  var friezes = [].slice.call(document.querySelectorAll('[data-fregio]'));
+  friezes.forEach(function(svg){
+    [].slice.call(svg.querySelectorAll('path, circle, line')).forEach(function(p){
+      var len = 600;
+      try { len = p.getTotalLength ? p.getTotalLength() : 600; } catch(e){}
+      if (!len || !isFinite(len)) len = 600;
+      p.style.setProperty('--len', Math.ceil(len));
+    });
+  });
+
+  var sez     = document.getElementById('radici');
+  var filo    = document.getElementById('scandaglio-filo');
+  var scand   = document.getElementById('scandaglio');
+  var stories = [].slice.call(document.querySelectorAll('.racconto'));
+
+  /* one depth chip per story, positioned on the sounding line */
+  if (scand){
+    stories.forEach(function(st){
+      var chip = document.createElement('span');
+      chip.className = 'profondita';
+      chip.textContent = st.getAttribute('data-prof');
+      chip.setAttribute('aria-hidden', 'true');
+      scand.appendChild(chip);
+      st._chip = chip;
+    });
+  }
+
+  var lastFilo = -1;
+  function drawRadici(){
+    if (!sez) return;
+
+    if (scand && filo){
+      var r = sez.getBoundingClientRect();
+      var span = r.height - window.innerHeight * 0.4;
+      var prog = clamp((window.innerHeight * 0.6 - r.top) / Math.max(1, span), 0, 1);
+      var pct = Math.round(prog * 1000) / 10;
+      if (Math.abs(pct - lastFilo) > 0.3){
+        lastFilo = pct;
+        filo.style.height = pct + '%';
+      }
+      /* measure against the section's own box, never offsetTop:
+         offsetTop is relative to the nearest positioned ancestor, and mixing
+         that with the section's document offset throws the chips into the hero */
+      var sr = sez.getBoundingClientRect();
+      stories.forEach(function(st){
+        if (!st._chip) return;
+        var rr = st.getBoundingClientRect();
+        var top = Math.round((rr.top - sr.top) + rr.height / 2);
+        if (st._chipTop !== top){
+          st._chipTop = top;
+          st._chip.style.top = top + 'px';
+        }
+      });
+    }
+
+    friezes.forEach(function(svg){
+      var fr = svg.getBoundingClientRect();
+      var d = clamp((window.innerHeight * 0.92 - fr.top) / (window.innerHeight * 0.42), 0, 1);
+      if (svg._d === undefined || Math.abs(d - svg._d) > 0.01){
+        svg._d = d;
+        svg.style.setProperty('--d', d.toFixed(3));
+      }
+    });
+  }
+
+  var radRaf = null;
+  function onScrollRadici(){
+    if (radRaf !== null) return;
+    radRaf = requestAnimationFrame(function(){ radRaf = null; drawRadici(); });
+  }
+  window.addEventListener('scroll', onScrollRadici, { passive: true });
+  window.addEventListener('resize', onScrollRadici);
+
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        el.classList.add('in');
+        io.unobserve(el);
+        setTimeout(function(){ el.classList.add('finito'); }, 1400);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+    document.querySelectorAll('[data-svela]').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('[data-svela]').forEach(function(el){ el.classList.add('in', 'finito'); });
+  }
+
+  /* ══ CARTE TARANTINE: the deck, choreographed by scroll ══
+     Four movements: the deck turns face on, it fans, three cards step
+     forward in turn, then it closes back. All transform and opacity,
+     scrubbed off scroll progress, fully reversible, delta gated. ══ */
+  (function(){
+    var scena = document.getElementById('mazzo-scena');
+    var mazzo = document.getElementById('mazzo');
+    if (!scena || !mazzo) return;
+
+    var carte = [].slice.call(mazzo.querySelectorAll('.carta'));
+    var cbands = [].slice.call(scena.querySelectorAll('.carte-banda')).map(function(el){
+      return { el: el, a: +el.getAttribute('data-a'), b: +el.getAttribute('data-b'), op: -1, k: -1 };
+    });
+
+    var N = carte.length;
+    var FAN = 13;                 /* degrees between fanned cards */
+    var FEATURED = [0, 1, 2];     /* which cards step forward, in order */
+    var F0 = 0.48, FW = 0.20;     /* first feature window start and width */
+
+    var raf = null, lastP = -1;
+
+    function progress(){
+      var r = scena.getBoundingClientRect();
+      var range = scena.offsetHeight - window.innerHeight;
+      if (range <= 0) return 0;
+      return clamp(-r.top / range, 0, 1);
+    }
+
+    function draw(p){
+      var turn = smoothstep(p, 0.00, 0.20);   /* edge on to face on */
+      var fan  = smoothstep(p, 0.22, 0.44);   /* spread */
+      var shut = smoothstep(p, 0.90, 1.00);   /* close back */
+
+      for (var i = 0; i < N; i++){
+        var c = carte[i];
+        var mid = (N - 1) / 2;
+        var off = i - mid;
+
+        /* which feature window, if any, belongs to this card */
+        var featIdx = FEATURED.indexOf(i);
+        var feat = 0;
+        if (featIdx > -1){
+          var a = F0 + featIdx * FW;
+          feat = smoothstep(p, a, a + FW * 0.42) * (1 - smoothstep(p, a + FW * 0.72, a + FW));
+        }
+
+        var spread = fan * (1 - shut);
+        var rot = off * FAN * spread;
+        var tx  = off * 30 * spread;
+        var ty  = Math.abs(off) * 9 * spread;
+        var tz  = (i - mid) * 3;
+
+        /* the featured card leaves the fan and comes to the front */
+        rot += (0 - rot) * feat;
+        tx  += (0 - tx)  * feat;
+        ty  += (-18 - ty) * feat;
+        tz  += 190 * feat;
+
+        var turnY = (1 - turn) * -78;
+        var sc = 1 + 0.13 * feat;
+        var dim = 1 - 0.55 * (spread * 0.35) * (featIdx > -1 ? (1 - feat) : 1);
+
+        var t = 'translate3d(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px,' + tz.toFixed(1) + 'px)'
+              + ' rotateY(' + turnY.toFixed(1) + 'deg)'
+              + ' rotateZ(' + rot.toFixed(2) + 'deg)'
+              + ' scale(' + sc.toFixed(3) + ')';
+
+        if (c._t !== t){ c._t = t; c.style.transform = t; }
+        var o = (0.55 + 0.45 * turn) * dim;
+        var oq = Math.round(o * 100) / 100;
+        if (c._o !== oq){ c._o = oq; c.style.opacity = oq; }
+
+        var lit = feat > 0.5;
+        if (c._lit !== lit){ c._lit = lit; c.classList.toggle('in-luce', lit); }
+      }
+
+      for (var j = 0; j < cbands.length; j++){
+        var bd = cbands[j];
+        var f = Math.min(0.02, (bd.b - bd.a) / 3);
+        var first = j === 0, last = j === cbands.length - 1;
+        var op = (first ? 1 : smoothstep(p, bd.a, bd.a + f))
+               * (last ? 1 : (1 - smoothstep(p, bd.b - f, bd.b)));
+        var k = clamp((p - bd.a) / Math.min(0.03, (bd.b - bd.a) * 0.4), 0, 1);
+        if (Math.abs(op - bd.op) > 0.004){ bd.op = op; bd.el.style.opacity = op.toFixed(3); }
+        if (Math.abs(k - bd.k) > 0.008){ bd.k = k; bd.el.style.setProperty('--ck', k.toFixed(3)); }
+      }
+    }
+
+    function onScrollCarte(){
+      if (raf !== null) return;
+      raf = requestAnimationFrame(function(){
+        raf = null;
+        var p = progress();
+        if (Math.abs(p - lastP) < 0.0004) return;
+        lastP = p;
+        draw(p);
+      });
+    }
+
+    window.addEventListener('scroll', onScrollCarte, { passive: true });
+    window.addEventListener('resize', onScrollCarte);
+    draw(progress());
+
+    scena._pin = function(){
+      window.removeEventListener('scroll', onScrollCarte);
+      if (raf !== null){ cancelAnimationFrame(raf); raf = null; }
+      carte.forEach(function(c){ c.style.transform = ''; c.style.opacity = ''; c.classList.remove('in-luce'); c._t = c._o = c._lit = undefined; });
+      cbands.forEach(function(b){ b.el.style.opacity = ''; b.op = -1; b.k = -1; });
+    };
+    scena._unpin = function(){
+      window.removeEventListener('scroll', onScrollCarte);
+      window.addEventListener('scroll', onScrollCarte, { passive: true });
+      lastP = -1;
+      draw(progress());
+    };
+  })();
+
+  /* ══ the one interactive moment: stitching the net ══ */
+  (function(){
+    var wrap = document.getElementById('rete-blocco');
+    var svg  = document.getElementById('rete');
+    var seam = document.getElementById('strappo');
+    var label= document.getElementById('rete-etichetta');
+    if (!wrap || !svg || !seam) return;
+
+    var len = 200;
+    try { len = seam.getTotalLength(); } catch(e){}
+    seam.style.setProperty('--len', Math.ceil(len));
+
+    var prog = 0, holding = false, raf = null, last = 0, done = false;
+
+    function frame(now){
+      /* once it is sewn it stays sewn: releasing must never undo the repair */
+      if (done){
+        prog = 1;
+        seam.style.setProperty('--cuci', '1');
+        raf = null; last = 0;
+        return;
+      }
+      var dt = Math.min(64, now - (last || now));
+      last = now;
+      prog = holding ? Math.min(1, prog + dt / 1500) : Math.max(0, prog - dt / 900);
+      seam.style.setProperty('--cuci', prog.toFixed(3));
+
+      if (prog >= 1 && !done){
+        done = true;
+        wrap.classList.add('cucita');
+        if (label) label.textContent = 'Cucita';
+      }
+      if ((holding && prog < 1) || (!holding && prog > 0)){
+        raf = requestAnimationFrame(frame);
+      } else {
+        raf = null; last = 0;
+      }
+    }
+    function start(e){
+      if (done) return;
+      if (e && e.cancelable) e.preventDefault();
+      holding = true;
+      if (label) label.textContent = 'Tieni premuto';
+      if (raf === null) raf = requestAnimationFrame(frame);
+    }
+    function stop(){
+      if (done) return;
+      holding = false;
+      if (label) label.textContent = 'Tieni premuto per cucire';
+      if (raf === null) raf = requestAnimationFrame(frame);
+    }
+
+    wrap.addEventListener('pointerdown', start);
+    window.addEventListener('pointerup', stop);
+    window.addEventListener('pointercancel', stop);
+    svg.addEventListener('keydown', function(e){
+      if (e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); start(); }
+    });
+    svg.addEventListener('keyup', stop);
+    svg.setAttribute('tabindex', '0');
+    svg.setAttribute('role', 'button');
+    svg.setAttribute('aria-label', 'Tieni premuto per cucire la rete');
+
+    wrap._finish = function(){
+      prog = 1; done = true;
+      seam.style.setProperty('--cuci', '1');
+      wrap.classList.add('cucita');
+      if (label) label.textContent = 'Cucita';
+      if (raf !== null){ cancelAnimationFrame(raf); raf = null; }
+    };
+  })();
+
+  /* ══ reduced motion, live, in both directions ══════ */
+  function pinToFinalStates(){
+    document.querySelectorAll('[data-svela]').forEach(function(el){ el.classList.add('in', 'finito'); });
+    friezes.forEach(function(svg){ svg.style.setProperty('--d', '1'); svg._d = 1; });
+    if (filo) filo.style.height = '100%';
+    var wrap = document.getElementById('rete-blocco');
+    if (wrap && wrap._finish) wrap._finish();
+    var scena = document.getElementById('mazzo-scena');
+    if (scena && scena._pin) scena._pin();
+    window.removeEventListener('scroll', onScrollRadici);
+    disableScrub();
+  }
+  function unpinFinalStates(){
+    friezes.forEach(function(svg){ svg._d = undefined; });
+    lastFilo = -1;
+    window.removeEventListener('scroll', onScrollRadici);
+    window.addEventListener('scroll', onScrollRadici, { passive: true });
+    var scena2 = document.getElementById('mazzo-scena');
+    if (scena2 && scena2._unpin) scena2._unpin();
+    drawRadici();
+  }
+  var rmq = matchMedia('(prefers-reduced-motion: reduce)');
+  function onRM(e){
+    if (e.matches) pinToFinalStates();
+    else applyHeroMode();
+  }
+  if (rmq.addEventListener) rmq.addEventListener('change', onRM);
+  else if (rmq.addListener) rmq.addListener(onRM);
+
+  /* ══ LE SETTE COSE: il mazzo che si scopre ═════════
+     Seven cards share one slot and take turns in it. Each owns a window of the
+     scroll; inside its window it lies flat and square, outside it tips away and
+     leaves. The card being dealt and the words about it are driven by the same
+     number, so they can never drift apart. ══ */
+  (function(){
+    var scena = document.getElementById('mazzo-scena');
+    var wrapC = document.getElementById('mazzo-carte');
+    var wrapT = document.getElementById('mazzo-testi');
+    if (!scena || !wrapC || !wrapT) return;
+
+    var carte = [].slice.call(wrapC.querySelectorAll('.cv'));
+    var testi = [].slice.call(wrapT.querySelectorAll('.mt'));
+    var conta = document.getElementById('mazzo-n');
+    var N = carte.length;
+    if (!N) return;
+
+    var raf = null, lastP = -1, lastN = -1;
+
+    function progress(){
+      var r = scena.getBoundingClientRect();
+      var range = scena.offsetHeight - window.innerHeight;
+      if (range <= 0) return 0;
+      return clamp(-r.top / range, 0, 1);
+    }
+
+    /* how present is card i, and which way is it leaning */
+    function place(i, p){
+      var d = p * N - (i + 0.5);        // 0 at its centre, ±0.5 at its edges
+      return d;
+    }
+
+    function draw(p){
+      /* the run is padded a little at both ends so the first card is already
+         settled when the scene pins, and the last one does not leave early */
+      var pp = clamp((p - 0.04) / 0.92, 0, 1);
+
+      for (var i = 0; i < N; i++){
+        var d = place(i, pp);
+        var a = Math.abs(d);
+
+        /* visible across its own window, gone by the next one */
+        var op = a >= 0.92 ? 0 : (a <= 0.5 ? 1 : 1 - (a - 0.5) / 0.42);
+
+        var y   = -d * 190;                       // arrives from below, leaves upward
+        var rx  = d * 13;                          // tips as it goes
+        var sc  = 1 - Math.min(0.16, a * 0.2);
+        var z   = -Math.min(220, a * 320);
+
+        var t = 'translate3d(0,' + y.toFixed(1) + 'px,' + z.toFixed(1) + 'px) '
+              + 'rotateX(' + rx.toFixed(2) + 'deg) scale(' + sc.toFixed(3) + ')';
+
+        var c = carte[i];
+        if (c._t !== t){ c._t = t; c.style.transform = t; }
+        var oq = Math.round(op * 100) / 100;
+        if (c._o !== oq){ c._o = oq; c.style.opacity = oq; c.style.zIndex = Math.round(100 - a * 50); }
+
+        var m = testi[i];
+        if (m){
+          /* Words cannot crossfade the way pictures can: two stacked paragraphs
+             at half opacity are not a dissolve, they are an unreadable mess.
+             So the text holds full, then clears fast, and never shares the
+             screen with the next one for longer than a blink. */
+          var ot = a <= 0.40 ? 1 : Math.max(0, 1 - (a - 0.40) / 0.11);
+          var mt = 'translate3d(0,' + (-d * 96).toFixed(1) + 'px,0)';
+          if (m._t !== mt){ m._t = mt; m.style.transform = mt; }
+          var tq = Math.round(ot * 100) / 100;
+          if (m._o !== tq){ m._o = tq; m.style.opacity = tq; }
+        }
+      }
+
+      if (conta){
+        var n = clamp(Math.floor(pp * N) + 1, 1, N);
+        if (n !== lastN){ lastN = n; conta.textContent = ('0' + n).slice(-2); }
+      }
+    }
+
+    function onScrollMazzo(){
+      if (raf !== null) return;
+      raf = requestAnimationFrame(function(){
+        raf = null;
+        var p = progress();
+        if (Math.abs(p - lastP) < 0.0004) return;
+        lastP = p;
+        draw(p);
+      });
+    }
+
+    window.addEventListener('scroll', onScrollMazzo, { passive: true });
+    window.addEventListener('resize', onScrollMazzo);
+    draw(progress());
+
+    scena._pin = function(){
+      window.removeEventListener('scroll', onScrollMazzo);
+      if (raf !== null){ cancelAnimationFrame(raf); raf = null; }
+      carte.concat(testi).forEach(function(el){
+        el.style.transform = ''; el.style.opacity = ''; el.style.zIndex = '';
+        el._t = el._o = undefined;
+      });
+    };
+    scena._unpin = function(){
+      window.removeEventListener('scroll', onScrollMazzo);
+      window.addEventListener('scroll', onScrollMazzo, { passive: true });
+      lastP = -1; lastN = -1;
+      draw(progress());
+    };
+  })();
+
+  /* ══ IL BILANCIO: contatori a rullo ════════════════
+     A real mechanical odometer, not a number that ticks. Each digit wheel is
+     driven by the live value, so the units blur past while the thousands
+     creep: that difference in speed is what makes it read as a machine.
+     Direction falls out of the maths on its own. A rising value pushes every
+     strip upward, a falling one pulls them down, so you SEE which way each
+     count is going without being told. ══ */
+  (function(){
+    var conti = [].slice.call(document.querySelectorAll('.conto'));
+    if (!conti.length) return;
+
+    var DUR = 2600;                       // the roll itself
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)');
+
+    function digits(n){ return Math.max(1, String(Math.floor(Math.abs(n))).length); }
+
+    /* build one wheel: 0..9 plus a repeated 0 so the wrap has somewhere to go */
+    function makeRullo(){
+      var r = document.createElement('span');
+      r.className = 'rullo';
+      var n = document.createElement('span');
+      n.className = 'nastro';
+      for (var i = 0; i <= 10; i++){
+        var b = document.createElement('b');
+        b.textContent = i % 10;
+        n.appendChild(b);
+      }
+      r.appendChild(n);
+      return r;
+    }
+
+    conti.forEach(function(c){
+      var da   = parseFloat(c.getAttribute('data-da'))   || 0;
+      var meta = parseFloat(c.getAttribute('data-meta')) || 0;
+      var giu  = meta < da;
+      var box  = c.querySelector('.conto-num');
+
+      /* enough wheels for the larger of the two ends, so nothing reflows mid roll */
+      var len = digits(Math.max(da, meta));
+      var wheels = [], slots = [];
+      for (var i = 0; i < len; i++){
+        /* Italian thousands point: it sits before digit i when the digits from
+           i to the end come in a whole number of groups of three. */
+        if (i > 0 && (len - i) % 3 === 0){
+          var dot = document.createElement('span');
+          dot.className = 'punto';
+          dot.textContent = '.';
+          box.appendChild(dot);
+          slots.push({ el: dot, at: i, punto: true });
+        }
+        var w = makeRullo();
+        box.appendChild(w);
+        slots.push({ el: w, at: i });
+        wheels.push(w.firstChild);
+      }
+
+      var caret = document.createElement('span');
+      caret.className = 'conto-verso';
+      caret.textContent = giu ? '▼' : '▲';
+      box.appendChild(caret);
+
+      c._da = da; c._meta = meta; c._giu = giu; c._wheels = wheels; c._len = len;
+      c._slots = slots; c._lead = -1;
+      c._filo = c.querySelector('.conto-filo');
+      c._val = da;
+      c._done = false;
+
+      paint(c, da);
+    });
+
+    /* one frame of the machine: every wheel positioned from the live value */
+    function paint(c, v){
+      var w = c._wheels, len = c._len;
+      for (var i = 0; i < len; i++){
+        var place = Math.pow(10, len - 1 - i);      // leftmost wheel is the biggest place
+        var t = v / place, off;
+        if (place === 1){
+          /* the units wheel is the one being driven: it never stops turning */
+          off = t % 10;
+        } else {
+          /* every wheel above it sits square on its digit and only flips at the
+             very end of the turn below, the way a real odometer is geared */
+          var whole = Math.floor(t), rest = t - whole;
+          off = (whole % 10) + (rest > 0.88 ? (rest - 0.88) / 0.12 : 0);
+        }
+        if (off < 0) off += 10;
+        w[i].style.transform = 'translateY(' + (-off) + 'em)';
+      }
+
+      /* A wheel that has run out of magnitude is a leading zero, and a leading
+         zero is not a number, it is padding. Retire them as the count shrinks,
+         and take their thousands point with them. Delta gated: this only
+         touches the DOM when the digit count actually changes. */
+      var lead = len - digits(v);
+      if (lead !== c._lead){
+        c._lead = lead;
+        for (var s = 0; s < c._slots.length; s++){
+          var sl = c._slots[s];
+          /* a wheel goes when the digits run out; a thousands point goes when
+             everything to its left has already gone, or it is left stranded */
+          var via = sl.punto ? (sl.at <= lead) : (sl.at < lead);
+          sl.el.style.opacity  = via ? '0' : '';
+          sl.el.style.width    = via ? '0px' : '';
+          sl.el.style.overflow = via ? 'hidden' : '';
+        }
+      }
+      if (c._filo){
+        var span = Math.abs(c._meta - c._da) || 1;
+        var pct = Math.min(100, Math.abs(v - c._da) / span * 100);
+        c._filo.style.setProperty('--riempi', pct.toFixed(1) + '%');
+      }
+    }
+
+    function roll(c, delay){
+      if (c._done) return;
+      c._done = true;
+
+      if (reduce.matches){
+        c._val = c._meta;
+        paint(c, c._meta);
+        c.classList.add('mostra');
+        return;
+      }
+
+      setTimeout(function(){
+        var t0 = performance.now();
+        var da = c._da, meta = c._meta, d = meta - da;
+        (function step(now){
+          var p = Math.min(1, (now - t0) / DUR);
+          var e = 1 - Math.pow(1 - p, 3);           // ease out: fast, then settles
+          c._val = da + d * e;
+          paint(c, c._val);
+          if (p < 1) requestAnimationFrame(step);
+          else {
+            c._val = meta;
+            paint(c, meta);
+            c.classList.add('mostra');
+            live(c);                                 // and then it keeps breathing
+          }
+        })(t0);
+      }, delay);
+    }
+
+    /* after it lands it keeps moving one at a time, which proves the direction
+       to anyone who stays long enough to notice */
+    function live(c){
+      var passo = parseFloat(c.getAttribute('data-passo')) || 0;
+      var ogni  = parseFloat(c.getAttribute('data-ogni'))  || 0;
+      if (!passo || !ogni || reduce.matches) return;
+      setInterval(function(){
+        if (document.hidden) return;
+        var from = c._val, to = from + passo, t0 = performance.now(), D = 620;
+        (function step(now){
+          var p = Math.min(1, (now - t0) / D);
+          var e = 1 - Math.pow(1 - p, 3);
+          c._val = from + (to - from) * e;
+          paint(c, c._val);
+          if (p < 1) requestAnimationFrame(step);
+        })(t0);
+      }, ogni);
+    }
+
+    if ('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if (!en.isIntersecting) return;
+          io.unobserve(en.target);
+          roll(en.target, conti.indexOf(en.target) * 160);
+        });
+      }, { threshold: 0.35 });
+      conti.forEach(function(c){ io.observe(c); });
+    } else {
+      conti.forEach(function(c, i){ roll(c, i * 160); });
+    }
+  })();
+
+  /* ══ the guided descent ════════════════════════════
+     Clicking a link in the bar does not jump: it flies the page down at a
+     cinematic rate so the whole journey plays on the way. Paced by distance,
+     eased at both ends, and abandoned the instant the visitor touches the
+     page themselves, because a scroll you cannot escape is a hijack. ══ */
+  (function(){
+    var RATE = 800;       // px per second: slow enough to actually watch
+    var MIN  = 600;       // short hops stay snappy
+    var MAX  = 11000;     // the full hero descent, about nine seconds
+    var NAV  = 62;        // the fixed bar sits over the target
+    var RAMP = 0.18;      // eased fraction at each end; the rest is constant speed
+    var glideRaf = null;
+
+    /* The slow ride is the point only while the hero is still playing: the
+       descent into the water is the journey. Every other link is navigation,
+       and making somebody watch nine seconds of sea to reach a shop is a toll,
+       not a flourish, so those travel four times faster and cap at a second. */
+    var VELOCE = 3400, MAX_VELOCE = 1500;
+
+    /* Constant velocity through the middle with short eased ends. An ease in out
+       curve triples its speed at the halfway point, which is exactly where the
+       journey is worth seeing, so the descent would skip its own best part. */
+    function ease(p){
+      var r = RAMP, k = 2 * r * (1 - r);
+      if (p < r) return (p * p) / k;
+      if (p > 1 - r){ var q = 1 - p; return 1 - (q * q) / k; }
+      return (p - r / 2) / (1 - r);
+    }
+
+    function cancelGlide(){
+      if (glideRaf !== null){ cancelAnimationFrame(glideRaf); glideRaf = null; }
+    }
+
+    function glideTo(targetY, lento, done){
+      cancelGlide();
+      var startY = window.scrollY;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      targetY = Math.max(0, Math.min(max, targetY));
+      var dist = targetY - startY;
+      if (Math.abs(dist) < 8){ window.scrollTo(0, targetY); if (done) done(); return; }
+
+      var v   = lento ? RATE : VELOCE;
+      var cap = lento ? MAX  : MAX_VELOCE;
+      var dur = Math.min(cap, Math.max(MIN, Math.abs(dist) / v * 1000));
+      var t0 = performance.now();
+
+      function step(now){
+        var p = Math.min(1, (now - t0) / dur);
+        window.scrollTo(0, Math.round(startY + dist * ease(p)));
+        if (p < 1){ glideRaf = requestAnimationFrame(step); }
+        else { glideRaf = null; if (done) done(); }
+      }
+      glideRaf = requestAnimationFrame(step);
+    }
+
+    /* any real input from the visitor wins immediately */
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function(ev){
+      window.addEventListener(ev, cancelGlide, { passive: true });
+    });
+
+    document.addEventListener('click', function(e){
+      var t = e.target;
+      if (!t || !t.closest) return;
+      var a = t.closest('a[href^="#"]');
+      if (!a || a.getAttribute('href') === '#') return;
+      var id = a.getAttribute('href').slice(1);
+      var el = document.getElementById(id);
+      if (!el) return;
+
+      e.preventDefault();
+      var y = el.getBoundingClientRect().top + window.scrollY - NAV;
+
+      /* the cinematic pace is for the dive into the water, and only while the
+         hero is still overhead: from further down it would be a slow crawl */
+      var lento = (id === 'radici') && (y - window.scrollY > window.innerHeight);
+
+      /* reduced motion gets there at once, with no ride */
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches){
+        window.scrollTo(0, Math.max(0, y));
+        history.replaceState(null, '', '#' + id);
+        if (el.tabIndex >= 0) el.focus({ preventScroll: true });
+        return;
+      }
+
+      glideTo(y, lento, function(){
+        history.replaceState(null, '', '#' + id);
+        if (el.tabIndex >= 0) el.focus({ preventScroll: true });
+      });
+    });
+  })();
+
+  /* ══ I PANNELLI ════════════════════════════════════
+     Le porte aprono una finestra invece di far scorrere la pagina. Le finestre
+     si impilano (il visore delle foto si apre sopra al pannello), quindi Esc
+     chiude sempre e solo quella in cima, e lo scorrimento dietro resta bloccato
+     finche' non si sono chiuse tutte. ══ */
+  var Strati = (function(){
+    var pila = [];
+
+    function blocca(){
+      if (pila.length === 1) document.body.style.overflow = 'hidden';
+    }
+    function sblocca(){
+      if (!pila.length) document.body.style.overflow = '';
+    }
+
+    return {
+      apri: function(el, tornaA, alChiudere){
+        if (!el || pila.some(function(v){ return v.el === el; })) return;
+        el.hidden = false;
+        pila.push({ el: el, tornaA: tornaA || null, alChiudere: alChiudere || null });
+        blocca();
+        var primo = el.querySelector('.pannello-chiudi, .book-chiudi, [id$="-chiudi"]');
+        if (primo) primo.focus();
+      },
+      chiudiCima: function(){
+        var v = pila.pop();
+        if (!v) return false;
+        var fine = function(){
+          v.el.hidden = true;
+          v.el.classList.remove('esce');
+          if (v.alChiudere) v.alChiudere();
+          if (v.tornaA && v.tornaA.focus) v.tornaA.focus();
+          sblocca();
+        };
+        if (v.el.classList.contains('pannello') && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+          v.el.classList.add('esce');
+          setTimeout(fine, 300);
+        } else fine();
+        return true;
+      },
+      chiudi: function(el){
+        if (pila.length && pila[pila.length - 1].el === el) return this.chiudiCima();
+        pila = pila.filter(function(v){ return v.el !== el; });
+        el.hidden = true;
+        sblocca();
+      },
+      quanti: function(){ return pila.length; }
+    };
+  })();
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && Strati.quanti()) { e.preventDefault(); Strati.chiudiCima(); }
+  });
+
+  document.querySelectorAll('[data-pannello]').forEach(function(b){
+    b.addEventListener('click', function(){
+      Strati.apri(document.getElementById(b.dataset.pannello), b);
+    });
+  });
+  document.querySelectorAll('.pannello-chiudi').forEach(function(x){
+    x.addEventListener('click', function(){
+      var p = x.closest('.pannello');
+      if (p) Strati.chiudi(p);
+    });
+  });
+
+  /* ══ IL BANCO: carrello e richiesta ════════════════
+     Qui non si paga: il carrello e' una lista di cose che si chiedono, e il
+     modulo manda una mail. Lo dice anche l'interfaccia, perche' un carrello
+     che sembra una cassa e poi non lo e' e' una bugia. ══ */
+  (function(){
+    var cassetto = document.getElementById('cassetto');
+    var finestra = document.getElementById('finestra');
+    if (!cassetto) return;
+
+    var voci    = document.getElementById('cassetto-voci');
+    var coda    = document.getElementById('cassetto-coda');
+    var totEl   = document.getElementById('cassetto-totale');
+    var conta   = document.getElementById('barra-conta');
+    var apriBtn = document.getElementById('apri-carrello');
+    var vaiOrd  = document.getElementById('vai-ordine');
+
+    var banco = [];   // {pezzo, nome, prezzo, n}
+
+    function euro(v){ return v.toFixed(2).replace('.', ',') + ' €'; }
+
+    function totale(){
+      return banco.reduce(function(t, v){ return t + v.prezzo * v.n; }, 0);
+    }
+    function pezzi(){
+      return banco.reduce(function(t, v){ return t + v.n; }, 0);
+    }
+
+    function disegna(){
+      if (conta){
+        var n = pezzi();
+        conta.textContent = n;
+        conta.classList.toggle('pieno', n > 0);
+      }
+      if (totEl) totEl.textContent = euro(totale());
+      if (vaiOrd) vaiOrd.disabled = !banco.length;
+      if (!voci) return;
+
+      voci.textContent = '';
+      if (!banco.length){
+        var p = document.createElement('div');
+        p.className = 'vuoto';
+        p.innerHTML = '<span>Il carrello &egrave; vuoto</span>';
+        voci.appendChild(p);
+        if (coda) coda.hidden = true;
+        return;
+      }
+      if (coda) coda.hidden = false;
+
+      banco.forEach(function(v){
+        var r = document.createElement('div');
+        r.className = 'voce';
+
+        var tela = document.createElement('div');
+        tela.className = 'voce-tela';
+        if (v.foto){
+          var im = document.createElement('img');
+          im.src = v.foto; im.alt = ''; im.loading = 'lazy';
+          im.addEventListener('error', function(){ this.remove(); });
+          tela.appendChild(im);
+        }
+
+        var t = document.createElement('div');
+        t.innerHTML = '<span class="voce-nome"></span><span class="voce-unita"></span>';
+        t.querySelector('.voce-nome').textContent  = v.nome;
+        t.querySelector('.voce-unita').textContent = v.n + ' × ' + euro(v.prezzo);
+
+        var q = document.createElement('div');
+        q.className = 'passo';
+        var meno = document.createElement('button');
+        meno.type = 'button'; meno.textContent = '−';
+        meno.setAttribute('aria-label', 'Togli un ' + v.nome);
+        meno.addEventListener('click', function(){ cambia(v.pezzo, -1); });
+        var n = document.createElement('b'); n.textContent = v.n;
+        var piu = document.createElement('button');
+        piu.type = 'button'; piu.textContent = '+';
+        piu.setAttribute('aria-label', 'Aggiungi un ' + v.nome);
+        piu.addEventListener('click', function(){ cambia(v.pezzo, 1); });
+        q.appendChild(meno); q.appendChild(n); q.appendChild(piu);
+
+        r.appendChild(tela); r.appendChild(t); r.appendChild(q);
+        voci.appendChild(r);
+      });
+    }
+
+    function cambia(pezzo, d){
+      var v = banco.filter(function(x){ return x.pezzo === pezzo; })[0];
+      if (!v) return;
+      v.n += d;
+      if (v.n <= 0) banco = banco.filter(function(x){ return x.pezzo !== pezzo; });
+      disegna();
+    }
+
+    function aggiungi(art){
+      var pezzo  = art.getAttribute('data-pezzo');
+      var nome   = art.getAttribute('data-nome');
+      var prezzo = parseFloat(art.getAttribute('data-prezzo')) || 0;
+      var im = art.querySelector('img');
+      var v = banco.filter(function(x){ return x.pezzo === pezzo; })[0];
+      if (v) v.n++;
+      else banco.push({ pezzo: pezzo, nome: nome, prezzo: prezzo, n: 1,
+                        foto: im ? im.getAttribute('src') : '' });
+      disegna();
+      var b = art.querySelector('[data-aggiungi]');
+      if (b){
+        b.classList.add('messo');
+        b.textContent = 'Aggiunto';
+        setTimeout(function(){ b.classList.remove('messo'); b.textContent = '+ Aggiungi'; }, 1100);
+      }
+    }
+
+    document.querySelectorAll('[data-aggiungi]').forEach(function(b){
+      b.addEventListener('click', function(){
+        var art = b.closest('[data-pezzo]');
+        if (art) aggiungi(art);
+      });
+    });
+
+    if (apriBtn) apriBtn.addEventListener('click', function(){ Strati.apri(cassetto, apriBtn); });
+    cassetto.querySelectorAll('[data-serra], .book-chiudi, .cassetto-chiudi').forEach(function(x){
+      x.addEventListener('click', function(){ Strati.chiudi(cassetto); });
+    });
+
+    /* ── il modulo, due passi: come lo vuoi, e chi sei ── */
+    if (finestra && vaiOrd){
+      var passoModo = document.getElementById('passo-modo');
+      var passoDati = document.getElementById('passo-dati');
+      var fatto     = document.getElementById('finestra-fatto');
+      var riepilogo = document.getElementById('riepilogo');
+      var sceltoEl  = document.getElementById('scelto');
+      var passoEl   = document.getElementById('finestra-passo');
+      var tornaModo = document.getElementById('torna-modo');
+      var invia     = document.getElementById('d-invia');
+      var esito     = document.getElementById('d-esito');
+      var modo = null;
+
+      function mostra(quale){
+        [passoModo, passoDati, fatto].forEach(function(el){ if (el) el.hidden = el !== quale; });
+        if (passoEl) passoEl.textContent = quale === passoDati ? 'Passo 2 di 2' : 'Passo 1 di 2';
+      }
+
+      vaiOrd.addEventListener('click', function(){
+        if (!banco.length) return;
+        if (riepilogo){
+          riepilogo.textContent = '';
+          banco.forEach(function(v){
+            var r = document.createElement('div');
+            r.className = 'riepilogo-riga';
+            r.innerHTML = '<span></span><b></b>';
+            r.querySelector('span').textContent = v.nome + ' × ' + v.n;
+            r.querySelector('b').textContent    = euro(v.prezzo * v.n);
+            riepilogo.appendChild(r);
+          });
+          var tot = document.createElement('div');
+          tot.className = 'riepilogo-riga';
+          tot.innerHTML = '<span>Totale</span><b></b>';
+          tot.querySelector('b').textContent = euro(totale());
+          riepilogo.appendChild(tot);
+        }
+        modo = null;
+        mostra(passoModo);
+        Strati.apri(finestra, vaiOrd);
+      });
+
+      finestra.querySelectorAll('[data-modo]').forEach(function(b){
+        b.addEventListener('click', function(){
+          modo = b.getAttribute('data-modo');   /* il valore e' gia' l'etichetta */
+          if (sceltoEl) sceltoEl.textContent = modo;
+          mostra(passoDati);
+        });
+      });
+      if (tornaModo) tornaModo.addEventListener('click', function(){ mostra(passoModo); });
+
+      finestra.querySelectorAll('.book-chiudi, #finestra-chiudi, [data-serra]').forEach(function(x){
+        x.addEventListener('click', function(){ Strati.chiudi(finestra); });
+      });
+
+      if (invia) invia.addEventListener('click', function(){
+        var nome = (document.getElementById('d-nome')   || {}).value || '';
+        var cogn = (document.getElementById('d-cognome')|| {}).value || '';
+        var mail = (document.getElementById('d-mail')   || {}).value || '';
+        var ok   = (document.getElementById('d-ok')     || {}).checked;
+        if (!nome.trim() || !mail.trim() || !ok){
+          if (esito){ esito.hidden = false; esito.textContent = 'Servono nome, email e il consenso.'; }
+          return;
+        }
+        var righe = banco.map(function(v){ return '- ' + v.n + ' x ' + v.nome + ' (' + euro(v.prezzo) + ')'; }).join('\n');
+        var corpo = 'Richiesta dal sito\n\n' + righe + '\n\nTotale indicativo: ' + euro(totale()) +
+                    '\nModo: ' + (modo || 'da concordare') +
+                    '\n\nNome: ' + nome + ' ' + cogn +
+                    '\nEmail: ' + mail +
+                    '\nInstagram: ' + ((document.getElementById('d-ig') || {}).value || '') +
+                    '\nTelefono: ' + ((document.getElementById('d-tel') || {}).value || '');
+        window.location.href = 'mailto:tarantofutura3@gmail.com'
+          + '?subject=' + encodeURIComponent('Richiesta dal banco')
+          + '&body=' + encodeURIComponent(corpo);
+        mostra(fatto);
+      });
+    }
+
+    disegna();
+  })();
+
+  /* ══ EVENTI ════════════════════════════════════════
+     Il disegno arriva dal file originale. Il comportamento e' riscritto qui
+     perche' nel vecchio file stava dentro un blocco unico insieme a tutto il
+     resto del sito, e trascinarlo avrebbe portato dentro roba morta. ══ */
+  (function(){
+    var fermo = matchMedia('(prefers-reduced-motion: reduce)');
+
+    /* ── le locandine si animano solo quando sono davvero in vista ── */
+    var clip = [].slice.call(document.querySelectorAll('.locandina-tela video'));
+    if (clip.length && 'IntersectionObserver' in window){
+      var occhio = new IntersectionObserver(function(voci){
+        voci.forEach(function(v){
+          var vid = v.target;
+          if (v.isIntersecting && !fermo.matches){
+            var pr = vid.play();
+            if (pr && pr.catch) pr.catch(function(){});
+          } else {
+            vid.pause();
+          }
+        });
+      }, { threshold: 0.25 });
+      clip.forEach(function(v){ occhio.observe(v); });
+      document.addEventListener('visibilitychange', function(){
+        if (document.hidden) clip.forEach(function(v){ v.pause(); });
+      });
+    }
+
+    /* ── l'inclinazione col mouse, spenta su schermi a tocco ── */
+    if (!fermo.matches && matchMedia('(hover: hover) and (pointer: fine)').matches){
+      document.querySelectorAll('.locandina').forEach(function(el){
+        el.addEventListener('pointermove', function(e){
+          var r = el.getBoundingClientRect();
+          var x = (e.clientX - r.left) / r.width - 0.5;
+          var y = (e.clientY - r.top) / r.height - 0.5;
+          el.style.setProperty('--ry', (x * 9).toFixed(2) + 'deg');
+          el.style.setProperty('--rx', (-y * 7).toFixed(2) + 'deg');
+        });
+        el.addEventListener('pointerleave', function(){
+          el.style.setProperty('--ry', '0deg');
+          el.style.setProperty('--rx', '0deg');
+        });
+      });
+    }
+
+    /* ── il visore: gli scatti della serata ── */
+    var libri = {
+      boat:    { data:'19 · 08', titolo:'Boat Club, Nave Cala Junco', cartella:'assets/foto/boat',
+                 file:['01.JPG','02.JPG','03.JPG','04.JPG','05.JPG','06.JPG','07.JPG','08.JPG','09.JPG'] },
+      kat2708: { data:'27 · 08', titolo:'Taranto Futura al KAT', cartella:'assets/foto/kat2708',
+                 file:['01.png','02.jpg','03.jpg','04.jpg','05.jpg','06.jpg','07.jpg','08.jpg'] },
+      kat0608: { data:'06 · 08', titolo:'Dopamina al KAT', cartella:'assets/foto/kat0608', file:[] },
+      kat3007: { data:'30 · 07', titolo:'Taranto Futura al KAT', cartella:'assets/foto/kat3007',
+                 file:['01.jpeg','02.jpg','03.jpg','04.jpg','05.jpg','06.jpg','07.jpg','08.jpg','09.jpg'] },
+      festival:{ data:'30 · 06', titolo:'Mediterraneo CMF, Closing Party', cartella:'assets/foto/festival', file:[] }
+    };
+
+    var book   = document.getElementById('book');
+    var pagine = document.getElementById('book-pagine');
+    if (!book || !pagine) return;
+
+    var bData  = document.getElementById('book-data');
+    var bTit   = document.getElementById('book-titolo');
+    var bChiudi= document.getElementById('book-chiudi');
+    var chiamante = null;
+
+    /* ogni foto e' un riquadro suo: prima il numero, poi l'immagine quando
+       arriva. Se il file non c'e' piu', il riquadro sparisce invece di
+       restare vuoto, che e' peggio di non esserci */
+    function mettiPagina(l, url, n){
+      var fig = document.createElement('figure');
+      fig.className = 'pagina';
+      var vuota = document.createElement('div');
+      vuota.className = 'pagina-vuota';
+      var num = document.createElement('span');
+      num.textContent = n;
+      vuota.appendChild(num);
+      fig.appendChild(vuota);
+
+      var img = document.createElement('img');
+      img.alt = l.titolo + ', foto ' + n;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.addEventListener('load',  function(){ vuota.remove(); });
+      img.addEventListener('error', function(){ fig.remove(); });
+      img.src = url;
+      fig.appendChild(img);
+      pagine.appendChild(fig);
+    }
+
+    function apri(chiave, da){
+      var l = libri[chiave];
+      if (!l) return;
+      chiamante = da || null;
+      pagine.textContent = '';
+      if (bData) bData.textContent = l.data;
+      if (bTit)  bTit.textContent  = l.titolo;
+
+      if (!l.file.length){
+        var p = document.createElement('p');
+        p.className = 'book-niente';
+        p.textContent = 'Di questa sera non abbiamo ancora caricato le foto.';
+        pagine.appendChild(p);
+      } else {
+        l.file.forEach(function(f, i){ mettiPagina(l, l.cartella + '/' + f, i + 1); });
+      }
+
+      /* si apre SOPRA al pannello degli eventi, non al posto suo */
+      Strati.apri(book, chiamante, function(){ pagine.textContent = ''; });
+    }
+
+    function chiudi(){ Strati.chiudi(book); }
+
+    document.querySelectorAll('[data-book]').forEach(function(b){
+      b.addEventListener('click', function(){ apri(b.dataset.book, b); });
+    });
+    if (bChiudi) bChiudi.addEventListener('click', chiudi);
+    book.addEventListener('click', function(e){ if (e.target === book) chiudi(); });
+  })();
+
+  /* ══ LO SFOGLIATORE: NZACC, pagina per pagina ══════
+     Due pagine per volta su schermo largo, una sola sul telefono. Le pagine
+     vicine si precaricano, cosi' girando non si aspetta mai. ══ */
+  (function(){
+    var sf = document.getElementById('sfoglio');
+    if (!sf) return;
+
+    var numeri = {
+      '01': { titolo:'NZACC, n. 01', pagine:52, cartella:'assets/sfoglia/01', pdf:'assets/pdf/nzacc-01.pdf' },
+      '00': { titolo:'NZACC, n. 00', pagine:36, cartella:'assets/sfoglia/00', pdf:'assets/pdf/nzacc-00.pdf' }
+    };
+
+    var scena  = document.getElementById('sfoglio-pagine') || sf.querySelector('.sfoglio-pagine');
+    var titolo = document.getElementById('sfoglio-titolo');
+    var pdf    = document.getElementById('sfoglio-pdf');
+    var prec   = document.getElementById('sfoglio-prec');
+    var succ   = document.getElementById('sfoglio-succ');
+    var conta  = document.getElementById('sfoglio-conta') || sf.querySelector('.sfoglio-conta');
+    var chiudiX= document.getElementById('sfoglio-chiudi');
+    if (!scena) return;
+
+    var lente  = document.getElementById('sfoglio-lente');
+    var ora = null, pagina = 1, chiamante = null, singola = false;
+
+    /* schermo stretto: sempre una pagina. Schermo largo: due, salvo che
+       il lettore chieda una sola col tasto in fondo. */
+    function doppia(){ return window.innerWidth >= 900 && !singola; }
+    function url(n){ return ora.cartella + '/' + ('00' + n).slice(-3) + '.webp'; }
+
+    /* Una rivista non si apre a libro: la copertina sta da sola, e solo
+       da pagina 2 in poi si affiancano a coppie, 2-3, 4-5, 6-7. Cosi'
+       i due fogli che vedi insieme sono davvero quelli stampati insieme. */
+    function quanteQui(){
+      if (!doppia()) return 1;
+      if (pagina === 1) return 1;                 /* la copertina */
+      return (pagina + 1 <= ora.pagine) ? 2 : 1;  /* l'ultima puo' restare sola */
+    }
+
+    function disegna(){
+      var quante = quanteQui();
+      scena.textContent = '';
+      scena.classList.toggle('sola', quante === 1);
+      for (var i = 0; i < quante; i++){
+        var n = pagina + i;
+        if (n > ora.pagine) break;
+        var fig = document.createElement('figure');
+        fig.className = 'sfoglio-pagina';
+        var img = document.createElement('img');
+        img.alt = ora.titolo + ', pagina ' + n;
+        img.decoding = 'async';
+        img.src = url(n);
+        img.addEventListener('error', function(){ this.closest('.sfoglio-pagina').classList.add('sfoglio-manca'); });
+        fig.appendChild(img);
+        scena.appendChild(fig);
+      }
+      /* le prossime due si scaldano in silenzio */
+      [pagina + quante, pagina + quante + 1].forEach(function(n){
+        if (n <= ora.pagine){ var p = new Image(); p.src = url(n); }
+      });
+      if (conta){
+        conta.textContent = (quante === 2 ? pagina + '-' + (pagina + 1) : String(pagina))
+                          + ' / ' + ora.pagine;
+      }
+      if (prec) prec.disabled = pagina <= 1;
+      if (succ) succ.disabled = pagina + quante > ora.pagine;
+    }
+
+    function gira(verso){
+      var nuova;
+      if (!doppia()){
+        nuova = pagina + verso;
+      } else if (verso > 0){
+        nuova = (pagina === 1) ? 2 : pagina + 2;   /* dalla copertina si entra sul 2 */
+      } else {
+        nuova = (pagina === 2) ? 1 : pagina - 2;   /* e si torna alla copertina */
+      }
+      if (nuova < 1 || nuova > ora.pagine) return;
+      pagina = nuova;
+      disegna();
+    }
+
+    function apri(chiave, da){
+      ora = numeri[chiave];
+      if (!ora) return;
+      chiamante = da || null;
+      pagina = 1;
+      if (titolo) titolo.textContent = ora.titolo;
+      if (pdf){ pdf.href = ora.pdf; pdf.setAttribute('download', ''); }
+      disegna();
+      Strati.apri(sf, chiamante, function(){ scena.textContent = ''; });
+    }
+
+    document.querySelectorAll('[data-sfoglia]').forEach(function(b){
+      b.addEventListener('click', function(){ apri(b.dataset.sfoglia, b); });
+    });
+    if (prec) prec.addEventListener('click', function(){ gira(-1); });
+    if (succ) succ.addEventListener('click', function(){ gira(1); });
+    if (chiudiX) chiudiX.addEventListener('click', function(){ Strati.chiudi(sf); });
+    if (lente) lente.addEventListener('click', function(){
+      singola = !singola;
+      lente.setAttribute('aria-pressed', singola ? 'true' : 'false');
+      lente.textContent = singola ? 'Due pagine' : 'Una pagina';
+      /* tornando a due, riallinea sulla coppia giusta: le pagine affiancate
+         devono restare quelle stampate insieme, altrimenti sfalsa tutto */
+      if (!singola && pagina > 1 && pagina % 2 === 1) pagina--;
+      disegna();
+    });
+
+    document.addEventListener('keydown', function(e){
+      if (sf.hidden) return;
+      if (e.key === 'ArrowRight'){ e.preventDefault(); gira(1); }
+      if (e.key === 'ArrowLeft'){ e.preventDefault(); gira(-1); }
+    });
+    addEventListener('resize', function(){ if (!sf.hidden) disegna(); });
+  })();
+
+  /* ══ nav ground, tab pausing ═══════════════════════ */
+  var barra = document.getElementById('barra');
+  var lastFondo = null;
+  window.addEventListener('scroll', function(){
+    var on = window.scrollY > 40;
+    if (on !== lastFondo){ lastFondo = on; barra.classList.toggle('fondo', on); }
+  }, { passive: true });
+
+  document.addEventListener('visibilitychange', function(){
+    document.body.classList.toggle('paused', document.hidden);
+  });
+
+  /* ══ go ════════════════════════════════════════════ */
+  if (rmq.matches) pinToFinalStates();
+  else applyHeroMode();
+  drawRadici();
+})();
+</script>
+
+
+<nav class="menu" id="menu" aria-label="Menu" hidden>
+  <button class="menu-chiudi" type="button" id="menu-chiudi" aria-label="Chiudi il menu">&#10005;</button>
+  <a href="#radici"><i class="volutina" aria-hidden="true"></i>Radici</a>
+  <a href="#eventi"><i class="volutina" aria-hidden="true"></i>Eventi</a>
+
+</body>
+</html>
