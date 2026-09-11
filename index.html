@@ -159,44 +159,78 @@ body.paused *, body.paused *::before, body.paused *::after{animation-play-state:
 }
 
 /* ══════════════════════════════════════════════════════
-   THE HERO: pinned 1000vh, sticky stage
+   IL SIPARIO E L'APERTURA
+   Il filmato non e' piu' legato alla rotella: 233 fotogrammi su 4888px di
+   scorrimento facevano 21px per immagine, cioe' due fotogrammi saltati a
+   ogni scatto del dito. Ora scorre al suo passo e si guarda.
    ══════════════════════════════════════════════════════ */
-/* 620vh per 9,7 secondi: lo stesso passo di scorrimento di prima,
-   su un filmato piu' corto perche' il tratto morto non c'e' piu' */
-.eroe{position:relative; height:620vh; z-index:1}
-.palco{
-  position:sticky; top:0; height:100vh; overflow:hidden;
-  background:var(--canvas);
+.sipario{
+  position:fixed; inset:0; z-index:200; background:var(--canvas);
+  display:grid; place-items:center;
+  transition:opacity .9s var(--ease), visibility 0s linear .9s;
 }
-.palco video{
-  position:absolute; inset:0; width:100%; height:100%;
-  object-fit:cover; opacity:0;
-  transform:translateZ(0); will-change:transform;
-  transition:opacity 1.1s var(--ease);
-}
-.palco.video-ready video{opacity:1}
-.palco.video-failed video{display:none}
-.poster{
-  position:absolute; inset:0; background-size:cover; background-position:center;
-  background-color:var(--deep);
-}
-.palco.video-ready .poster{opacity:0; transition:opacity 1.1s var(--ease)}
+.sipario.via{opacity:0; visibility:hidden; pointer-events:none}
 
-/* No captions ride over this footage any more, so the scrim steps almost all
-   the way back: just enough vignette to seat the frame on the page ground. */
-.velo{
-  position:absolute; inset:0; pointer-events:none;
-  background:radial-gradient(ellipse 130% 100% at 50% 45%, rgba(4,7,15,0) 58%, rgba(4,7,15,.28) 100%);
+.film-intro{
+  width:100%; height:100%; object-fit:cover; opacity:0;
+  transition:opacity .7s var(--ease);
 }
+.sipario.pronto .film-intro{opacity:1}
 
-/* the loading ring */
+/* in piedi il panoramico va incorniciato, non tagliato: a tutto schermo
+   del nome si leggerebbe mezza parola */
+@media (orientation:portrait){ .film-intro{object-fit:contain} }
+
+/* il tasto per saltare: c'e' sempre, perche' un'apertura da cui non si
+   esce e' un sequestro, non un benvenuto */
+.salta{
+  position:absolute; right:clamp(18px,4vw,40px); bottom:clamp(18px,4vh,40px);
+  padding:11px 20px; cursor:pointer; border-radius:999px;
+  background:rgba(4,7,15,.55); border:1px solid var(--border-strong);
+  color:var(--text-primary); font-family:var(--mono);
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  backdrop-filter:blur(8px);
+  opacity:0; animation:spunta .6s var(--ease) .9s forwards;
+  transition:background-color .3s var(--ease), border-color .3s var(--ease);
+}
+.salta:hover{background:rgba(4,7,15,.8); border-color:var(--argento)}
+.salta:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+@keyframes spunta{to{opacity:1}}
+
+/* Mentre il sipario e' su, la pagina sotto non si muove. Serve su tutti e
+   due: solo su body, in parecchi browser, la pagina scorre lo stesso. */
+html.fermo, body.fermo{overflow:hidden; height:100%; overscroll-behavior:none}
+
+/* l'anello che dice quanto manca */
 .anello-carico{
   position:absolute; left:50%; bottom:96px; translate:-50% 0;
   width:48px; height:48px; color:var(--argento); opacity:.85;
   transition:opacity .6s var(--ease);
 }
 .anello-carico circle{transform:rotate(-90deg); transform-origin:50% 50%; transition:stroke-dashoffset .18s linear}
-.palco.video-ready .anello-carico{opacity:0}
+.sipario.pronto .anello-carico{opacity:0}
+
+/* ─── l'apertura, una sola per tutti gli schermi ─────── */
+.apertura{position:relative; z-index:1; min-height:100svh; overflow:hidden; background:var(--canvas)}
+/* L'ultimo fotogramma del filmato, cosi' il sipario che si alza lascia
+   esattamente l'immagine su cui era finito. Come immagine e non come sfondo:
+   a tutto schermo il ritaglio mangiava meta' del nome sul telefono.
+   I bordi sfumano, cosi' non sembra un riquadro appoggiato sulla pagina. */
+.apertura .marchio{
+  width:100%; max-width:min(880px, 92vw); height:auto; justify-self:center;
+  -webkit-mask-image:radial-gradient(ellipse 70% 66% at 50% 50%, #000 34%, transparent 86%);
+          mask-image:radial-gradient(ellipse 70% 66% at 50% 50%, #000 34%, transparent 86%);
+}
+.apertura .dentro{
+  position:relative; z-index:2; min-height:100svh;
+  display:grid; align-content:center; justify-items:center;
+  gap:clamp(18px,3vh,30px);
+  padding:clamp(88px,12vh,130px) var(--gut) clamp(44px,7vh,72px);
+  text-align:center;
+}
+.apertura .coda-fissa{display:grid; justify-items:center; gap:22px}
+.apertura .sotto{max-width:26ch; color:var(--argento); font-size:clamp(15px,4.2vw,18px); font-weight:400}
+
 .freccia-giu{
   position:absolute; left:50%; bottom:96px; translate:-50% 0;
   display:flex; flex-direction:column; align-items:center; gap:9px;
@@ -270,23 +304,6 @@ body.paused *, body.paused *::before, body.paused *::after{animation-play-state:
   opacity:var(--kc); transform:translateY(calc((1 - var(--kc))*22px));
 }
 
-/* The logo animation is the payoff and it fills the middle of the frame, so the
-   settle steps aside: a quiet bar along the bottom with its own upward scrim,
-   never a headline competing with the mark. */
-.banda.b5{align-content:end; padding-bottom:clamp(30px,5.5vh,58px)}
-.banda.b5::before{
-  background:linear-gradient(0deg, rgba(4,7,15,.86) 0%, rgba(4,7,15,.52) 22%, rgba(4,7,15,0) 46%);
-}
-.sipario{display:grid; justify-items:center; gap:16px; position:relative; z-index:1}
-.sipario .sotto{
-  font-family:var(--body); font-weight:400;
-  font-size:clamp(14px,1.55vw,18px); line-height:1.4; letter-spacing:.03em;
-  color:var(--argento); text-align:center; margin:0;
-}
-.sipario .riga-cta{
-  --kb:clamp(0,(var(--k,0) - 0.78)*5,1);
-  opacity:var(--kb); transform:translateY(calc((1 - var(--kb))*14px));
-}
 .luogo{
   font-family:var(--mono); font-size:11px; letter-spacing:.26em;
   text-transform:uppercase; color:var(--text-secondary);
@@ -304,41 +321,6 @@ body.paused *, body.paused *::before, body.paused *::after{animation-play-state:
 @media (pointer:coarse){
   .bottone{min-height:44px; display:inline-flex; align-items:center; justify-content:center}
 }
-
-/* ─── the static hero (phones, reduced motion) ────────── */
-.statico{display:none; position:relative; z-index:1; min-height:100svh; overflow:hidden;
-  background:var(--canvas)}
-
-/* Il filmato e' panoramico e lo schermo del telefono e' in piedi: riempirlo
-   vorrebbe dire tagliare via meta' inquadratura, e il nome esce a pezzi.
-   Gli do una cornice sua, con la scritta sotto invece che sopra. */
-.statico .film-fisso{
-  display:block; width:100%; aspect-ratio:4/3; object-fit:cover;
-  background:var(--deep); border-radius:2px;
-}
-.statico .velo-fisso{display:none}
-
-.statico .dentro{
-  position:relative; z-index:2; min-height:100svh;
-  display:grid; align-content:center; justify-items:center; gap:clamp(22px,5vh,40px);
-  padding:96px 0 56px; text-align:center; width:100%;
-}
-.statico .luogo, .statico .coda-fissa{padding-inline:var(--gut)}
-.statico .film-fisso{justify-self:stretch}
-.statico .coda-fissa{display:grid; justify-items:center; gap:22px}
-.statico .sotto{max-width:26ch; color:var(--argento); font-size:clamp(15px,4.2vw,18px); font-weight:400}
-
-/* di traverso lo schermo torna panoramico: li' il filmato puo' riempire tutto */
-@media (orientation:landscape){
-  .statico .film-fisso{position:absolute; inset:0; width:100%; height:100%; aspect-ratio:auto}
-  .statico .velo-fisso{
-    display:block; position:absolute; inset:0; pointer-events:none;
-    background:linear-gradient(180deg, rgba(4,7,15,.70) 0%, rgba(4,7,15,0) 40%,
-               rgba(4,7,15,.62) 80%, rgba(4,7,15,.94) 100%);
-  }
-  .statico .dentro{align-content:space-between; text-shadow:var(--tshadow)}
-}
-
 
 /* ══════════════════════════════════════════════════════
    RADICI
@@ -816,18 +798,8 @@ footer a{text-decoration:none; transition:color .4s var(--ease)}
 footer a:hover{color:var(--text-primary)}
 footer .credito{font-family:var(--mono); font-size:11px; letter-spacing:.04em; opacity:.72}
 
-/* ══════════════════════════════════════════════════════
-   THE FIVE STATIC-HERO GATES
-   These five strings must match the JS GATES array exactly.
-   ══════════════════════════════════════════════════════ */
-@media (max-width: 720px){ .eroe{display:none} .statico{display:block} }
-@media (orientation: portrait) and (max-width: 1024px){ .eroe{display:none} .statico{display:block} }
-@media (orientation: portrait) and (pointer: coarse){ .eroe{display:none} .statico{display:block} }
-@media (orientation: landscape) and (pointer: coarse) and (max-height: 560px){ .eroe{display:none} .statico{display:block} }
-@media (prefers-reduced-motion: reduce){ .eroe{display:none} .statico{display:block} }
-
 /* short scrub-capable screens keep the scrub but lose the small overlays */
-@media (max-height:560px){.freccia-giu,.anello-carico{display:none}}
+@media (max-height:560px){.freccia-giu{display:none}}
 
 /* ─── reduced motion, honoured completely ─────────────── */
 @media (prefers-reduced-motion:reduce){
@@ -2043,39 +2015,36 @@ a:visited,
 <main id="main" tabindex="-1">
 
 <!-- ══ THE SCRUB HERO ══════════════════════════════════ -->
-<section class="eroe" id="top" aria-label="Apertura">
-  <div class="palco" id="palco">
-    <div class="poster" id="poster" aria-hidden="true"></div>
-    <video id="eroe-video" preload="none" muted playsinline aria-hidden="true" tabindex="-1"></video>
-    <div class="velo" aria-hidden="true"></div>
+<!-- Il sipario: il viaggio si guarda, non si scrolla. Legare il filmato
+     alla rotella voleva dire 21 pixel di scorrimento per fotogramma, cioe'
+     due fotogrammi saltati a ogni scatto del dito: per forza andava a scatti.
+     Qui scorre al suo passo, liscio, e chi ha fretta lo salta. -->
+<div class="sipario" id="sipario">
+  <video class="film-intro" id="film-intro" preload="none" muted playsinline
+         aria-label="Dal Castello Aragonese giu' sott'acqua, fino al nome"></video>
+  <svg class="anello-carico" id="anello" viewBox="0 0 48 48" aria-hidden="true">
+    <circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="3"
+            stroke-dasharray="126" style="stroke-dashoffset:var(--ld,126)"/>
+  </svg>
+  <button class="salta" id="salta" type="button" hidden>Salta l&rsquo;apertura</button>
+</div>
 
-    <h1 class="vh">Taranto Futura</h1>
-
-
-    <svg class="anello-carico" id="anello" viewBox="0 0 48 48" aria-hidden="true">
-      <circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="3"
-              stroke-dasharray="126" style="stroke-dashoffset:var(--ld,126)"/>
-    </svg>
-  </div>
-</section>
-
-<!-- ══ THE STATIC HERO ═════════════════════════════════ -->
-<!-- Su telefono lo scrub non si puo' fare: il seek video non tiene il passo
-     del dito. Ma il viaggio si puo' guardare lo stesso, e va da solo. -->
-<section class="statico" aria-label="Apertura">
-  <div class="velo-fisso" aria-hidden="true"></div>
+<section class="apertura" id="top" aria-label="Apertura">
   <div class="dentro">
     <p class="luogo">Taranto &middot; Puglia</p>
     <h1 class="vh">Taranto Futura</h1>
-    <video class="film-fisso" id="film-fisso" src="assets/hero-scrub.mp4"
-           poster="assets/hero-poster.jpg" muted playsinline autoplay preload="auto"
-           aria-label="Dal Castello Aragonese giu' sott'acqua, fino al nome"></video>
+    <img class="marchio" src="assets/hero-ending.jpg" alt="" width="1920" height="1080"
+         decoding="async" aria-hidden="true">
     <div class="coda-fissa">
       <p class="sotto">A Taranto le radici non stanno sottoterra. Stanno sott'acqua.</p>
       <p><a class="bottone" href="#radici">Scendi nelle radici</a></p>
     </div>
   </div>
 </section>
+
+<!-- ══ THE STATIC HERO ═════════════════════════════════ -->
+<!-- Su telefono lo scrub non si puo' fare: il seek video non tiene il passo
+     del dito. Ma il viaggio si puo' guardare lo stesso, e va da solo. -->
 
 <!-- ══ CHI SIAMO ═══════════════════════════════════════ -->
 <section class="sezione radici-sez" id="radici" aria-labelledby="radici-tit">
@@ -2735,193 +2704,121 @@ a:visited,
     }
   }
 
-  /* ══ the scrub engine ══════════════════════════════ */
-  var VIDEO_URL   = 'assets/hero-scrub.mp4';
-  var VIDEO_BYTES = 10324926;
-  var POSTER_URL  = 'assets/hero-poster.jpg';
+  /* ══ IL SIPARIO ════════════════════════════════════
+     Il filmato si guarda, non si scrolla. Legarlo alla rotella voleva dire
+     233 fotogrammi su 4888px: 21 pixel per immagine, due fotogrammi saltati
+     a ogni scatto del dito. Per questo andava a scatti, e nessuna quantita'
+     di codice lo avrebbe reso liscio: erano poche immagini.
+     Qui il filmato scende intero prima di partire, cosi' non si impunta mai
+     a meta', e chi ha fretta lo salta. ══ */
+  (function(){
+    var VIDEO_URL   = 'assets/hero-scrub.mp4';
+    var VIDEO_BYTES = 6976907;
 
-  var eroe   = document.querySelector('.eroe');
-  var palco  = document.getElementById('palco');
-  var video  = document.getElementById('eroe-video');
-  var poster = document.getElementById('poster');
-  var anello = document.getElementById('anello');
-  var posterFisso = document.getElementById('poster-fisso');
+    var sipario = document.getElementById('sipario');
+    var film    = document.getElementById('film-intro');
+    var anello  = document.getElementById('anello');
+    var salta   = document.getElementById('salta');
+    if (!sipario || !film) return;
 
-  /* phones get the first frame, the real castle, not the near black ending */
-  if (posterFisso) posterFisso.style.backgroundImage = "url('assets/hero-poster.jpg')";
+    var chiuso = false;
 
-  var target = 0, shown = 0, rafId = null, lastTick = 0;
-  var seekBusy = false, pendingTime = null;
-  var heroOnScreen = true;
-  var scrubOn = false;
-  var heroInit = false;
-
-  function heroProgress(){
-    if (!eroe) return 0;
-    var rect = eroe.getBoundingClientRect();
-    var range = eroe.offsetHeight - window.innerHeight;
-    if (range <= 0) return 0;
-    return clamp(-rect.top / range, 0, 1);
-  }
-
-  function requestSeek(t){
-    if (!video.duration) return;
-    if (seekBusy){ pendingTime = t; return; }
-    seekBusy = true;
-    try { video.currentTime = t; } catch(e){ seekBusy = false; }
-  }
-  video.addEventListener('seeked', function(){
-    seekBusy = false;
-    if (pendingTime !== null){
-      var t = pendingTime; pendingTime = null; requestSeek(t);
-    }
-  });
-  video.addEventListener('error', function(){
-    seekBusy = false; pendingTime = null; failVideo();
-  });
-
-  function tick(now){
-    var dt = Math.min(100, now - (lastTick || now));
-    lastTick = now;
-    var k = 0.16;
-    shown += (target - shown) * (1 - Math.pow(1 - k, dt / 16.667));
-
-    if (loadK < 1 && loadStart){
-      loadK = clamp((now - loadStart) / 900, 0, 1);
+    function chiudi(){
+      if (chiuso) return;
+      chiuso = true;
+      sipario.classList.add('via');
+      document.documentElement.classList.remove('fermo');
+      document.body.classList.remove('fermo');
+      window.removeEventListener('touchmove', trattieni);
+      window.removeEventListener('wheel', trattieni);
+      try { film.pause(); } catch (e) {}
+      /* liberata la memoria del blob: sono sette megabyte */
+      setTimeout(function(){
+        if (film.src && film.src.indexOf('blob:') === 0) URL.revokeObjectURL(film.src);
+        film.removeAttribute('src');
+        sipario.parentNode && sipario.parentNode.removeChild(sipario);
+      }, 1200);
     }
 
-    var settled = Math.abs(target - shown) < 0.0005 && loadK >= 1;
-    if (settled){
-      shown = target; rafId = null; lastTick = 0;
-    } else {
-      rafId = requestAnimationFrame(tick);
+    /* chi arriva con un link a una sezione non vuole l'apertura,
+       e chi ha chiesto meno movimento nemmeno */
+    if ((location.hash && location.hash !== '#top') ||
+        matchMedia('(prefers-reduced-motion: reduce)').matches){
+      chiudi();
+      return;
     }
-    if (video.duration) requestSeek(shown * video.duration);
-    updateCaptions(shown);
-  }
 
-  function kick(){
-    if (rafId === null && heroOnScreen && scrubOn) rafId = requestAnimationFrame(tick);
-  }
-  function onScroll(){ target = heroProgress(); kick(); }
-
-  function failVideo(){
-    if (palco) palco.classList.add('video-failed');
-    if (anello && anello.parentNode && !document.querySelector('.freccia-giu')){
-      var cue = document.createElement('div');
-      cue.className = 'freccia-giu';
-      cue.setAttribute('aria-hidden', 'true');
-      cue.innerHTML = '<i></i><span>Scorri</span>';
-      anello.parentNode.replaceChild(cue, anello);
+    /* overflow:hidden non basta su iOS: la gomma del dito scorre lo stesso.
+       Questi due ascoltatori la trattengono finche' il sipario e' su. */
+    function trattieni(e){ if (!chiuso && e.cancelable) e.preventDefault(); }
+    document.documentElement.classList.add('fermo');
+    document.body.classList.add('fermo');
+    window.addEventListener('touchmove', trattieni, { passive: false });
+    window.addEventListener('wheel', trattieni, { passive: false });
+    if (salta){
+      salta.hidden = false;
+      salta.addEventListener('click', chiudi);
     }
-  }
+    document.addEventListener('keydown', function(e){
+      if (!chiuso && (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ')) chiudi();
+    });
 
-  function loadHeroBlob(){
+    film.addEventListener('ended', chiudi);
+    /* se per qualunque ragione non parte, la pagina non resta ostaggio */
+    var salvagente = setTimeout(chiudi, 26000);
+    film.addEventListener('play', function(){
+      clearTimeout(salvagente);
+      var resto = ((film.duration || 10) - film.currentTime) * 1000 + 2500;
+      setTimeout(chiudi, resto);
+    }, { once: true });
+
+    function parti(url){
+      if (chiuso) return;
+      film.src = url;
+      film.load();
+      film.addEventListener('canplaythrough', function(){
+        if (chiuso) return;
+        sipario.classList.add('pronto');
+        var p = film.play();
+        if (p && p.catch) p.catch(function(){ chiudi(); });   /* autoplay negato */
+      }, { once: true });
+    }
+
+    /* Lo scarico intero prima di partire: un filmato che si ferma a meta'
+       per caricare e' peggio di un filmato che parte un secondo dopo. */
     var ctrl = new AbortController();
-    var watchdog = setTimeout(function(){ ctrl.abort(); }, 20000);
+    var taglio = setTimeout(function(){ ctrl.abort(); }, 22000);
 
-    return fetch(VIDEO_URL, { signal: ctrl.signal }).then(function(res){
-      if (!res.ok || !res.body) throw new Error('no body');
-      var total = Number(res.headers.get('Content-Length')) || VIDEO_BYTES;
-      var reader = res.body.getReader();
-      var chunks = [], got = 0, lastRing = 0;
+    fetch(VIDEO_URL, { signal: ctrl.signal }).then(function(res){
+      if (!res.ok || !res.body) throw new Error('niente corpo');
+      var totale = Number(res.headers.get('Content-Length')) || VIDEO_BYTES;
+      var lettore = res.body.getReader();
+      var pezzi = [], presi = 0, ultimo = 0;
 
-      function pump(){
-        return reader.read().then(function(r){
+      function pompa(){
+        return lettore.read().then(function(r){
           if (r.done) return;
-          clearTimeout(watchdog);
-          watchdog = setTimeout(function(){ ctrl.abort(); }, 20000);
-          chunks.push(r.value);
-          got += r.value.length;
-          var frac = Math.min(1, got / total);
-          var now = performance.now();
-          if (now - lastRing > 100 || frac === 1){
-            lastRing = now;
-            anello.style.setProperty('--ld', Math.round(126 * (1 - frac)));
+          pezzi.push(r.value); presi += r.value.length;
+          var q = Math.min(1, presi / totale);
+          if (anello && q - ultimo > 0.02){
+            ultimo = q;
+            anello.style.setProperty('--ld', (126 * (1 - q)).toFixed(1));
           }
-          return pump();
+          return pompa();
         });
       }
-
-      return pump().then(function(){
-        clearTimeout(watchdog);
-        anello.style.setProperty('--ld', 0);
-        video.src = URL.createObjectURL(new Blob(chunks, { type: 'video/mp4' }));
-        video.load();
-        video.addEventListener('canplay', function(){
-          if (video.duration) requestSeek(heroProgress() * video.duration);
-          palco.classList.add('video-ready');
-          /* la discesa guidata sta in un altro modulo: gli dico solo
-             che il filmato c'e', e quanto dura */
-          document.dispatchEvent(new CustomEvent('eroe-pronto', {
-            detail: { durata: video.duration || 0 }
-          }));
-        }, { once: true });
+      return pompa().then(function(){
+        clearTimeout(taglio);
+        if (anello) anello.style.setProperty('--ld', 0);
+        parti(URL.createObjectURL(new Blob(pezzi, { type: 'video/mp4' })));
       });
+    }).catch(function(){
+      /* rete lenta o interrotta: ci prova col file diretto, poi si arrende */
+      clearTimeout(taglio);
+      if (!chiuso) parti(VIDEO_URL);
+      setTimeout(function(){ if (!chiuso && film.paused) chiudi(); }, 9000);
     });
-  }
-
-  function initHeroOnce(){
-    if (heroInit) return;
-    heroInit = true;
-
-    poster.style.backgroundImage = "url('" + POSTER_URL + "')";
-    var started = false;
-    function startBlobFetch(){
-      if (started) return;
-      started = true;
-      loadHeroBlob().catch(failVideo);
-    }
-    var img = new Image();
-    img.onload = startBlobFetch;
-    img.onerror = startBlobFetch;
-    img.src = POSTER_URL;
-    setTimeout(startBlobFetch, 4000);
-
-    loadStart = performance.now();
-
-    if ('IntersectionObserver' in window && eroe){
-      new IntersectionObserver(function(entries){
-        heroOnScreen = entries[0].isIntersecting;
-        if (heroOnScreen) kick();
-      }, { rootMargin: '10% 0px' }).observe(eroe);
-    }
-  }
-
-  /* ══ the five gates, live in both directions ═══════ */
-  var GATES = [
-    '(max-width: 720px)',
-    '(orientation: portrait) and (max-width: 1024px)',
-    '(orientation: portrait) and (pointer: coarse)',
-    '(orientation: landscape) and (pointer: coarse) and (max-height: 560px)',
-    '(prefers-reduced-motion: reduce)'
-  ];
-
-  function enableScrub(){
-    if (scrubOn) return;
-    scrubOn = true;
-    initHeroOnce();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    bands.forEach(function(b){ b.op = -1; b.k = -1; });
-    unpinFinalStates();
-    updateCaptions(heroProgress());
-    onScroll();
-  }
-  function disableScrub(){
-    if (!scrubOn) return;
-    scrubOn = false;
-    window.removeEventListener('scroll', onScroll);
-    if (rafId !== null){ cancelAnimationFrame(rafId); rafId = null; }
-  }
-  function applyHeroMode(){
-    var hit = GATES.some(function(q){ return matchMedia(q).matches; });
-    if (hit) disableScrub(); else enableScrub();
-  }
-  var MQLS = GATES.map(function(q){ return matchMedia(q); });
-  MQLS.forEach(function(m){
-    if (m.addEventListener) m.addEventListener('change', applyHeroMode);
-    else if (m.addListener) m.addListener(applyHeroMode);
-  });
+  })();
 
   /* ══ RADICI: entrances, the sounding line, friezes ══ */
   var friezes = [].slice.call(document.querySelectorAll('[data-fregio]'));
@@ -3211,7 +3108,6 @@ a:visited,
     var scena = document.getElementById('mazzo-scena');
     if (scena && scena._pin) scena._pin();
     window.removeEventListener('scroll', onScrollRadici);
-    disableScrub();
   }
   function unpinFinalStates(){
     friezes.forEach(function(svg){ svg._d = undefined; });
@@ -3224,8 +3120,10 @@ a:visited,
   }
   var rmq = matchMedia('(prefers-reduced-motion: reduce)');
   function onRM(e){
+    /* chi chiede meno movimento vede le scene gia' composte; chi cambia idea
+       riprende lo scorrimento normale (l'apertura ormai e' passata) */
     if (e.matches) pinToFinalStates();
-    else applyHeroMode();
+    else unpinFinalStates();
   }
   if (rmq.addEventListener) rmq.addEventListener('change', onRM);
   else if (rmq.addListener) rmq.addListener(onRM);
@@ -3569,31 +3467,9 @@ a:visited,
       glideRaf = requestAnimationFrame(step);
     }
 
-    /* ── la discesa parte da sola ────────────────────────
-       Chi arriva non deve scrollare per capire che succede qualcosa: il
-       viaggio si avvia appena il filmato e' pronto e va al passo del filmato
-       stesso, cosi' l'immagine non corre ne' resta indietro. Basta un dito,
-       una rotella o un tasto per riprendere in mano la pagina. */
-    var partita = false;
-    document.addEventListener('eroe-pronto', function(e){
-      if (partita) return;
-      var eroe = document.querySelector('.eroe');
-      if (!eroe || getComputedStyle(eroe).display === 'none') return;   /* telefono: ci pensa il video */
-      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      if (location.hash && location.hash !== '#top') return;            /* e' arrivato con un link a una sezione */
-      if (window.scrollY > 4) return;                                   /* si e' gia' mosso da solo */
-      partita = true;
-
-      var fine = eroe.getBoundingClientRect().top + window.scrollY + eroe.offsetHeight - window.innerHeight;
-      var durata = (e.detail && e.detail.durata ? e.detail.durata : 9.7) * 1000;
-
-      /* un respiro sul castello prima di scendere: partire di scatto
-         sull'attimo in cui la pagina appare sembra un errore, non un invito */
-      setTimeout(function(){
-        if (window.scrollY > 4) return;
-        glideTo(fine, true, null, durata);
-      }, 900);
-    });
+    /* La discesa automatica all'apertura non serve piu': il viaggio ora lo
+       fa il sipario, al passo del filmato. Qui resta solo la discesa
+       guidata quando si clicca una voce della barra. */
 
     /* any real input from the visitor wins immediately */
     ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function(ev){
@@ -4146,9 +4022,8 @@ a:visited,
     document.body.classList.toggle('paused', document.hidden);
   });
 
-  /* ══ go ════════════════════════════════════════════ */
+  /* ══ via ═══════════════════════════════════════════ */
   if (rmq.matches) pinToFinalStates();
-  else applyHeroMode();
   drawRadici();
 })();
 </script>
