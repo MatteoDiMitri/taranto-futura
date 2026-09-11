@@ -159,77 +159,51 @@ body.paused *, body.paused *::before, body.paused *::after{animation-play-state:
 }
 
 /* ══════════════════════════════════════════════════════
-   IL SIPARIO E L'APERTURA
-   Il filmato non e' piu' legato alla rotella: 233 fotogrammi su 4888px di
-   scorrimento facevano 21px per immagine, cioe' due fotogrammi saltati a
-   ogni scatto del dito. Ora scorre al suo passo e si guarda.
+   L'APERTURA
+   Il viaggio scorre una volta al suo passo; finito quello il logo
+   resta vivo e gira in loop, e la pagina si lascia scorrere.
    ══════════════════════════════════════════════════════ */
-.sipario{
-  position:fixed; inset:0; z-index:200; background:var(--canvas);
-  display:grid; place-items:center;
-  transition:opacity .9s var(--ease), visibility 0s linear .9s;
+.apertura{
+  position:relative; z-index:1; height:100svh; overflow:hidden;
+  background:var(--canvas);
 }
-.sipario.via{opacity:0; visibility:hidden; pointer-events:none}
-
-.film-intro{
-  width:100%; height:100%; object-fit:cover; opacity:0;
-  transition:opacity .7s var(--ease);
+.apertura video{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:contain; background:var(--canvas);
 }
-.sipario.pronto .film-intro{opacity:1}
 
-/* in piedi il panoramico va incorniciato, non tagliato: a tutto schermo
-   del nome si leggerebbe mezza parola */
-@media (orientation:portrait){ .film-intro{object-fit:contain} }
+.film-viaggio{opacity:0; transition:opacity .6s var(--ease)}
+.apertura.pronta .film-viaggio{opacity:1}
+.film-vivo{opacity:0; transition:opacity .7s var(--ease)}
+.apertura.viva .film-vivo{opacity:1}
+.apertura.viva .film-viaggio{opacity:0}
 
-/* il tasto per saltare: c'e' sempre, perche' un'apertura da cui non si
-   esce e' un sequestro, non un benvenuto */
+/* il tasto per saltare: c'e' finche' dura il viaggio, perche' un'apertura
+   da cui non si esce e' un sequestro, non un benvenuto */
 .salta{
-  position:absolute; right:clamp(18px,4vw,40px); bottom:clamp(18px,4vh,40px);
+  position:absolute; right:clamp(18px,4vw,40px); bottom:clamp(18px,4vh,40px); z-index:3;
   padding:11px 20px; cursor:pointer; border-radius:999px;
   background:rgba(4,7,15,.55); border:1px solid var(--border-strong);
   color:var(--text-primary); font-family:var(--mono);
   font-size:11px; letter-spacing:.14em; text-transform:uppercase;
   backdrop-filter:blur(8px);
   opacity:0; animation:spunta .6s var(--ease) .9s forwards;
-  transition:background-color .3s var(--ease), border-color .3s var(--ease);
+  transition:background-color .3s var(--ease), border-color .3s var(--ease), opacity .4s;
 }
 .salta:hover{background:rgba(4,7,15,.8); border-color:var(--argento)}
 .salta:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
 @keyframes spunta{to{opacity:1}}
 
-/* Mentre il sipario e' su, la pagina sotto non si muove. Serve su tutti e
-   due: solo su body, in parecchi browser, la pagina scorre lo stesso. */
+/* mentre il viaggio scorre la pagina sotto non si muove */
 html.fermo, body.fermo{overflow:hidden; height:100%; overscroll-behavior:none}
 
-/* l'anello che dice quanto manca */
 .anello-carico{
-  position:absolute; left:50%; bottom:96px; translate:-50% 0;
+  position:absolute; left:50%; bottom:96px; z-index:2; translate:-50% 0;
   width:48px; height:48px; color:var(--argento); opacity:.85;
   transition:opacity .6s var(--ease);
 }
 .anello-carico circle{transform:rotate(-90deg); transform-origin:50% 50%; transition:stroke-dashoffset .18s linear}
-.sipario.pronto .anello-carico{opacity:0}
-
-/* ─── l'apertura, una sola per tutti gli schermi ─────── */
-.apertura{position:relative; z-index:1; min-height:100svh; overflow:hidden; background:var(--canvas)}
-/* L'ultimo fotogramma del filmato, cosi' il sipario che si alza lascia
-   esattamente l'immagine su cui era finito. Come immagine e non come sfondo:
-   a tutto schermo il ritaglio mangiava meta' del nome sul telefono.
-   I bordi sfumano, cosi' non sembra un riquadro appoggiato sulla pagina. */
-.apertura .marchio{
-  width:100%; max-width:min(880px, 92vw); height:auto; justify-self:center;
-  -webkit-mask-image:radial-gradient(ellipse 70% 66% at 50% 50%, #000 34%, transparent 86%);
-          mask-image:radial-gradient(ellipse 70% 66% at 50% 50%, #000 34%, transparent 86%);
-}
-.apertura .dentro{
-  position:relative; z-index:2; min-height:100svh;
-  display:grid; align-content:center; justify-items:center;
-  gap:clamp(18px,3vh,30px);
-  padding:clamp(88px,12vh,130px) var(--gut) clamp(44px,7vh,72px);
-  text-align:center;
-}
-.apertura .coda-fissa{display:grid; justify-items:center; gap:22px}
-.apertura .sotto{max-width:26ch; color:var(--argento); font-size:clamp(15px,4.2vw,18px); font-weight:400}
+.apertura.pronta .anello-carico{opacity:0}
 
 .freccia-giu{
   position:absolute; left:50%; bottom:96px; translate:-50% 0;
@@ -2107,31 +2081,19 @@ a:visited,
 <main id="main" tabindex="-1">
 
 <!-- ══ THE SCRUB HERO ══════════════════════════════════ -->
-<!-- Il sipario: il viaggio si guarda, non si scrolla. Legare il filmato
-     alla rotella voleva dire 21 pixel di scorrimento per fotogramma, cioe'
-     due fotogrammi saltati a ogni scatto del dito: per forza andava a scatti.
-     Qui scorre al suo passo, liscio, e chi ha fretta lo salta. -->
-<div class="sipario" id="sipario">
-  <video class="film-intro" id="film-intro" preload="none" muted playsinline
+<!-- L'apertura. Il viaggio passa una volta; poi il logo resta vivo e
+     gira in loop, che e' il punto d'arrivo, non un fermo immagine. -->
+<section class="apertura" id="top" aria-label="Apertura">
+  <h1 class="vh">Taranto Futura</h1>
+  <video class="film-viaggio" id="film-viaggio" muted playsinline preload="none"
          aria-label="Dal Castello Aragonese giu' sott'acqua, fino al nome"></video>
+  <video class="film-vivo" id="film-vivo" src="assets/logo-loop.mp4" muted playsinline loop
+         preload="none" aria-hidden="true" tabindex="-1"></video>
   <svg class="anello-carico" id="anello" viewBox="0 0 48 48" aria-hidden="true">
     <circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="3"
             stroke-dasharray="126" style="stroke-dashoffset:var(--ld,126)"/>
   </svg>
   <button class="salta" id="salta" type="button" hidden>Salta l&rsquo;apertura</button>
-</div>
-
-<section class="apertura" id="top" aria-label="Apertura">
-  <div class="dentro">
-    <p class="luogo">Taranto &middot; Puglia</p>
-    <h1 class="vh">Taranto Futura</h1>
-    <img class="marchio" src="assets/hero-ending.jpg" alt="" width="1920" height="1080"
-         decoding="async" aria-hidden="true">
-    <div class="coda-fissa">
-      <p class="sotto">A Taranto le radici non stanno sottoterra. Stanno sott'acqua.</p>
-      <p><a class="bottone" href="#radici">Scendi nelle radici</a></p>
-    </div>
-  </div>
 </section>
 
 <!-- ══ THE STATIC HERO ═════════════════════════════════ -->
@@ -2143,7 +2105,6 @@ a:visited,
   <div class="colonna sx" aria-hidden="true"><svg class="cap" viewBox="4 6 192 88"><use href="#cap-ionico"/></svg><svg class="fusto" viewBox="0 0 200 600" preserveAspectRatio="none"><use href="#fusto-ionico"/></svg></div>
   <div class="colonna dx" aria-hidden="true"><svg class="cap" viewBox="4 6 192 88"><use href="#cap-ionico"/></svg><svg class="fusto" viewBox="0 0 200 600" preserveAspectRatio="none"><use href="#fusto-ionico"/></svg></div>
   <div class="wrap">
-    <svg class="capitello" viewBox="0 0 200 110" aria-hidden="true"><use href="#cap-ionico"/></svg>
     <span class="etichetta">Radici</span>
     <h2 class="chi-titolo" id="radici-tit">Taranto Futura non &egrave; un nome.<br>&Egrave; una domanda.</h2>
 
@@ -2814,8 +2775,7 @@ a:visited,
 
       <div class="parte" id="parte-insieme" role="tabpanel" aria-labelledby="ling-insieme" hidden>
         <div class="vuoto-garbato">
-          <svg class="capitello" viewBox="0 0 200 110" aria-hidden="true"><use href="#cap-ionico"/></svg>
-          <p>Qui finiranno i pezzi fatti insieme ad altre realt&agrave;: la foto davanti, il logo di chi
+                <p>Qui finiranno i pezzi fatti insieme ad altre realt&agrave;: la foto davanti, il logo di chi
              ci ha messo le mani girando la carta.</p>
           <p class="chiosa">Ci stiamo lavorando.</p>
         </div>
@@ -3104,97 +3064,106 @@ a:visited,
     }
   }
 
-  /* ══ IL SIPARIO ════════════════════════════════════
-     Il filmato si guarda, non si scrolla. Legarlo alla rotella voleva dire
-     233 fotogrammi su 4888px: 21 pixel per immagine, due fotogrammi saltati
-     a ogni scatto del dito. Per questo andava a scatti, e nessuna quantita'
-     di codice lo avrebbe reso liscio: erano poche immagini.
-     Qui il filmato scende intero prima di partire, cosi' non si impunta mai
-     a meta', e chi ha fretta lo salta. ══ */
+  /* ══ L'APERTURA ════════════════════════════════════
+     Il viaggio scorre una volta, al passo suo: legarlo alla rotella voleva
+     dire 21 pixel di scorrimento per fotogramma, e si vedevano gli scatti.
+     Finito il viaggio il logo non si ferma: passa il testimone a un secondo
+     filmato che gira in loop, e la pagina si lascia scorrere. ══ */
   (function(){
-    var VIDEO_URL   = 'assets/hero-scrub.mp4';
-    var VIDEO_BYTES = 6976907;
+    var VIAGGIO = 'assets/hero-scrub.mp4';
+    var BYTE    = 6976907;
 
-    var sipario = document.getElementById('sipario');
-    var film    = document.getElementById('film-intro');
+    var scena   = document.querySelector('.apertura');
+    var viaggio = document.getElementById('film-viaggio');
+    var vivo    = document.getElementById('film-vivo');
     var anello  = document.getElementById('anello');
     var salta   = document.getElementById('salta');
-    if (!sipario || !film) return;
+    if (!scena || !viaggio || !vivo) return;
 
-    var chiuso = false;
+    var passato = false;
 
-    function chiudi(){
-      if (chiuso) return;
-      chiuso = true;
-      sipario.classList.add('via');
+    function trattieni(e){ if (!passato && e.cancelable) e.preventDefault(); }
+
+    /* il testimone: il viaggio si spegne, il logo prende vita e resta */
+    function passa(){
+      if (passato) return;
+      passato = true;
+      scena.classList.add('pronta', 'viva');
+      if (salta) salta.hidden = true;
       document.documentElement.classList.remove('fermo');
       document.body.classList.remove('fermo');
       window.removeEventListener('touchmove', trattieni);
       window.removeEventListener('wheel', trattieni);
-      try { film.pause(); } catch (e) {}
-      /* liberata la memoria del blob: sono sette megabyte */
+
+      vivo.play().catch(function(){});
+      /* la memoria del viaggio si libera: sono sette megabyte */
       setTimeout(function(){
-        if (film.src && film.src.indexOf('blob:') === 0) URL.revokeObjectURL(film.src);
-        film.removeAttribute('src');
-        sipario.parentNode && sipario.parentNode.removeChild(sipario);
-      }, 1200);
+        try { viaggio.pause(); } catch (e) {}
+        if (viaggio.src && viaggio.src.indexOf('blob:') === 0) URL.revokeObjectURL(viaggio.src);
+        viaggio.removeAttribute('src');
+        viaggio.load();
+      }, 1400);
     }
 
-    /* chi arriva con un link a una sezione non vuole l'apertura,
-       e chi ha chiesto meno movimento nemmeno */
+    /* il logo vivo parte comunque: e' lui il punto d'arrivo */
+    vivo.load();
+    vivo.play().catch(function(){});
+
+    /* chi arriva con un link a una sezione, o ha chiesto meno movimento,
+       si tiene il logo vivo e salta il viaggio */
     if ((location.hash && location.hash !== '#top') ||
         matchMedia('(prefers-reduced-motion: reduce)').matches){
-      chiudi();
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches){
+        vivo.removeAttribute('loop');
+        vivo.pause();
+        scena.classList.add('viva');
+        passato = true;
+        return;
+      }
+      passa();
       return;
     }
 
-    /* overflow:hidden non basta su iOS: la gomma del dito scorre lo stesso.
-       Questi due ascoltatori la trattengono finche' il sipario e' su. */
-    function trattieni(e){ if (!chiuso && e.cancelable) e.preventDefault(); }
     document.documentElement.classList.add('fermo');
     document.body.classList.add('fermo');
     window.addEventListener('touchmove', trattieni, { passive: false });
     window.addEventListener('wheel', trattieni, { passive: false });
+
     if (salta){
       salta.hidden = false;
-      salta.addEventListener('click', chiudi);
+      salta.addEventListener('click', passa);
     }
     document.addEventListener('keydown', function(e){
-      if (!chiuso && (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ')) chiudi();
+      if (!passato && (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ')) passa();
     });
 
-    film.addEventListener('ended', chiudi);
-    /* se per qualunque ragione non parte, la pagina non resta ostaggio */
-    var salvagente = setTimeout(chiudi, 26000);
-    film.addEventListener('play', function(){
-      clearTimeout(salvagente);
-      var resto = ((film.duration || 10) - film.currentTime) * 1000 + 2500;
-      setTimeout(chiudi, resto);
-    }, { once: true });
+    viaggio.addEventListener('ended', passa);
+    var salvagente = setTimeout(passa, 26000);
 
     function parti(url){
-      if (chiuso) return;
-      film.src = url;
-      film.load();
-      film.addEventListener('canplaythrough', function(){
-        if (chiuso) return;
-        sipario.classList.add('pronto');
-        var p = film.play();
-        if (p && p.catch) p.catch(function(){ chiudi(); });   /* autoplay negato */
+      if (passato) return;
+      viaggio.src = url;
+      viaggio.load();
+      viaggio.addEventListener('canplaythrough', function(){
+        if (passato) return;
+        scena.classList.add('pronta');
+        var p = viaggio.play();
+        if (p && p.catch) p.catch(passa);          /* autoplay negato */
+        clearTimeout(salvagente);
+        setTimeout(passa, ((viaggio.duration || 10) - viaggio.currentTime) * 1000 + 2200);
       }, { once: true });
     }
 
-    /* Lo scarico intero prima di partire: un filmato che si ferma a meta'
-       per caricare e' peggio di un filmato che parte un secondo dopo. */
+    /* scaricato intero prima di partire: un filmato che si impunta a meta'
+       e' peggio di un filmato che parte un secondo dopo */
     var ctrl = new AbortController();
     var taglio = setTimeout(function(){ ctrl.abort(); }, 22000);
 
-    fetch(VIDEO_URL, { signal: ctrl.signal }).then(function(res){
+    fetch(VIAGGIO, { signal: ctrl.signal }).then(function(res){
       if (!res.ok || !res.body) throw new Error('niente corpo');
-      var totale = Number(res.headers.get('Content-Length')) || VIDEO_BYTES;
+      var totale = Number(res.headers.get('Content-Length')) || BYTE;
       var lettore = res.body.getReader();
       var pezzi = [], presi = 0, ultimo = 0;
-
       function pompa(){
         return lettore.read().then(function(r){
           if (r.done) return;
@@ -3213,10 +3182,9 @@ a:visited,
         parti(URL.createObjectURL(new Blob(pezzi, { type: 'video/mp4' })));
       });
     }).catch(function(){
-      /* rete lenta o interrotta: ci prova col file diretto, poi si arrende */
       clearTimeout(taglio);
-      if (!chiuso) parti(VIDEO_URL);
-      setTimeout(function(){ if (!chiuso && film.paused) chiudi(); }, 9000);
+      if (!passato) parti(VIAGGIO);
+      setTimeout(function(){ if (!passato && viaggio.paused) passa(); }, 9000);
     });
   })();
 
