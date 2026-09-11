@@ -3065,13 +3065,15 @@ a:visited,
   }
 
   /* ══ L'APERTURA ════════════════════════════════════
-     Il viaggio scorre una volta, al passo suo: legarlo alla rotella voleva
-     dire 21 pixel di scorrimento per fotogramma, e si vedevano gli scatti.
-     Finito il viaggio il logo non si ferma: passa il testimone a un secondo
-     filmato che gira in loop, e la pagina si lascia scorrere. ══ */
+     Il viaggio scorre una volta, al passo suo; finito, il logo non si ferma
+     ma passa a un secondo filmato che gira in loop.
+     Il viaggio parte appena il browser ne ha abbastanza, non quando ha finito
+     di scaricarlo: aspettare sette megabyte interi voleva dire, su una rete
+     mediocre, mezzo minuto di attesa e l'animazione mai vista. Il loop si
+     scarica dopo, per non rubargli la banda. E se la rete non regge si passa
+     al logo invece di lasciare qualcuno davanti a un cerchio che gira. ══ */
   (function(){
     var VIAGGIO = 'assets/hero-scrub.mp4';
-    var BYTE    = 6976907;
 
     var scena   = document.querySelector('.apertura');
     var viaggio = document.getElementById('film-viaggio');
@@ -3080,14 +3082,22 @@ a:visited,
     var salta   = document.getElementById('salta');
     if (!scena || !viaggio || !vivo) return;
 
-    var passato = false;
+    var passato = false, vivoChiesto = false;
 
     function trattieni(e){ if (!passato && e.cancelable) e.preventDefault(); }
 
-    /* il testimone: il viaggio si spegne, il logo prende vita e resta */
+    /* il loop si carica solo quando serve: prima ruberebbe banda al viaggio */
+    function chiediVivo(){
+      if (vivoChiesto) return;
+      vivoChiesto = true;
+      vivo.preload = 'auto';
+      vivo.load();
+    }
+
     function passa(){
       if (passato) return;
       passato = true;
+      chiediVivo();
       scena.classList.add('pronta', 'viva');
       if (salta) salta.hidden = true;
       document.documentElement.classList.remove('fermo');
@@ -3096,33 +3106,23 @@ a:visited,
       window.removeEventListener('wheel', trattieni);
 
       vivo.play().catch(function(){});
-      /* la memoria del viaggio si libera: sono sette megabyte */
       setTimeout(function(){
         try { viaggio.pause(); } catch (e) {}
-        if (viaggio.src && viaggio.src.indexOf('blob:') === 0) URL.revokeObjectURL(viaggio.src);
         viaggio.removeAttribute('src');
         viaggio.load();
-      }, 1400);
+      }, 1500);
     }
-
-    /* il logo vivo parte comunque: e' lui il punto d'arrivo */
-    vivo.load();
-    vivo.play().catch(function(){});
 
     /* chi arriva con un link a una sezione, o ha chiesto meno movimento,
-       si tiene il logo vivo e salta il viaggio */
-    if ((location.hash && location.hash !== '#top') ||
-        matchMedia('(prefers-reduced-motion: reduce)').matches){
-      if (matchMedia('(prefers-reduced-motion: reduce)').matches){
-        vivo.removeAttribute('loop');
-        vivo.pause();
-        scena.classList.add('viva');
-        passato = true;
-        return;
-      }
-      passa();
+       si tiene il logo e salta il viaggio */
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches){
+      chiediVivo();
+      vivo.removeAttribute('loop');
+      scena.classList.add('viva');
+      passato = true;
       return;
     }
+    if (location.hash && location.hash !== '#top'){ passa(); return; }
 
     document.documentElement.classList.add('fermo');
     document.body.classList.add('fermo');
@@ -3137,55 +3137,48 @@ a:visited,
       if (!passato && (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ')) passa();
     });
 
-    viaggio.addEventListener('ended', passa);
-    var salvagente = setTimeout(passa, 26000);
-
-    function parti(url){
-      if (passato) return;
-      viaggio.src = url;
-      viaggio.load();
-      viaggio.addEventListener('canplaythrough', function(){
-        if (passato) return;
-        scena.classList.add('pronta');
-        var p = viaggio.play();
-        if (p && p.catch) p.catch(passa);          /* autoplay negato */
-        clearTimeout(salvagente);
-        setTimeout(passa, ((viaggio.duration || 10) - viaggio.currentTime) * 1000 + 2200);
-      }, { once: true });
+    /* l'anello dice quanto e' stato scaricato, letto dal video stesso */
+    function segnaAnello(){
+      if (!anello || passato) return;
+      try {
+        if (!viaggio.buffered.length || !viaggio.duration) return;
+        var q = Math.min(1, viaggio.buffered.end(viaggio.buffered.length - 1) / viaggio.duration);
+        anello.style.setProperty('--ld', (126 * (1 - q)).toFixed(1));
+      } catch (e) {}
     }
+    viaggio.addEventListener('progress', segnaAnello);
+    viaggio.addEventListener('timeupdate', segnaAnello);
 
-    /* scaricato intero prima di partire: un filmato che si impunta a meta'
-       e' peggio di un filmato che parte un secondo dopo */
-    var ctrl = new AbortController();
-    var taglio = setTimeout(function(){ ctrl.abort(); }, 22000);
+    viaggio.addEventListener('ended', passa);
 
-    fetch(VIAGGIO, { signal: ctrl.signal }).then(function(res){
-      if (!res.ok || !res.body) throw new Error('niente corpo');
-      var totale = Number(res.headers.get('Content-Length')) || BYTE;
-      var lettore = res.body.getReader();
-      var pezzi = [], presi = 0, ultimo = 0;
-      function pompa(){
-        return lettore.read().then(function(r){
-          if (r.done) return;
-          pezzi.push(r.value); presi += r.value.length;
-          var q = Math.min(1, presi / totale);
-          if (anello && q - ultimo > 0.02){
-            ultimo = q;
-            anello.style.setProperty('--ld', (126 * (1 - q)).toFixed(1));
-          }
-          return pompa();
-        });
-      }
-      return pompa().then(function(){
-        clearTimeout(taglio);
-        if (anello) anello.style.setProperty('--ld', 0);
-        parti(URL.createObjectURL(new Blob(pezzi, { type: 'video/mp4' })));
-      });
-    }).catch(function(){
-      clearTimeout(taglio);
-      if (!passato) parti(VIAGGIO);
-      setTimeout(function(){ if (!passato && viaggio.paused) passa(); }, 9000);
+    /* se si impunta troppo a lungo, meglio il logo che un'attesa muta */
+    var impunta = null;
+    viaggio.addEventListener('waiting', function(){
+      clearTimeout(impunta);
+      impunta = setTimeout(passa, 6000);
     });
+    viaggio.addEventListener('playing', function(){ clearTimeout(impunta); });
+
+    /* non deve partire tardi: se in dodici secondi non e' partito,
+       la rete non ce la fa e si va al logo */
+    var salvagente = setTimeout(passa, 12000);
+
+    viaggio.addEventListener('canplay', function(){
+      if (passato) return;
+      clearTimeout(salvagente);
+      scena.classList.add('pronta');
+      var p = viaggio.play();
+      if (p && p.catch) p.catch(passa);          /* autoplay negato */
+      /* il loop si chiede a meta' viaggio: c'e' tempo e non da' fastidio */
+      setTimeout(chiediVivo, 4000);
+      /* rete permettendo, il viaggio finisce da solo; questo e' il tetto */
+      setTimeout(passa, ((viaggio.duration || 10) + 8) * 1000);
+    }, { once: true });
+
+    viaggio.addEventListener('error', passa);
+    viaggio.preload = 'auto';
+    viaggio.src = VIAGGIO;
+    viaggio.load();
   })();
 
   /* ══ RADICI: entrances, the sounding line, friezes ══ */
