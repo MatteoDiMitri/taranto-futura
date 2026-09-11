@@ -824,6 +824,9 @@ footer .credito{font-family:var(--mono); font-size:11px; letter-spacing:.04em; o
 /* ─── I PANNELLI ──────────────────────────────────────────
    Le porte non portano piu' giu' nella pagina: aprono una finestra
    che copre tutto e si chiude con la X. ─────────────────── */
+/* hidden vuol dire nascosto: senza questa, basta una regola di
+   display scritta altrove per far ricomparire quel che e' chiuso */
+[hidden]{display:none !important}
 .pannello[hidden]{display:none}
 .pannello{
   position:fixed; inset:0; z-index:120;
@@ -1959,6 +1962,95 @@ a:visited,
       from{ opacity:0; transform:translate3d(0,50px,-340px) rotateY(-38deg); }
       to  { opacity:1; transform:none; }
     }
+
+/* ─── PRODOTTI: le linguette e i racconti ──────────────── */
+.linguette{
+  display:flex; gap:6px; margin:0 0 clamp(30px,4vw,46px);
+  padding:5px; border-radius:999px; width:max-content; max-width:100%;
+  background:rgba(255,255,255,.04); border:1px solid var(--filo);
+}
+.linguetta{
+  padding:11px 22px; border:0; border-radius:999px; cursor:pointer;
+  background:transparent; color:var(--tenue); font-family:var(--mono);
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  transition:background-color .3s var(--ease), color .3s var(--ease);
+}
+.linguetta:hover{color:var(--bianco)}
+.linguetta.attiva{background:var(--raggio); color:#fff}
+.linguetta:focus-visible{outline:2px solid var(--chiaro); outline-offset:2px}
+
+.vuoto-garbato{
+  display:grid; justify-items:center; gap:18px; text-align:center;
+  padding:clamp(60px,10vw,120px) 0;
+}
+.vuoto-garbato p{max-width:44ch; margin:0; color:var(--grigio); font-size:15px; line-height:1.7}
+.vuoto-garbato .chiosa{margin:0; font-family:var(--mono); font-size:11px;
+  letter-spacing:.2em; text-transform:uppercase; color:var(--tenue)}
+
+.storia-torna{
+  display:inline-flex; align-items:center; gap:8px; margin:0 0 26px;
+  padding:9px 16px; cursor:pointer; border-radius:999px;
+  background:transparent; border:1px solid var(--filo); color:var(--grigio);
+  font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+  transition:border-color .3s var(--ease), color .3s var(--ease);
+}
+.storia-torna:hover{border-color:var(--border-strong); color:var(--bianco)}
+
+.storia-testa{max-width:52ch; margin:0 0 clamp(34px,5vw,58px)}
+.storia-testa h3{margin:16px 0 0; font-size:clamp(30px,4.6vw,52px); line-height:1.08}
+.storia-testa .premessa{margin:18px 0 0}
+
+/* La teca resta ferma e cambia immagine; le battute le scorrono accanto.
+   Cosi' il pezzo non sparisce mentre leggi il perche' del pezzo. */
+.storia-corpo{
+  display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(30px,5vw,70px); align-items:start;
+}
+.storia-teca{position:sticky; top:88px; align-self:start}
+.teca-pila{
+  position:relative; border-radius:6px; overflow:hidden;
+  background:linear-gradient(165deg,#0A1234,#050914); border:1px solid var(--filo);
+  /* la teca si misura sull'altezza della finestra, non sulla larghezza della
+     colonna: altrimenti su schermi bassi esce sotto e "ferma" non lo e' */
+  height:min(68svh, 600px);
+}
+.teca-pila img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:contain;
+  padding:16px; opacity:0; transform:scale(.985);
+  transition:opacity .55s var(--ease), transform .8s var(--ease);
+}
+.teca-pila img.acceso{opacity:1; transform:none}
+
+/* ogni battuta possiede un pezzo di scorrimento suo: e' quello che
+   trasforma un elenco in un racconto */
+.storia-battute{display:grid; gap:0; padding:10vh 0 14vh}
+.battuta{
+  min-height:64vh; display:grid; align-content:center;
+  opacity:.14; transform:translateY(18px);
+  transition:opacity .6s var(--ease), transform .6s var(--ease);
+}
+.battuta-coda{min-height:46vh}
+.battuta.viva{opacity:1; transform:none}
+.battuta h4{margin:0 0 14px; font-family:var(--display); font-weight:400;
+  font-size:clamp(21px,2.5vw,30px); line-height:1.15}
+.battuta p{margin:0; font-size:15.5px; line-height:1.75; color:var(--grigio); max-width:46ch}
+.battuta-coda .bottone{margin-top:22px}
+
+@media (prefers-reduced-motion:reduce){
+  .battuta{opacity:1; transform:none}
+  .teca-pila img{transition:none}
+}
+
+@media (max-width:860px){
+  .storia-corpo{grid-template-columns:1fr; gap:26px}
+  .storia-teca{position:sticky; top:78px; z-index:2;
+    padding-bottom:14px; background:linear-gradient(180deg,var(--pece) 78%, transparent)}
+  .teca-pila{height:min(34svh, 300px)}
+  .storia-battute{padding:2vh 0 10vh}
+  .battuta{min-height:58vh; align-content:start; padding-top:8px}
+  .linguette{width:100%; justify-content:stretch}
+  .linguetta{flex:1 1 0; padding:12px 8px; font-size:10px; letter-spacing:.08em}
+}
 </style>
 </head>
 <body>
@@ -2079,14 +2171,14 @@ a:visited,
             </span>
             <span class="porta-freccia" aria-hidden="true">&rarr;</span>
           </button>
-          <a class="porta" href="#radici">
+          <button class="porta" type="button" data-pannello="pan-prodotti">
             <span class="porta-n">02</span>
             <span class="porta-corpo">
               <b>Prodotti</b>
               <i>Oggetti che nascono da una cosa di qua.</i>
             </span>
             <span class="porta-freccia" aria-hidden="true">&rarr;</span>
-          </a>
+          </button>
           <button class="porta" type="button" data-pannello="pan-fanzine">
             <span class="porta-n">03</span>
             <span class="porta-corpo">
@@ -2421,6 +2513,314 @@ a:visited,
           <span class="locandina-sfoglia">Sfoglia il book &rarr;</span>
         </button>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PRODOTTI: il racconto, non la vetrina ═══════════ -->
+<div class="pannello" id="pan-prodotti" role="dialog" aria-modal="true" aria-labelledby="pan-prodotti-tit" hidden>
+  <header class="pannello-barra">
+    <div>
+      <p class="pannello-occhiello">Cosa facciamo per la citt&agrave;</p>
+      <h2 id="pan-prodotti-tit">Prodotti</h2>
+    </div>
+    <button class="pannello-chiudi" type="button" aria-label="Chiudi Prodotti">&#10005;</button>
+  </header>
+
+  <div class="pannello-corpo" id="prodotti-corpo">
+    <div class="wrap">
+
+      <div class="linguette" role="tablist" aria-label="Tipo di prodotto">
+        <button class="linguetta attiva" type="button" role="tab" aria-selected="true"
+                data-lingua="nostri" id="ling-nostri" aria-controls="parte-nostri">I nostri</button>
+        <button class="linguetta" type="button" role="tab" aria-selected="false"
+                data-lingua="insieme" id="ling-insieme" aria-controls="parte-insieme">In collaborazione</button>
+      </div>
+
+      <div class="parte" id="parte-nostri" role="tabpanel" aria-labelledby="ling-nostri">
+        <div id="prodotti-elenco">
+          <p class="premessa">Ogni pezzo nasce da una cosa di qua: una leggenda, un attrezzo, un vento.
+             Qui c&rsquo;&egrave; il perch&eacute;. <b>Comprarli si compra dal catalogo.</b></p>
+          <div class="fregio-filo" aria-hidden="true"></div>
+          <div class="riquadri prodotti-grid">
+        <article class="riquadro">
+          <button class="riquadro-foto" type="button" data-storia="carte" aria-label="La storia di Carte Tarantine">
+            <span class="genere">7 capitoli</span>
+            <img src="assets/prodotti/carte-tarantine.webp" alt="Carte Tarantine" loading="lazy" decoding="async">
+            <span class="sfoglia-invito">Leggi la storia</span>
+          </button>
+          <h3>Carte Tarantine</h3>
+          <p class="desc">Quaranta carte da gioco tradizionali. Al posto di coppe e denari, sette figure che a Taranto si conoscono senza bisogno di spiegarle.</p>
+          <div class="riquadro-piede">
+            <span class="prezzo spento">15&nbsp;&euro; nel catalogo</span>
+            <button class="bottoncino chiaro" type="button" data-storia="carte">La storia</button>
+          </div>
+        </article>
+        <article class="riquadro">
+          <button class="riquadro-foto" type="button" data-storia="sciarpa" aria-label="La storia di Sciarpa Taranto Futura">
+            <span class="genere">3 capitoli</span>
+            <img src="assets/prodotti/sciarpa.webp" alt="Sciarpa Taranto Futura" loading="lazy" decoding="async">
+            <span class="sfoglia-invito">Leggi la storia</span>
+          </button>
+          <h3>Sciarpa Taranto Futura</h3>
+          <p class="desc">Maglia acrilica jacquard, rosso e blu a scacchi. La forma è quella da curva: i simboli dentro sono di qua.</p>
+          <div class="riquadro-piede">
+            <span class="prezzo spento">25&nbsp;&euro; nel catalogo</span>
+            <button class="bottoncino chiaro" type="button" data-storia="sciarpa">La storia</button>
+          </div>
+        </article>
+        <article class="riquadro">
+          <button class="riquadro-foto" type="button" data-storia="sirena" aria-label="La storia di Poster Sirena">
+            <span class="genere">2 capitoli</span>
+            <img src="assets/prodotti/poster-sirena.webp" alt="Poster Sirena" loading="lazy" decoding="async">
+            <span class="sfoglia-invito">Leggi la storia</span>
+          </button>
+          <h3>Poster Sirena</h3>
+          <p class="desc">Stampa A3 su carta opaca 250 grammi. Una faccia che sta per metà sotto.</p>
+          <div class="riquadro-piede">
+            <span class="prezzo spento">10&nbsp;&euro; nel catalogo</span>
+            <button class="bottoncino chiaro" type="button" data-storia="sirena">La storia</button>
+          </div>
+        </article>
+        <article class="riquadro">
+          <button class="riquadro-foto" type="button" data-storia="venti" aria-label="La storia di Poster Rosa dei Venti">
+            <span class="genere">4 capitoli</span>
+            <img src="assets/prodotti/poster-rosa-dei-venti.webp" alt="Poster Rosa dei Venti" loading="lazy" decoding="async">
+            <span class="sfoglia-invito">Leggi la storia</span>
+          </button>
+          <h3>Poster Rosa dei Venti</h3>
+          <p class="desc">Stampa A3. Quattro venti, quattro facce di marmo prese dai musei e rimesse a colori.</p>
+          <div class="riquadro-piede">
+            <span class="prezzo spento">10&nbsp;&euro; nel catalogo</span>
+            <button class="bottoncino chiaro" type="button" data-storia="venti">La storia</button>
+          </div>
+        </article>
+        <article class="riquadro">
+          <button class="riquadro-foto" type="button" data-storia="erasmo" aria-label="La storia di Poster Sant'Erasmo">
+            <span class="genere">1 capitoli</span>
+            <img src="assets/prodotti/poster-santerasmo.webp" alt="Poster Sant'Erasmo" loading="lazy" decoding="async">
+            <span class="sfoglia-invito">Leggi la storia</span>
+          </button>
+          <h3>Poster Sant'Erasmo</h3>
+          <p class="desc">Stampa A3 in edizione limitata, per la notte di Sant’Erasmo.</p>
+          <div class="riquadro-piede">
+            <span class="prezzo spento">10&nbsp;&euro; nel catalogo</span>
+            <button class="bottoncino chiaro" type="button" data-storia="erasmo">La storia</button>
+          </div>
+        </article>
+          </div>
+        </div>
+
+<section class="storia" id="storia-carte" hidden>
+  <button class="storia-torna" type="button" data-torna>&larr; Tutti i prodotti</button>
+  <header class="storia-testa">
+    <p class="etichetta"><i class="volutina" aria-hidden="true"></i>Un nostro pezzo</p>
+    <h3>Carte Tarantine</h3>
+    <p class="premessa">Quaranta carte da gioco tradizionali. Al posto di coppe e denari, sette figure che a Taranto si conoscono senza bisogno di spiegarle.</p>
+  </header>
+
+  <div class="storia-corpo">
+    <div class="storia-teca">
+      <div class="teca-pila">
+          <img class="quadro acceso" src="assets/carta-cataldo.jpg" alt="San Cataldo" data-quadro="0" loading="lazy" decoding="async">
+          <img class="quadro" src="assets/carta-monete.jpg" alt="Taras sul delfino" data-quadro="1" loading="lazy" decoding="async">
+          <img class="quadro" src="assets/carta-sirena.jpg" alt="La sirena" data-quadro="2" loading="lazy" decoding="async">
+          <img class="quadro" src="assets/carta-anfora.jpg" alt="L'anfora" data-quadro="3" loading="lazy" decoding="async">
+          <img class="quadro" src="assets/carta-cozze.jpg" alt="I pali delle cozze" data-quadro="4" loading="lazy" decoding="async">
+          <img class="quadro" src="assets/carta-cucella.jpg" alt="La cucella" data-quadro="5" loading="lazy" decoding="async">
+          <img class="quadro" src="assets/carta-retro.jpg" alt="Il dorso" data-quadro="6" loading="lazy" decoding="async">
+      </div>
+    </div>
+    <div class="storia-battute">
+        <div class="battuta" data-quadro="0">
+          <h4>San Cataldo</h4>
+          <p>Il vescovo irlandese che passa di qui e resta. La leggenda dice che getto' il suo anello nel Mar Piccolo per placare la tempesta: dove cadde si apri' un occhio d'acqua dolce, e da allora le citare sorgono li'.</p>
+        </div>
+        <div class="battuta" data-quadro="1">
+          <h4>Taras sul delfino</h4>
+          <p>Il figlio di Poseidone arriva a cavallo di un delfino e fonda la citta'. Sta sulle monete greche da venticinque secoli: e' la prima cosa che Taranto ha stampato di se'.</p>
+        </div>
+        <div class="battuta" data-quadro="2">
+          <h4>La sirena</h4>
+          <p>Skuma e le sue sorelle. Non quelle da cartone animato: quelle che stanno sotto e guardano, e ogni tanto si fanno vedere solo per ricordarti che il mare non e' tuo.</p>
+        </div>
+        <div class="battuta" data-quadro="3">
+          <h4>L'anfora</h4>
+          <p>Quella del MArTA. Sepolta, dissotterrata, rimessa in vetrina: passa piu' tempo sotto terra che sopra, e quando riemerge e' ancora piu' bella di com'era.</p>
+        </div>
+        <div class="battuta" data-quadro="4">
+          <h4>I pali delle cozze</h4>
+          <p>Le file di pali nel Mar Piccolo, dritte come una scrittura. Sono lavoro, non decorazione: ma visti dall'alto sembrano un alfabeto che nessuno ha ancora letto.</p>
+        </div>
+        <div class="battuta" data-quadro="5">
+          <h4>La cucella</h4>
+          <p>L'attrezzo con cui i pescatori rammendano le reti. Un pezzo di legno che tiene il filo: nessuno lo fotografa mai, e senza quello non si pesca.</p>
+        </div>
+        <div class="battuta" data-quadro="6">
+          <h4>Il dorso</h4>
+          <p>Quaranta volte lo stesso segno. Il mazzo si riconosce da chiuso.</p>
+        </div>
+      <div class="battuta battuta-coda">
+        <h4>Se lo vuoi</h4>
+        <p>Sta nel catalogo a 15&nbsp;&euro;. Te lo mettiamo nel carrello e ne parliamo in DM.</p>
+        <button class="bottone" type="button" data-al-carrello="carte">Aggiungi al carrello</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="storia" id="storia-sciarpa" hidden>
+  <button class="storia-torna" type="button" data-torna>&larr; Tutti i prodotti</button>
+  <header class="storia-testa">
+    <p class="etichetta"><i class="volutina" aria-hidden="true"></i>Un nostro pezzo</p>
+    <h3>Sciarpa Taranto Futura</h3>
+    <p class="premessa">Maglia acrilica jacquard, rosso e blu a scacchi. La forma è quella da curva: i simboli dentro sono di qua.</p>
+  </header>
+
+  <div class="storia-corpo">
+    <div class="storia-teca">
+      <div class="teca-pila">
+          <img class="quadro acceso" src="assets/sciarpa/nome.webp" alt="Il nome, a caratteri cubitali" data-quadro="0" loading="lazy" decoding="async">
+          <img class="quadro" src="assets/sciarpa/simboli.webp" alt="Quattro caselle, quattro cose" data-quadro="1" loading="lazy" decoding="async">
+          <img class="quadro" src="assets/sciarpa/mano.webp" alt="La mano" data-quadro="2" loading="lazy" decoding="async">
+      </div>
+    </div>
+    <div class="storia-battute">
+        <div class="battuta" data-quadro="0">
+          <h4>Il nome, a caratteri cubitali</h4>
+          <p>Si porta al collo come si porta una squadra. Solo che la squadra e' la citta', e non gioca in nessun campionato.</p>
+        </div>
+        <div class="battuta" data-quadro="1">
+          <h4>Quattro caselle, quattro cose</h4>
+          <p>Il pallone, il delfino di Taras, la lisca, le colonne doriche. Quello che resta di Taranto quando la riduci a quattro segni.</p>
+        </div>
+        <div class="battuta" data-quadro="2">
+          <h4>La mano</h4>
+          <p>Ossa, non muscoli. Perche' quello che tiene in piedi una citta' di solito non si vede.</p>
+        </div>
+      <div class="battuta battuta-coda">
+        <h4>Se lo vuoi</h4>
+        <p>Sta nel catalogo a 25&nbsp;&euro;. Te lo mettiamo nel carrello e ne parliamo in DM.</p>
+        <button class="bottone" type="button" data-al-carrello="sciarpa">Aggiungi al carrello</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="storia" id="storia-sirena" hidden>
+  <button class="storia-torna" type="button" data-torna>&larr; Tutti i prodotti</button>
+  <header class="storia-testa">
+    <p class="etichetta"><i class="volutina" aria-hidden="true"></i>Un nostro pezzo</p>
+    <h3>Poster Sirena</h3>
+    <p class="premessa">Stampa A3 su carta opaca 250 grammi. Una faccia che sta per metà sotto.</p>
+  </header>
+
+  <div class="storia-corpo">
+    <div class="storia-teca">
+      <div class="teca-pila">
+          <img class="quadro acceso" src="assets/sirena/occhi.webp" alt="Gli occhi restano fuori" data-quadro="0" loading="lazy" decoding="async">
+          <img class="quadro" src="assets/sirena/onde.webp" alt="L'acqua che la copre" data-quadro="1" loading="lazy" decoding="async">
+      </div>
+    </div>
+    <div class="storia-battute">
+        <div class="battuta" data-quadro="0">
+          <h4>Gli occhi restano fuori</h4>
+          <p>Tutto il resto e' sommerso. E' la parte che decide se ti guarda o no.</p>
+        </div>
+        <div class="battuta" data-quadro="1">
+          <h4>L'acqua che la copre</h4>
+          <p>Righe concentriche, come un'impronta digitale. Il mare qui non e' uno sfondo: e' una cosa che ti si stringe addosso.</p>
+        </div>
+      <div class="battuta battuta-coda">
+        <h4>Se lo vuoi</h4>
+        <p>Sta nel catalogo a 10&nbsp;&euro;. Te lo mettiamo nel carrello e ne parliamo in DM.</p>
+        <button class="bottone" type="button" data-al-carrello="sirena">Aggiungi al carrello</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="storia" id="storia-venti" hidden>
+  <button class="storia-torna" type="button" data-torna>&larr; Tutti i prodotti</button>
+  <header class="storia-testa">
+    <p class="etichetta"><i class="volutina" aria-hidden="true"></i>Un nostro pezzo</p>
+    <h3>Poster Rosa dei Venti</h3>
+    <p class="premessa">Stampa A3. Quattro venti, quattro facce di marmo prese dai musei e rimesse a colori.</p>
+  </header>
+
+  <div class="storia-corpo">
+    <div class="storia-teca">
+      <div class="teca-pila">
+          <img class="quadro acceso" src="assets/venti/tramontana.webp" alt="Tramontana" data-quadro="0" loading="lazy" decoding="async">
+          <img class="quadro" src="assets/venti/levante.webp" alt="Levante" data-quadro="1" loading="lazy" decoding="async">
+          <img class="quadro" src="assets/venti/ponente.webp" alt="Ponente" data-quadro="2" loading="lazy" decoding="async">
+          <img class="quadro" src="assets/venti/ostro.webp" alt="Ostro" data-quadro="3" loading="lazy" decoding="async">
+      </div>
+    </div>
+    <div class="storia-battute">
+        <div class="battuta" data-quadro="0">
+          <h4>Tramontana</h4>
+          <p>Quella che scende da nord e ti pulisce l'aria. Arriva d'inverno e porta via la foschia: le giornate in cui si vedono le Murge sono merito suo.</p>
+        </div>
+        <div class="battuta" data-quadro="1">
+          <h4>Levante</h4>
+          <p>Viene dal mare aperto e porta l'acqua. E' il vento che alza il Mar Grande e tiene le barche legate.</p>
+        </div>
+        <div class="battuta" data-quadro="2">
+          <h4>Ponente</h4>
+          <p>Da terra verso il mare. Spinge fuori, e infatti i pescatori lo aspettano per uscire.</p>
+        </div>
+        <div class="battuta" data-quadro="3">
+          <h4>Ostro</h4>
+          <p>Il vento del sud, caldo. Quello che porta la sabbia e lascia tutto giallo sulle macchine.</p>
+        </div>
+      <div class="battuta battuta-coda">
+        <h4>Se lo vuoi</h4>
+        <p>Sta nel catalogo a 10&nbsp;&euro;. Te lo mettiamo nel carrello e ne parliamo in DM.</p>
+        <button class="bottone" type="button" data-al-carrello="venti">Aggiungi al carrello</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="storia" id="storia-erasmo" hidden>
+  <button class="storia-torna" type="button" data-torna>&larr; Tutti i prodotti</button>
+  <header class="storia-testa">
+    <p class="etichetta"><i class="volutina" aria-hidden="true"></i>Un nostro pezzo</p>
+    <h3>Poster Sant'Erasmo</h3>
+    <p class="premessa">Stampa A3 in edizione limitata, per la notte di Sant’Erasmo.</p>
+  </header>
+
+  <div class="storia-corpo">
+    <div class="storia-teca">
+      <div class="teca-pila">
+          <img class="quadro acceso" src="assets/prodotti/poster-santerasmo.webp" alt="Un santo dei marinai, vestito da oggi" data-quadro="0" loading="lazy" decoding="async">
+      </div>
+    </div>
+    <div class="storia-battute">
+        <div class="battuta" data-quadro="0">
+          <h4>Un santo dei marinai, vestito da oggi</h4>
+          <p>Sant'Erasmo protegge chi va per mare, e la sua notte a Taranto e' una festa che dura da sempre. Qui l'aureola non sta sopra un santo di gesso: sta sopra uno di qua, con la giacca e il timone in mano.</p>
+        </div>
+      <div class="battuta battuta-coda">
+        <h4>Se lo vuoi</h4>
+        <p>Sta nel catalogo a 10&nbsp;&euro;. Te lo mettiamo nel carrello e ne parliamo in DM.</p>
+        <button class="bottone" type="button" data-al-carrello="erasmo">Aggiungi al carrello</button>
+      </div>
+    </div>
+  </div>
+</section>
+      </div>
+
+      <div class="parte" id="parte-insieme" role="tabpanel" aria-labelledby="ling-insieme" hidden>
+        <div class="vuoto-garbato">
+          <svg class="capitello" viewBox="0 0 200 110" aria-hidden="true"><use href="#cap-ionico"/></svg>
+          <p>Qui finiranno i pezzi fatti insieme ad altre realt&agrave;: la foto davanti, il logo di chi
+             ci ha messo le mani girando la carta.</p>
+          <p class="chiosa">Ci stiamo lavorando.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -3572,6 +3972,89 @@ a:visited,
       if (p) Strati.chiudi(p);
     });
   });
+
+  /* ══ PRODOTTI ══════════════════════════════════════
+     Due sottosezioni. Nei nostri pezzi la teca resta ferma e cambia
+     immagine mentre le battute scorrono: il racconto e' guidato dallo
+     scorrimento del pannello, non da quello della pagina, perche' qui
+     dentro la pagina non si muove affatto. ══ */
+  (function(){
+    var pan = document.getElementById('pan-prodotti');
+    if (!pan) return;
+    var corpo   = document.getElementById('prodotti-corpo');
+    var elenco  = document.getElementById('prodotti-elenco');
+    var storie = [].slice.call(pan.querySelectorAll('.storia'));
+
+    /* ── le linguette ── */
+    pan.querySelectorAll('[data-lingua]').forEach(function(b){
+      b.addEventListener('click', function(){
+        pan.querySelectorAll('[data-lingua]').forEach(function(x){
+          var suo = x === b;
+          x.classList.toggle('attiva', suo);
+          x.setAttribute('aria-selected', suo ? 'true' : 'false');
+          document.getElementById(x.getAttribute('aria-controls')).hidden = !suo;
+        });
+        corpo.scrollTop = 0;
+      });
+    });
+
+    /* ── aprire e chiudere un racconto ── */
+    function mostraElenco(){
+      storie.forEach(function(r){ r.hidden = true; });
+      elenco.hidden = false;
+      corpo.scrollTop = 0;
+    }
+    function apriRacconto(chiave){
+      var r = document.getElementById('storia-' + chiave);
+      if (!r) return;
+      elenco.hidden = true;
+      storie.forEach(function(x){ x.hidden = x !== r; });
+      corpo.scrollTop = 0;
+      /* la prima battuta e' gia' viva: senza, si apre su una pagina spenta */
+      var prima = r.querySelector('.battuta');
+      if (prima) prima.classList.add('viva');
+      accendi(r, 0);
+    }
+    pan.querySelectorAll('[data-storia]').forEach(function(b){
+      b.addEventListener('click', function(){ apriRacconto(b.getAttribute('data-storia')); });
+    });
+    pan.querySelectorAll('[data-torna]').forEach(function(b){
+      b.addEventListener('click', mostraElenco);
+    });
+
+    function accendi(r, n){
+      r.querySelectorAll('.teca-pila img').forEach(function(im){
+        im.classList.toggle('acceso', +im.getAttribute('data-quadro') === n);
+      });
+    }
+
+    /* ── le battute si accendono passando ── */
+    var osserva = new IntersectionObserver(function(voci){
+      voci.forEach(function(v){
+        if (!v.isIntersecting) return;
+        v.target.classList.add('viva');
+        var q = v.target.getAttribute('data-quadro');
+        if (q !== null) accendi(v.target.closest('.storia'), +q);
+      });
+    /* Su telefono la teca sta appiccicata in alto e coprirebbe la battuta
+       letta al centro: li' la fascia di lettura scende sotto l'immagine. */
+    }, { root: corpo, rootMargin: matchMedia('(max-width:860px)').matches
+           ? '-62% 0px -18% 0px' : '-42% 0px -42% 0px', threshold: 0 });
+
+    pan.querySelectorAll('.battuta').forEach(function(b){ osserva.observe(b); });
+
+    /* ── dal racconto al carrello ── */
+    pan.querySelectorAll('[data-al-carrello]').forEach(function(b){
+      b.addEventListener('click', function(){
+        var pezzo = b.getAttribute('data-al-carrello');
+        var scheda = document.querySelector('#catalogo .riquadro[data-pezzo="' + pezzo + '"]');
+        var agg = scheda && scheda.querySelector('[data-aggiungi]');
+        if (agg) agg.click();
+        var vai = document.getElementById('apri-carrello');
+        if (vai) vai.click();
+      });
+    });
+  })();
 
   /* ══ IL BANCO: carrello e richiesta ════════════════
      Qui non si paga: il carrello e' una lista di cose che si chiedono, e il
